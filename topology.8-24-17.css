@@ -71,11 +71,11 @@ p { margin-bottom: 10px; }
 #nav a {
     padding: 4px 0;
     font-weight: bold;
-    margin: 0 1px;
+    margin: 0 2px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     float: left;
-    width: 32%;
+    width: 49%;
 }
 #nav .active a,
 #nav a:hover { 
