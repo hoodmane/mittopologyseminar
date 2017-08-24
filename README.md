@@ -102,7 +102,7 @@ I consolidated all of the stuff that a new organizer will certainly need to chan
 
 I messed around with the representation of the abstracts to fix the behavior of backslashes and newlines as follows:
  
- 1. Newlines behave like they do in latex -- a single newline has no effect, two newlines in a row create a new paragraph
+ 1. Newlines behave like they do in LaTeX -- a single newline has no effect, two newlines in a row create a new paragraph
  2. `\"` represents an escaped quote
  3. `\anythingelse` represents a LaTeX command
 
@@ -110,7 +110,7 @@ I made the website work without javascript by using some css magic. To be clear,
 only the foldy-thingies for the abstract and semesters work without javascript, the math will just display as
 raw TeX input.
 
-I automated the email sending process. If the talk has all of its key fields (speaker, title, abstract),
+I automated the email sending process. If the talk has all of its key fields (`speaker`, `title`, `abstract`),
 then on Saturday morning it will send an appropriate email to the list. If not all of these fields are
 filled out, it will send a reminder email to just the organizer to rectify the situation. The automated email
 fills out it's `From:` field with `organizer_email`, which must be `something@mit.edu`. You also must be subscribed
@@ -121,7 +121,7 @@ to the topology list through `something@mit.edu`
 - Document things more.
 - Send no talk today email with `cancellation_reason` or generic one if no reason given but no talk given in between actual talks? 
 - Send an extra email warning about late week talks? 
-- Auto-detect no_email cases? 
+- Auto-detect `no_email` cases? 
 - Send email to organizer telling them to write their own email(s) in no email cases?
 
 
