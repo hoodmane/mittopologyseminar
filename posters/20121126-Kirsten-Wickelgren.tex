@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Kirsten Wickelgren}}\\\vspace{20pt} {\scalefont{2}of Harvard University will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    $H_1$ of the Abel-Jacobi Map to the Compactified Jacobian gives Poincaré Duality
+}\\\vspace{20pt} {\scalefont{2}on November 26 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+The Picard scheme $\text{Pic}^0$ representing invertible sheaves can be compactified by a moduli space $J$-bar of rank 1, torsion-free sheaves called the compactified Jacobian. For a smooth algebraic curve $X$ over a field $k$ with boundary $\partial X$, applying $H_1$ to the Abel-Jacobi map $X \to \text{Pic}^0 (X/ \partial X)$ gives the Poincaré duality isomorphism $H_1(X,  Z/\ell) \to H^1_c(X, Z/\ell(1)) = H^1(X, \partial X, Z/\ell(1))$. We show the analogous result for the compactified Jacobian that applying $H_1$ to the Abel-Jacobi map $X/\partial X \to J$-bar gives the Poincaré duality isomorphism $H_1(X, \partial X, Z/\ell) \to H^1(X, Z/\ell(1))$. In particular, $H_1(X/ \partial X \to J$-bar$)$ is an isomorphism. This is joint work with Jesse Kass. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

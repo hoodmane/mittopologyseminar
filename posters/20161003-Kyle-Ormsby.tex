@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Kyle Ormsby}}\\\vspace{20pt} {\scalefont{2}of Reed College will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Vanishing in motivic stable stems
+}\\\vspace{20pt} {\scalefont{2}on October 3 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Recent work of Röndigs-Spitzweck-Østvær sharpens the connection between the slice and Novikov spectral sequences.  Using classical vanishing lines for the $E_2$-page of the Adams-Novikov spectral sequence and the work of Andrews-Miller on the $\eta$-periodic ANSS, I will deduce some new vanishing theorems in the bigraded homotopy groups of the $\eta$-complete motivic sphere spectrum.  In particular, I will show that the $m$th $\eta$-complete Milnor-Witt stem is bounded above (by an explicit piecewise linear function) when $m = 1$ or $2$ (mod $4$).  This is joint work with Oliver Röndigs and Paul Arne Østvær. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

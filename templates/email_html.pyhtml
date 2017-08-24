@@ -1,0 +1,28 @@
+<html>
+  <head></head>
+  <body>
+    Dear all,
+    <br><br>
+      On ${talk.date.strftime("%A (%B %-d)")}, #{talk.speaker} will be speaking on:
+    <br><br>
+      ${talk.title_email}
+    <br><br>
+      #{talk.change_reason[:1].upper() + talk.change_reason[1:] + ", the" if talk.change_reason else "The"}
+      seminar will meet at
+      #{"<b>"+talk.date.strftime("%-I:%M %p") + "</b>" if talk.date.strftime("%-I:%M")!=config.standard_time.strftime("%-I:%M") else talk.date.strftime("%-I:%M %p")}
+        in 
+      #{"<b>"+talk.room+"</b>" if talk.room != config.standard_room else talk.room}.
+    <br><br>
+  <?py if talk.email_notice: ?>
+    #{talk.email_notice}
+    <br><br>
+  <?py #endif ?>
+      See you there,
+    <br><br>
+      -- ${config.organizer_first_name} 
+  <?py if talk.email_abstract_html: ?>
+    <br><br><br>
+    Abstract: #{talk.email_abstract_html}
+  <?py #endif ?>
+  </body>
+</html>

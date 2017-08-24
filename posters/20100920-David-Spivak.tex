@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf David Spivak}}\\\vspace{20pt} {\scalefont{2}of MIT will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Categorical informatics
+}\\\vspace{20pt} {\scalefont{2}on September 20 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+In this talk I will give a brief survey of what I call ``categorical 
+informatics,'' which is the study of information and communication from a 
+category-theoretic perspective.  In order to begin such a study, one must 
+ground it in something concrete.  To that end, I'll explain a simple 
+categorical model of databases, which are real-world store-houses of 
+organized information.
+
+I will then discuss information transfer between databases and move on to 
+define a more general notion of communication networks.  Briefly, a 
+communication network is a simplicial complex (of interacting groups) 
+equipped with a sheaf of databases (common languages) on its simplices.  I 
+will show how this same structure can be pared down to give a categorical 
+model for combining information obtained from various sources.  I'll end 
+by showing some interesting consequences of the topological nature of this 
+model. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

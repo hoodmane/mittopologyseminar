@@ -1,0 +1,680 @@
+
+
+
+
+DATE
+date(2008,8,28)
+
+SPEAKER
+Ieke Moerdijk|||http://www.math.uu.nl/people/moerdijk/
+
+INSTITUTION
+Utrecht University|||http://www.math.uu.nl/people/moerdijk/
+
+TITLE
+Dendroidal sets as a model for homotopy operads
+
+SPECIAL
+Thursday, 4:00pm. Location: 2-136.
+
+
+
+DATE
+date(2008,8,20)
+
+SPEAKER
+Mark Behrens|||http://math.mit.edu/~mbehrens/
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+Homotopy fixed points of profinite Galois extensions
+
+ABSTRACT
+I'll talk about some joint work with Daniel Davis, where we
+investigate the homotopy theory of profinite Galois extensions of
+E_infty ring spectra, in the sense of Rognes.  I'll give some
+K(n)-local applications.
+
+
+
+DATE
+date(2008,8,06)
+
+SPEAKER
+Inna Zakharevich
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+What is a homotopy limit, and why won't it leave me alone?
+
+ABSTRACT
+I will be presenting several different definitions of a homotopy
+limit, and (time permitting) explaining how they all fit together into
+the definition in diagrams over a homotopical category.
+
+DATE
+date(2008,8,13)
+
+SPEAKER
+Ricardo Andrade
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+$E_n$-algebras from cosimplicial objects
+
+ABSTRACT
+Following McClure and Smith, I will discuss a structure on a cosimplicial object which naturally gives rise to an action of a $E_n$-operad on its totalization.
+
+DATE
+date(2008,07,30)
+
+SPEAKER
+Dan Dugger|||http://www.uoregon.edu/~ddugger/
+
+INSTITUTION
+University of Oregon|||http://www.uoregon.edu/~math/
+
+TITLE
+Motivic Stiefel-Whitney classes
+
+ABSTRACT
+I will talk about some known and unknown issues related to characteristic class theory for quadratic bundles, taking values in motivic cohomology.
+
+DATE
+date(2008,07,23)
+
+SPEAKER
+Martin Frankland
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+Classification of 2-types
+
+ABSTRACT
+Here's a basic fact: The homotopy category of 1-types (i.e. connected spaces with only one non-trivial homotopy group in dimension 1) is equivalent to the category of groups. Namely, taking $\pi_1$, and the classifying space give inverse equivalences.
+
+What about 2-types, i.e. if we allow $\pi_2$ to be non-trivial? Then the appropriate algebraic model is given by crossed modules. I will present this classic result that goes back to J.H.C. Whitehead, and explain why I care about it from a more modern point of view.
+
+Time permitting, I will also say a few words about 3-types.
+
+DATE
+date(2008,07,16)
+
+SPEAKER
+Mike Hill|||http://people.virginia.edu/~mah7cd/
+
+INSTITUTION
+University of Virginia|||http://math.virginia.edu/
+
+TITLE
+The Heady Height 2(p-1)
+
+ABSTRACT
+I will describe current work with Hopkins and Ravenel about the homotopy 
+groups of E_{f(p-1)}^{hG}, where G is a finite subgroup of the Morava 
+stabilizer group with order divisible by p. To ground the arguments, I will present a complete argument for f=2.
+
+DATE
+date(2008,07,9)
+
+SPEAKER
+Sam Isaacson
+
+INSTITUTION
+Harvard|||http://math.harvard.edu
+
+TITLE
+Test categories and presheaves as models for homotopy types
+
+
+DATE
+date(2008,04,28)
+
+SPEAKER
+Peter Lee|||http://math.mit.edu/~lee/
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+Gr&ouml;bner bases in rational homotopy theory
+
+ABSTRACT
+The Mayer-Vietoris sequence in cohomology has an obvious Eckmann-Hilton dual which
+characterizes the homotopy of a pullback, but there is no dual to the Eilenberg-Moore
+spectral sequence characterizing the homotopy of a pushout. The main obstacle is the
+lack of an Eckmann-Hilton dual to the K&uuml;nneth theorem with which to understand the
+homotopy of a coproduct.
+This difficulty disappears when working rationally, and we dualize one particular
+construction of the Eilenberg-Moore spectral sequence to produce a spectral sequence
+converging to the homotopy of a pushout. We use Gr&ouml;bner-Shirshov bases, an analogue
+of Gr&ouml;bner bases for free Lie algebras, to compute the E^2 term for pushouts of wedges
+of spheres. We are able to mostly avoid
+the use of minimal models, and instead approach simple but open problems in rational
+homotopy theory using the combinatorial properties of Gr&ouml;bner-Shirshov bases.
+
+DATE
+date(2008,05,05)
+
+REASON
+Simons Lecture (Peter Teichner)|||http://math.mit.edu/simons/index.html
+
+DATE
+date(2008,05,6)
+
+SPEAKER
+Elke Markert|||http://www.math.uni-bonn.de/people/markert/
+
+INSTITUTION
+Mathematical Institute of the University of Bonn|||http://www.math.uni-bonn.de/
+
+TITLE
+K-theory and Quantum Field Theories
+
+SPECIAL
+Tuesday, 3pm. Location: 1-273.
+
+DATE
+date(2008,05,9)
+
+SPEAKER
+John Francis|||http://www-math.mit.edu/~jnkf/
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+Derived algebraic geometry over E_n-rings
+
+SPECIAL
+Friday, 4pm. Location: 2-131.
+
+ABSTRACT
+ We develop a theory of <i>less</i> commutative algebraic geometry where the role of commutative rings
+is assumed by E_n-rings, that is, rings with multiplication parametrized by configuration spaces of
+points in R^n. As n increases, these theories converge to the derived algebraic geometry of To&euml;n-
+Vezzosi and Lurie. The class of spaces obtained by gluing E_n-rings form a geometric counterpart to
+E_n-categories, which are higher topological variants of braided monoidal categories. These spaces
+further provide a geometric language for the deformation theory of general E_n structures. A version
+of the cotangent complex governs such deformation theories, and we relate its values to E_n-Hochschild
+cohomology. In the affine case, this establishes a claim made by Kontsevich. Other applications
+include a geometric description of higher Drinfeld centers of E_n-categories, explored in work with
+Ben-Zvi and Nadler.
+
+DATE
+date(2008,05,12)
+
+REASON
+Clay Research Conference|||http://www.claymath.org/researchconference/2008/
+
+DATE
+date(2008,05,13)
+
+SPEAKER
+Christopher Douglas|||http://math.stanford.edu/~cdouglas/
+
+INSTITUTION
+University of California at Berkeley|||http://math.berkeley.edu/
+
+TITLE
+Three-Dimensional Local Field Theory
+
+SPECIAL
+Tuesday, 4pm. Location: 2-146.
+
+ABSTRACT
+I will describe the classification of 3-dimensional local topological field theories: corresponding to each dualizable object of a symmetric monoidal 3-category C, there is a 3-d local TFT with target C.  The key technical ingredient is the classification of flag foliated singularities through dimension 4.  As an application, I will introduce a local field theory corresponding to the conformal net of local fermions.  This is joint work in progress with Arthur Bartels and Andre Henriques.  (Note: A 3-dimensional local TFT has values for 0-, 1-, 2-, and 3-manifolds, and is sometimes called a 0+1+1+1-dimensional theory, or an extended theory.)
+
+DATE
+date(2008, 2, 11)
+SPEAKER
+Denis-Charles Cisinski|||http://www.math.univ-paris13.fr/~cisinski/
+INSTITUTION
+Universit&eacute; Paris 13|||http://www.math.univ-paris13.fr/
+TITLE
+Grothendieck Derivators
+ABSTRACT
+
+Derivators were introduced by Grothendieck in pursuing stacks and studied (sometimes indepently, and/or under various forms) later by A. Heller, J. Franke, B. Keller. Derivators describe the structure of homotopy categories in terms of homotopy limits and colimits.  This talk will give an introduction to the subject. Illustrations will be given about the following fact: the derivator defined by classical homotopy theory of CW-complexes can be defined by an intrinsic universal property, giving rise to a nice theory of homotopy Kan extensions in derivators.  This is the corner stone to understand the link between derivators and higher homotopical structures.
+
+
+
+
+DATE
+date(2007, 12, 17)
+SPEAKER
+Andrew Blumberg|||http://math.stanford.edu/~blumberg/
+INSTITUTION
+Stanford University|||http://math.stanford.edu/
+TITLE
+K-theory and abstract homotopy theory
+ABSTRACT
+
+Algebraic K-theory of a ring encodes the "higher homotopy theory" of the
+derived category.  I will discuss recent work with Mandell which makes this
+slogan precise by giving an explicit description of the K-theory space of a
+Waldhausen category in terms of the Dwyer-Kan simplicial localization of the
+category.  This allows us to prove a very general criterion for functors to
+induce an equivalence of K-theory, and also has applications in the study of
+the K-theory of nonconnective ring spectra.
+
+
+
+
+DATE
+date(2007, 12, 11)
+SPEAKER
+Michael Ching|||http://www.math.jhu.edu/~mching/
+INSTITUTION
+Johns Hopkins University|||http://www.math.jhu.edu/
+TITLE
+Chain rules for Goodwillie calculus
+ABSTRACT
+
+I'll explain work (joint with Greg Arone) to understand chain rules for Goodwillie's homotopy calculus. In order to express these chain rules, we produce nice models for the derivatives of various functors that have extra algebraic structure. In particular, we get a deeper understanding of where the operad structure on the derivatives of the identity comes from. These models should work in a much wider context than functors of topological spaces, and if there's time and interest, I'll mention some applications of these ideas to the algebraic K-theory of A<sub>&infin;</sub> and E<sub>&infin;</sub> ring spectra.
+
+
+
+
+DATE
+date(2007, 12, 10)
+SPEAKER
+Muriel Livernet|||http://www.math.univ-paris13.fr/~livernet/
+INSTITUTION
+<a href="http://www.math.univ-paris13.fr">Universit&eacute; Paris 13</a> and <a href="http://math.mit.edu">MIT</a>
+TITLE
+Posets, Groups and Hopf algebras associated to a set-operad
+ABSTRACT
+
+In this talk we will review a  result of Bruno Vallette linking the notion
+of Koszul duality of operads and Cohen-MacCauley posets. We'll present in
+this context a joint work with F. Chapoton, where we compare two groups,
+one built directly from operads, and another one associated to the
+incidence Hopf algebra of a family of posets. This leads us to a new link
+between the Hopf algebra of Connes and Kreimer in renormalisation theory
+and operads built on rooted trees.
+
+
+
+
+DATE
+date(2007, 12, 4)
+SPEAKER
+Ralph Cohen|||http://math.stanford.edu/~ralph/
+INSTITUTION
+Stanford University|||http://math.stanford.edu/
+TITLE
+The topology of moduli spaces of flat connections on Riemann surfaces (revisited)
+ABSTRACT
+
+Let G be a connected, semi-simple  compact Lie group.  In
+this talk I will describe a stability theorem for the homology of the
+moduli space, (M<sub>g</sub>)<sup>G</sup>,  of equivalence classes of triples (S, E,
+&omega;),  where S is a closed  Riemann surface of genus g, E&rarr;S is
+a principal G-bundle, and &omega; is a flat connection on E.  The
+theorem states that in a stable range (approximately g/2), the
+homology of this moduli space is isomorphic to the homology of an
+explicit infinite loop space.  As a corollary, one has that in this
+stable range, the rational cohomology of this moduli space is
+generated by the  Mumford-Morita kappa classes and H<sup>*</sup>(BG).  When G
+is the trivial group, this is a combination of the Mumford conjecture
+as proved by Madsen and Weiss,  and   Harer's  stability theorem.   I
+will also draw implications to moduli spaces of semi-stable
+holomorphic bundles, and to representation varieties.   Finally I
+will describe a related result, identifying the homotopy type of the
+cobordism category of surfaces with flat G-connections.    This is
+all joint work with S. Galatius and N. Kitchloo.
+
+SPECIAL
+Babytop time and space (Tuesday, 4:00, room 2-135) 
+
+
+
+DATE
+date(2007, 12, 3)
+SPEAKER
+Vigleik Angeltveit|||http://www.math.uchicago.edu/~vigleik/
+INSTITUTION
+University of Chicago|||http://www.math.uchicago.edu/
+TITLE
+Uniqueness of Morava K-theory
+ABSTRACT
+
+Classical obstruction theory seemingly produces uncountably many
+A<sub>&infin;</sub> structures on the Morava K-theory spectrum K(n). We show
+that these A<sub>&infin;</sub> structures are all equivalent, using a
+Bousfield-Kan spectral sequence converging to the homotopy groups of
+the moduli space of A<sub>&infin;</sub> ring spectra equivalent to K(n). This
+spectral sequence has infinitely many differentials, and to show that
+all the relevant classes die we study the connective Morava K-theory
+spectrum k(n) and use the theory of Postnikov towers and S-algebra
+k-invariants developed by Dugger and Shipley.
+
+
+
+
+DATE
+date(2007, 11, 26)
+SPEAKER
+Tom Goodwillie|||http://www.math.brown.edu/faculty/goodwillie.html
+INSTITUTION
+<a href="http://math.brown.edu">Brown University</a> and <a
+href="http://math.harvard.edu">Harvard University</a>
+TITLE
+Geometric language for homotopy calculus
+ABSTRACT
+
+The category of spectra can be thought of as the tangent
+space of the category of spaces at the one-point space. I will extend
+this point of view as far as I can, perhaps getting as far as jets,
+connections and linear differential operators. It is no use forcing
+the analogy, but it can be a useful organizing framework and also a
+lot of fun.
+
+
+
+
+DATE
+date(2007, 11, 19)
+SPEAKER
+Dan Christensen|||http://jdc.math.uwo.ca/
+INSTITUTION
+University of Western Ontario|||http://www.math.uwo.ca/page2.html
+TITLE
+The generating hypothesis in the stable module category of a group
+ABSTRACT
+Let G be a finite group and let k be a field whose characteristic
+p divides the order of G. Freyd's generating hypothesis for the
+stable module category of G is the statement that a map between
+finite-dimensional kG-modules in the thick subcategory generated by
+k factors through a projective if the induced map on Tate cohomology
+is trivial. I will give an overview of joint work with Sunil Chebolu and
+J&aacute;n Min&aacute;&#269; in which we show that for groups with periodic
+cohomology, the generating hypothesis holds if and only if the Sylow
+p-subgroup of G is C<sub>2</sub> or C<sub>3</sub>.
+
+I will spend the last few minutes demonstrating GAP software written
+by Peter Webb and myself which can be used to explore conjectures such
+as the generating hypothesis.
+
+
+
+
+DATE
+date(2007, 11, 12)
+REASON
+Veterans Day|||http://en.wikipedia.org/wiki/Veterans_Day
+
+
+
+DATE
+date(2007, 11, 5)
+SPEAKER
+Peter May|||http://www.math.uchicago.edu/~may/
+INSTITUTION
+University of Chicago|||http://www.math.uchicago.edu/
+TITLE
+Thom Thom spectra and other new brave algebras
+ABSTRACT
+
+This will be a leisurely exposition of different ways
+of looking at at some E<sub>&infin;</sub> spaces and E<sub>&infin;</sub>
+ring spectra from a variety of perspectives, leading up
+to a modern codification of classical structures in the
+form of parametrized functors with smash product (PFSP's)
+and their associated parametrized E<sub>&infin;</sub> ring spectra.
+
+
+
+
+DATE
+date(2007, 10, 29)
+SPEAKER
+Clark Barwick|||http://www.uni-math.gwdg.de/barwick/
+TITLE
+Operator Categories and Strictification of Homotopy Algebraic Structures
+INSTITUTION
+Institute for Advanced Study|||http://www.math.ias.edu/
+
+
+
+DATE
+date(2007, 10, 22)
+SPEAKER
+Grace Lyo
+INSTITUTION
+MIT|||http://math.mit.edu/
+TITLE
+ The algebraic K-theory of a characteristic p local field
+ABSTRACT
+ I will describe a conjecture of Carlsson's that provides an
+explicit model of the homotopy type of the completed algebraic K-theory
+spectrum (KF)<sub>p</sub> of an arbitrary field F. This is achieved using
+exclusively the semilinear representation theory of the absolute Galois
+group G<sub>F</sub>. Unlike other approaches which focus on the homotopy groups of
+(KF)<sub>p</sub>, Carlsson's approach addresses the entire homotopy type. The
+conjecture is known to hold in two special cases; in this talk I will
+outline the proof of the most recently established case.
+
+
+
+
+DATE
+date(2007, 10, 15)
+SPEAKER
+Jacob Lurie
+INSTITUTION
+MIT|||http://math.mit.edu/
+TITLE
+Moduli Problems for Ring Spectra
+ABSTRACT
+A result of Hinich states that if x is a point of any "moduli space" X
+defined over a field of characteristic zero, then a formal
+neighborhood of x in X can be described by a differential graded Lie
+algebra. In this talk I will explain what the above statement means,
+and describe some extensions to other contexts (such as fields of
+positive characteristic and moduli problems in noncommutative
+geometry). At the end I will sketch a connection with some recent work
+with Dennis Gaitsgory.
+
+
+
+
+DATE
+date(2007, 10, 8)
+REASON
+Columbus Day|||http://en.wikipedia.org/wiki/Columbus_Day
+
+
+
+DATE
+date(2007, 9, 17)
+SPEAKER
+Dan Dugger|||http://www.uoregon.edu/~ddugger/
+INSTITUTION
+University of Oregon|||http://www.uoregon.edu/
+TITLE
+Motivic stable homotopy groups
+
+
+
+DATE
+date(2007, 9, 10)
+SPEAKER
+John Klein|||http://www.math.wayne.edu/~klein/
+INSTITUTION
+Wayne State University|||http://www.math.wayne.edu/
+TITLE
+On the refined transfer
+ABSTRACT
+This talk will describe algebraic K-theoretic obstructions to lifting fibrations to fiber bundles having compact smooth/topological manifold fibers.  The surprise will be that a lift can often be found in the topological case. Examples will be given realizing the obstructions.
+
+SPECIAL
+Seminar will occur in room 2-142 for this week only. 
+
+
+
+
+DATE
+date(2007, 9, 24)
+REASON
+Student holiday|||http://web.mit.edu/registrar/www/calendar.html
+
+
+
+
+DATE
+date(2007, 10, 1)
+SPEAKER
+Julia Bergner|||http://www.math.ksu.edu/~jbergner/index.html
+INSTITUTION
+Kansas State University|||http://www.math.ksu.edu/
+TITLE
+Derived Hall algebras for stable homotopy theories
+ABSTRACT
+The notion of a Hall algebra has been a useful tool in
+representation theory and has been shown to make important connections
+between the category of representations and the quantum group associated
+to certain Lie algebras.  As a first step in strengthening this
+relationship, Toen defines the derived Hall algebra associated to a
+particular kind of stable model category.  We'd like to extend his work to
+more general stable homotopy theories, using the complete Segal space
+model for homotopy theories.  This talk will include background on Hall
+algebras, a summary of Toen's work, and recent progress on extending to
+this more general situation.
+
+
+DATE
+date(2008,02,25)
+
+SPEAKER
+Markus Szymik|||http://www.ruhr-uni-bochum.de/topologie/szymik/
+
+INSTITUTION
+Ruhr-Universit&auml;t Bochum|||http://www.ruhr-uni-bochum.de/ffm/
+
+TITLE
+K3 Spectra
+
+ABSTRACT
+K3 spectra are much like elliptic spectra, just with elliptic curves replaced by K3 surfaces. In this talk, I will give an overview of K3 surfaces, focusing on similarities and differences between them and elliptic curves, and of the kind of spectra they are related to.
+
+DATE
+date(2008,03,03)
+
+SPEAKER
+Greg Arone|||http://www.math.virginia.edu/~zga2m/
+
+INSTITUTION
+University of Virginia|||http://math.virginia.edu
+
+TITLE
+Calculus, operads, and spaces of embeddings
+
+
+DATE
+date(2008,03,10)
+
+SPEAKER
+Pokman Cheung
+
+INSTITUTION
+MIT|||http://math.mit.edu
+
+TITLE
+Vertex algebras and the Witten genus
+
+
+DATE
+date(2008,03,17)
+
+SPEAKER
+Andrei Radulescu-Banu
+
+INSTITUTION
+Brixnet|||http://www.brixnet.com/
+
+TITLE
+Cofibration categories and homotopy colimits
+
+ABSTRACT
+We will talk about homotopy colimits constructed from the axioms of an Anderson-Brown-Cisinski cofibration category, and some of the properties of these homotopy colimits leading up to the axioms of a Heller/Grothendieck derivator.
+
+
+DATE
+date(2008,03,24)
+
+REASON
+Spring Break
+
+
+
+
+DATE
+date(2008,03,31)
+
+SPEAKER
+Paolo Salvatore|||http://www.mat.uniroma2.it/~salvator/
+
+INSTITUTION
+University of Rome Tor Vergata|||http://www.mat.uniroma2.it/english/main.html
+
+TITLE
+A topological version of the cyclic Deligne conjecture
+
+ABSTRACT
+The Deligne conjecture states that the Hochschild complex of an associative algebra admits the action on the chain level of the little discs operad. McClure-Smith proved a topological version, with the Hochschild complex replaced by the totalization of an operad in based spaces. I will show that a cyclic operad in based spaces yields an action of the framed little discs.
+I will present various examples and in particular an application to spaces of embeddings.
+
+
+DATE
+date(2008,04,07)
+
+SPEAKER
+David BenZvi|||http://www.ma.utexas.edu/users/benzvi/
+
+INSTITUTION
+University of Texas at Austin|||http://www.ma.utexas.edu/dev/math/index.html
+
+TITLE
+Real Lie Groups and Derived Algebraic Geometry
+
+ABSTRACT
+I will discuss joint work in progress with David Nadler, in which we apply homotopical techniques
+to study representations of real Lie groups. Our main result recovers the categories of Harish-Chandra modules for real Lie groups completely formally from their much simpler complex counterparts. In particular this allows
+us to prove Langlands duality results for real groups by "base-change" from the known results for complex groups.
+
+
+DATE
+date(2008,04,14)
+
+SPEAKER
+Brooke Shipley|||http://www.math.uic.edu/~bshipley/
+
+ABSTRACT
+This talk will focus on the model categories of stable modules for
+the rings Z/(p^2) and (Z/p)[\epsilon]/(\epsilon^2). Schlicting showed
+these are not Quillen equivalent by using K-theory. We give another
+proof using homotopy endomorphism ring spectra. Our considerations lead to
+an example of two differential graded algebras which are derived equivalent but the associated K-theories and the associated model categories of modules are not Quillen equivalent. This is based on joint work with Dan Dugger.
+
+INSTITUTION
+University of Illinois at Chicago|||http://www.math.uic.edu/
+
+TITLE
+A curious example of two model categories and some associated  DGAs
+
+DATE
+date(2008,04,21)
+
+REASON
+Patriots Day
+

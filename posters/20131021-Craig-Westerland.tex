@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Craig Westerland}}\\\vspace{20pt} {\scalefont{2}of University of Minnesota will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    The unit spectrum of Morava $E$-theory
+}\\\vspace{20pt} {\scalefont{2}on October 21 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Atiyah-Segal and others define a twisted form of $K$-theory associated to classes in $H^3(X)$.  Their method is geometric, using the Fredholm operator model for the spaces which define $K$-theory. Homotopically, this amounts to a multiplicative map from $K(Z,2)$ to the space of units of $K$-theory, $GL_1(K)$.  In joint work with Hisham 
+Sati, we extended this construction to higher-chromatic versions of $K$-theory, Morava's $E$-theories, $E_n$.  We computed the space of $E$-infinity maps from $K(Z,n+1)$ to $GL_1(E_n)$, thereby introducing a natural form of 
+twisted $E$-theory. I will talk about these constructions and subsequent work which applies them to the study of the stable homotopy groups of the ($K(n)$-local) sphere. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Marco Perez}}\\\vspace{20pt} {\scalefont{2}of MIT will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Computing Ext using $n$-projective modules
+}\\\vspace{20pt} {\scalefont{2}on September 29 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+We present a new model category structure on the category of chain complexes over a ring $R$, called the \underline{$n$-projective model structure}, whose cofibrant objects are given by the class of chain complexes with projective dimension at most $n$ (or $n$-projective complexes). One interesting application of this structure consists in finding another way to compute extension groups ${\rm Ext}^i_R(M,N)$ for every pair of left $R$-modules $M$ and $N$, by using certain cofibrant and fibrant replacements of the sphere chain complexes $S^0(M)$ and $S^i(N)$, respectively. Recall that one normally computes ${\rm Ext}^i_R(M,N)$ by using either a left resolution of $M$ by projective modules or a right resolution of $N$ by injective modules. Somewhat surprisingly, there turn out to be many other ways to do it. We prove that one can use a left resolution of $M$ by modules of projective dimension at most $n$. The disadvantage of doing so is that  we use right resolutions of $N$ by a class of modules which is hard to describe.
+
+Reference: Pérez, M. {\it Homological dimensions and Abelian model structures on chain complexes} (to appear in {\it Rocky Mountain Journal of Mathematics}). 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Matthew Ando}}\\\vspace{20pt} {\scalefont{2}of University of Illinois Urbana-Champaign will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Parametrized spectra, Thom spectra, and twisted Umkehr maps
+}\\\vspace{20pt} {\scalefont{2}on October 27 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Let $R$ be an associative ring spectrum. I shall describe several new constructions of the $R$-module Thom spectrum associated to a map $f: X \rightarrow \mathrm{BGL}_1 R$. The space $\mathrm{BGL}_1 R$ classifies the twists of $R$-theory, and to a fibration of manifolds $g: Y \rightarrow X$ I shall associated an Umkehr map $g_!$ from the $fg$-twisted $R$-theory of $Y$ to the $f$-twisted $R$- theory of $X$. In the case of K-theory, this twisted Umkehr map appears in the study of $D$-brane charge. I shall review this story, and then discuss the analogous construction for TMF. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

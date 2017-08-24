@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Ismar Volic}}\\\vspace{20pt} {\scalefont{2}of Wellesley College will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Some new applications of manifold calculus of functors
+}\\\vspace{20pt} {\scalefont{2}on December 12 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Manifold calculus of functors has in recent years been applied with great success to various spaces of embeddings.
+In this talk, I will present some new applications and situations where this theory is proving useful.  One application is to
+spaces of homotopy string links where manifold calculus provides a connection to certain spaces of diagrams and trees, as well
+as to classical objects like Milnor invariants.  Another application is to spaces of immersions with a finite number of
+self-intersections where manifold calculus supplies a new understanding of some classical problems in combinatorial topology.
+A common theme (and difficulty) in these seemingly unrelated topics is a certain subspace arrangement, and some time will be
+devoted to the discussion of its structure. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

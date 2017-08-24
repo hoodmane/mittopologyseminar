@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Chris Kottke}}\\\vspace{20pt} {\scalefont{2}of New College of Florida will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Transgression, fusion, and cohomology of free loop spaces
+}\\\vspace{20pt} {\scalefont{2}on October 17 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+In the geometry and analysis of loop spaces, a fundamental question is how to characterize geometric objects (functions, resp. line bundles, etc.) on the loop space of a manifold which are related by transgression to objects one degree higher (line bundles, resp. gerbes, etc.) on the manifold itself. There
+are various geometric results of this sort for low degrees, in which a key role is played by `fusion' -- a (partially defined) binary operation on loop space which was first introduced by Stolz and Teichner and further developed by Waldorf.
+
+I will present a joint result with Richard Melrose which answers this question for arbitrary degree in cohomology. More precisely, we define an enhanced version of Cech cohomology of the continuous loop space of M in terms of fusion and a second `figure-of-eight' product, through which transgression from M factors as an isomorphism, and which can be iterated to higher loop spaces. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

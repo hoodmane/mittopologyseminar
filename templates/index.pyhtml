@@ -1,0 +1,14 @@
+<?py _context['page'] = 'index' ?>
+
+<h1>Upcoming Talks</h1>
+
+<p> 
+    The seminar will meet at ${standard_time} on ${standard_weekday} in 
+    <a href="http://whereis.mit.edu/?go=2">${standard_room}</a> unless otherwise noted. 
+</p>
+
+<ul class="talks" style="margin-top:35px;">
+#{upcoming}
+</ul><!--talks-->
+
+<p>Information about the mailing list for this seminar may be found <a href="http://math.mit.edu/topology/links.html">here</a>.</p>

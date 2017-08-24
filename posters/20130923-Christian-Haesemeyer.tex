@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Christian Haesemeyer}}\\\vspace{20pt} {\scalefont{2}of University of California, Los Angeles will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    On the K-theory of toric varieties in characteristic p
+}\\\vspace{20pt} {\scalefont{2}on September 23 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+We will explain our recent joint work with G. Cortinas, M. Walker and C. Weibel concerning properties of the algebraic K-theory of toric varieties in positive characteristic. The results are proved using trace methods and a variant of the cyclic nerve construction that provides a homotopy theoretical model of the so-called Danilov sheaves of differentials. Most of the technical work happens completely within the world of monoid schemes (which are a particular manifestation of what goes by the name of ``schemes over the field with one element''). 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

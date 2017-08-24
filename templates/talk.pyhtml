@@ -1,0 +1,50 @@
+<?py _context['layout'] = '' ?>
+<li class="talk">
+<ul class="meta">
+<li class="date"><b> ${day}</b>${year}</li>
+<?py if os.path.isfile("posters/%s.pdf" % posterfilename): ?>
+   <li class="poster"><a href="posters/${posterfilename}.pdf" title="Download Poster"></a></li>
+<?py #endif ?>
+<?py if upcoming and speaker: ?>
+    <li class="calendar"><a title="Add to Google Calendar" href="#{googleLink}"></a></li> 
+<?py #endif ?>
+</ul>
+<?py if speaker: ?>  
+    <h3 class="speaker">#{speaker}<span> (#{institutionLink})</span></h3>
+    <?py if title: ?> 
+        <?py if abstract: ?>
+            <div class="begroup">  $\begingroup ${macros} $ </div>
+            <h4 class="title"><label for="${posterfilename}">#{title_html}</label></h4>
+            <input type="checkbox" id="${posterfilename}" />
+            <label for="${posterfilename}" class="plusminus"></label>
+        <?py else: ?>
+            <h4 class="title">#{title_html}</h4>
+        <?py #endif ?>
+        <div style="clear: both;"></div>
+    <?py #endif ?>
+<?py #endif ?>
+<?py if cancellation_reason: ?>
+  <h3 class="cancellation_reason">#{cancellation_reason}</h3>
+<?py #endif ?>  
+<?py if room != config.standard_room or date.strftime("%-I:%M")!=config.standard_time.strftime("%-I:%M") : ?>
+<p class="schedule_change"> 
+#{change_reason[:1].upper() + change_reason[1:] + ", the" if change_reason else "The"}
+      seminar will meet at #{date.strftime("%-I:%M %p")} in #{room}.
+</p>
+<?py #endif ?>
+<?py if notice: ?>
+  <p class="notice">#{notice}</p>
+<?py #endif?>
+<?py if abstract: ?>
+  <div class="abstract">
+  #{abstract_html}
+  </div>
+<div class="begroup">  $\endgroup$ </div>
+<?py #endif ?>
+</li>
+
+
+ 
+
+
+

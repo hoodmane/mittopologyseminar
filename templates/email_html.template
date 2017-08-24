@@ -1,0 +1,17 @@
+<html>
+  <head></head>
+  <body>
+    Dear all,
+    <br><br>
+      On $day ($date) $speaker will be speaking on:
+    <br><br>
+      $title
+    <br><br>
+      The seminar will meet at $time in $room. 
+    <br><br>
+      See you there,
+    <br><br>
+      -- $organizer_name  
+    $abstract
+  </body>
+</html>

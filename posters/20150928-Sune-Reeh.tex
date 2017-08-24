@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Sune Reeh}}\\\vspace{20pt} {\scalefont{2}of MIT will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Saturated fusion systems as stable retracts of groups
+}\\\vspace{20pt} {\scalefont{2}on September 28 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+A saturated fusion system associated to a finite group $G$ encodes the $p$-structure of the group as the Sylow $p$-subgroup enriched with additional conjugation. The fusion system contains just the right amount of algebraic information to for instance reconstruct the $p$-completion of $BG$, but not $BG$ itself. Abstract saturated fusion systems $F$ without ambient groups exist, and these have ($p$-completed) classifying spaces $BF$ as well. In spectra, the suspension spectrum of $BF$ becomes a retract of the suspension spectrum of $BS$, for the Sylow $p$-subgroup $S$, so $BF$ gets encoded as a characteristic idempotent in the double Burnside ring of $S$. This way of looking as fusion systems as stable retracts of their Sylow $p$-subgroups is a very useful tool for generalizing theorems from groups or $p$-groups to saturated fusion systems.  In joint work with Tomer Schlank and Nat Stapleton, we use this retract approach to do Hopkins-Kuhn-Ravenel character theory for all saturated fusion systems by building on the theorems for finite $p$-groups. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

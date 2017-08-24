@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf John Harper}}\\\vspace{20pt} {\scalefont{2}of University of Western Ontario will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Quillen homology completion and strong convergence of the
+}\\\vspace{20pt} {\scalefont{2}on July 19 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Quillen's derived functor notion of homology provides
+interesting and useful invariants in a variety of homotopical
+contexts, and includes as special cases (i) singular homology of
+spaces, (ii) homology of groups, and (iii) Andre-Quillen homology of
+commutative rings. Working in the topological context of symmetric
+spectra, we study topological Quillen homology of commutative ring
+spectra, $E_n$ ring spectra, and more generally, algebras over any
+operad $O$ in spectra. Using a QH-completion construction---analogous to
+the Bousfield-Kan R-completion of spaces---we prove under appropriate
+conditions (a) strong convergence of the associated homotopy spectral
+sequence, and (b) that connected O-algebras are QH-complete---thus
+recovering the O-algebra from its topological Quillen homology plus
+extra structure. A key problem in usefully describing this extra
+structure was solved recently using homotopical ideas in joint work
+with Kathryn Hess that describes a rigidification of the derived
+comonad that coacts on the object underlying topological Quillen
+homology, and plays the analogous role (in symmetric spectra) of the
+Koszul cooperad associated to a Koszul operad in chain complexes. This
+talk is an introduction to these results with an emphasis on proving
+(a) and (b) which is joint work with Michael Ching. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Mona Merling}}\\\vspace{20pt} {\scalefont{2}of Johns Hopkins University will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Equivariant algebraic K-theory
+}\\\vspace{20pt} {\scalefont{2}on December 8 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+The first definitions of equivariant algebraic K-theory were given in the early 1980's by Fiedorowicz, Hauschild and May, and by Dress and Kuku; however these early space-level definitions only allowed trivial action on the input ring or category. Equivariant infinite loop space theory allows us to define spectrum level generalizations of the early definitions: we can encode a G-action (not necessarily trivial) on the input as a genuine G-spectrum. I will discuss some of the subtleties involved in turning a ring or category with G-action into the right input for equivariant algebraic K-theory, and some of the properties of the resulting equivariant algebraic K-theory G-spectrum.  I will also discuss recent developments in equivariant infinite loop space theory (e.g., multiplicative structures) that should have long-range applications to equivariant algebraic K-theory. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

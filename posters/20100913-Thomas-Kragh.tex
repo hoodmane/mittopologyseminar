@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Thomas Kragh}}\\\vspace{20pt} {\scalefont{2}of University of Oslo and MIT will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Nearby Lagrangians 
+}\\\vspace{20pt} {\scalefont{2}on September 13 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+The first part of this talk is basic definitions and 
+statement of the Nearby Lagrangian Conjecture (NLC).  I will then go on 
+describing previous results relating to my talk especially that of Viterbo 
+in 1998 and that of Fukaya, Seidel and Smith in 2007 (refined this year by 
+Abouzaid to a very strong result in the case of vanishing Maslov class).  
+I will then describe an approach using fibered spectra which partly 
+unifies the two rather different approaches and then state new results in 
+the general case (non-vanishing Maslov class) following from a product 
+structure on a fibered spectrum combined with the intersection product on 
+the base manifold (probably relatable to the pair of pants product and a 
+twisted version of the Chas-Sullivan product). 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

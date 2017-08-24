@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf André Henriques}}\\\vspace{20pt} {\scalefont{2}of University of Utrecht will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Progress report on the construction of TMF
+}\\\vspace{20pt} {\scalefont{2}on February 5 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+Roughly ten years ago, Stephan Stolz and Peter Teichner have set up a detailed plan for constructing TMF geometrically. Unfortunately, their idea of definition is still incomplete. A couple of months ago, I had an idea (which fits into the Stolz-Teichner program) about which I am quite excited: There should be a universal CFT, which I'll call $U$. The CFT $U$ should bear with respect to other CFTs a relationship that is analogous to the relationship that an infinite dimensional Hilbert space bears with respect to other finite dimensional vector spaces. Moreover, there should exist a property of quantum fields of $U$, which I'll call `Fredholm' such that the space of Fredholm quantum fields of $U$ is a classifying space for the cohomology theory TMF. I'll explain what the theory $U$ is, and what it means for a quantum field to be `Fredholm'. Disclaimer: this is all very speculative, and I don't think that, in its current form, this will yield TMF. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

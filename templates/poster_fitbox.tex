@@ -1,0 +1,171 @@
+% This file is based on tex stack exchange answer here: http://tex.stackexchange.com/a/27022/23866
+% It defines an environment "fitbox" which finds the largest font size smaller than an initial value that 
+% fits the text into the body of the page. The point is to always fit the abstract for any talk onto a 
+% single page poster, but to make short abstracts large for ease of reading.
+
+% The algorithm repeatedly typesets the text with different font sizes in vboxes of the specified width.
+% First it calculates the height of the text and binary searches for the largest value less than the 
+% starting value that makes the height of the text acceptably short (as specified by the user of the environment).
+% Then it checks what the badness of the worst line in the text is and if this badness exceeds a threshold,
+% it does a linear search of nearby fontsizes to try and minimize the badness.
+% It has to do a linear search because badness is not monotonic in the fontsize.
+
+\usepackage{environ}% http://ctan.org/pkg/environ
+\newdimen\fontdim
+\newdimen\upperfontdim % for binary search to fit font
+\newdimen\lowerfontdim 
+\newdimen\bestfontdim  % for linear search to minimize badness
+
+\newif\ifmoreiterations
+\fontdim24pt
+
+\newbox\trialbox
+\newbox\scratchbox
+\newbox\linebox
+\newcount\minbad % records the badness of the least bad typesetting
+\newcount\maxbad % for the badness of the worst line for a given font size
+\newcount\linebad
+\newdimen\fitboxwidth % Input width and heigh parameters
+\newdimen\fitboxheight
+\newdimen\currentheight
+
+\edef\restoreat{\let\noexpand\restoreat\noexpand\undefined \catcode`@=\the\catcode`@}
+\makeatletter
+
+% Output the body with appropriately modified typesetting parameters
+\def\fb@insertbody{%
+    \fontsize{\fontdim}{1.2\fontdim}%
+    \selectfont%
+    \parindent=0pt
+    \parskip=\fontdim
+    \emergencystretch1em
+    \pretolerance=500\relax % this makes it more willing to stretch / shrink the spaces between words
+    \tolerance=500\relax
+    \hyphenpenalty=500\relax % Make it less likely to hypenate things (with big sizes, it'll sometimes hyphenate a ton which looks bad)
+    \BODY%
+}%
+  
+% This macro measures the badness of the worst line with the current typesetting by typesetting it paragraph by paragraph then iterating backwards through the paragraph
+% and looking at the badness of each line.
+\def\fb@determinebadness{%
+    \global\maxbad=0\relax% This macro outputs into \maxbad
+    \bgroup
+    \hbadness=10000000\relax% make sure TeX doesn't report overfull boxes
+    % This trick comes from page 68 of TeXbyTopic. It scoops up each paragraph into \trialbox and then use \determineparagraphbadness to process the paragraphs
+    \everypar{% Typeset each paragraph in a box of width \fixboxwidth and with font size \fontsize, then work out the badness
+        \setbox\trialbox=\vbox\bgroup\everypar{}
+            \hsize\fitboxwidth\relax%
+            \fontsize{\fontdim}{1.2\fontdim}%
+            \selectfont%
+        \def\par{\endgraf\fb@determineparagraphbadness\egroup\endgraf}
+    }
+    \setbox\scratchbox=\vbox{\fb@insertbody\par}
+    \egroup
+    \message{Measured badness: \the\maxbad\space at Fontsize: \the\fontdim\space^^J}%
+}
+
+% Recurses back over the lines of the current paragraph, measuring the badness of each one, and determines the worst badness
+\def\fb@determineparagraphbadness{%
+    %\message{Iteration of measurelines^^J}%
+    \begingroup%
+        \setbox\linebox=\lastbox% get the last line
+        \ifvoid\linebox\else % if it was void we are done
+            \setbox0=\hbox to \hsize{\unhcopy\linebox}% put the last line into box0 to cause badness calculation
+            \linebad=\the\badness\relax% \badness now reflects the last typeset box, i.e. box0
+            \message{Badness: \the\badness\space\the\linebad\space with max \the\maxbad\space at Fontsize: \the\fontdim\space^^J}%
+            \ifnum\linebad>\maxbad % If this line was the worst so far
+                \global\maxbad=\linebad %record it
+            \fi%
+            \unskip\unpenalty\fb@determineparagraphbadness % recurse
+        \fi%
+    \endgroup%
+}%
+
+% Measure height with current font size
+\def\fb@determineheight{%
+    \setbox0\vbox{\hsize=\fitboxwidth\fb@insertbody\par}%
+    \currentheight\ht0
+    \advance\currentheight\dp0
+    \message{Measured box height: \the\currentheight\space^^J}%
+}
+
+% Shrink font size until the measured height is less than the allowed height
+\def\fb@shrinkheight{%
+    \loop
+        \fontdim.5\fontdim % Reduce font size by half
+        \fb@determineheight
+        \message{Shrinking, new box height: \the\currentheight\space at Fontsize: \the\fontdim\space^^J}%
+    \ifdim\currentheight>\fitboxheight \repeat
+    \lowerfontdim\fontdim
+    \upperfontdim2\fontdim
+    \fontdim1.5\fontdim
+}%
+
+
+% \begin{fitbox}{<width>}{<height>} 
+%  stuff 
+% \end{fitbox}
+\NewEnviron{fitbox}[2]{
+    % Store environment body
+    \fitboxwidth=#1\relax
+    \fitboxheight=#2\relax
+    \fb@determineheight
+
+    % If it's too tall, we binary search to make it just fit.
+    \ifdim\currentheight>\fitboxheight 
+        \message{Need to shrink box height: \the\currentheight\space^^J}%
+        \fb@shrinkheight
+        \message{Max font: \the\upperfontdim\space^^J}%
+        \message{Min font: \the\lowerfontdim\space^^J}%
+        
+        % Now binary search to get right height
+        \loop
+            \fb@determineheight
+            \message{Height: \the\currentheight\space^^J}%
+            \ifdim\currentheight>\fitboxheight
+                \moreiterationstrue
+                \upperfontdim\fontdim
+                \advance\fontdim\lowerfontdim
+                \fontdim.5\fontdim
+            \else
+                \ifdim\dimexpr\currentheight-\fitboxheight<10pt
+                    \lowerfontdim\fontdim
+                    \advance\fontdim\upperfontdim
+                    \fontdim.5\fontdim
+                    \ifdim\dimexpr\upperfontdim-\lowerfontdim<.2pt
+                        \moreiterationsfalse
+                    \else
+                        \moreiterationstrue
+                    \fi
+                \else
+                    \moreiterationsfalse
+                \fi
+            \fi
+        \ifmoreiterations\repeat
+    \fi
+%    
+    % Check the badness, if it's too bad, we'll linear search for the nearby font size that minimizes the badness of the worst line
+    \fb@determinebadness
+    \ifnum\maxbad>1000\relax 
+    	\minbad=\maxbad\relax
+        % Try every half point fontsize between the current one and current size minus 5pt
+        \lowerfontdim\fontdim
+        \advance\lowerfontdim-5pt
+        \loop
+            \advance\fontdim-0.5pt
+        	\fb@determinebadness
+        	\message{Font size \the\fontdim\space has badness \the\maxbad.^^J}
+        	\ifnum\maxbad<\minbad\relax
+        		\minbad=\maxbad
+        		\bestfontdim=\fontdim
+        	\fi
+        \ifnum\fontdim>\lowerfontdim\repeat
+        \fontdim=\bestfontdim % take the best font size
+    \fi
+    \message{Selected font: \the\fontdim\space with badness \the\maxbad.^^J}%
+    \hskip-2em\hfil\vbox{\hsize=\fitboxwidth\fb@insertbody\par}\hfil% Typeset content
+    
+    \message{Selected font: \the\fontdim\space with badness \the\maxbad.}
+}%
+
+\restoreat

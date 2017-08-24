@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Nitu Kitchloo}}\\\vspace{20pt} {\scalefont{2}of Johns Hopkins University will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    The Stable Symplectic category and the Grothendieck-Teichmuller group
+}\\\vspace{20pt} {\scalefont{2}on March 18 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+The Stable Symplectic category can the thought of as a category of Symplectic Motives. The objects in this topological category are symplectic manifolds, and the space of morphisms is an infinite loop space obtained by stabilizing the space of immersed totally-real correspondences between the source and target. A variant of this category can be traced back almost 30 years to early work of A. Weinstein on geometric quantization. In my talk, I will motivate the definition of the Stable Symplectic category. This will lead us to the construction of a canonical fiber functor F, on this category with values in the monoidal category of modules over a commutative ring spectrum Omega. The main aim of my talk is to explore the Motivic Galois group Aut(F) (i.e. the group of monoidal automorphisms of F). This group will be shown to be the abelian quotient of the Grothendieck-Teichmuller group as described by Kontsevich. Extending this observation along the lines of homotopy theory, we will motivate the topological hochschild homology of Omega:THH(Omega), as an integral candidate for Aut(F). If time permits, I would like to formulate some natural geometric questions in symplectic topology in terms of THH(Omega) and the Waldhausen K-theory K(Omega). This is joint work in part with Jack Morava. 
+\end{fitbox}
+
+\vfill
+\end{document}
+
+% vim:ft=tex 

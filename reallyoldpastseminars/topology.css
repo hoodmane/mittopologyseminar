@@ -1,0 +1,135 @@
+#logoimg {
+    width: 7.7em;
+    height: 4.2em;
+}
+
+#topborder {
+    border-top: 0.3em solid #666666;
+    border-bottom: 0.2em solid #993333;
+}
+
+#bottomborder {
+    clear: both;
+    border-top: 0.2em solid #993333;
+    border-bottom: 0.3em solid #666666;
+}
+
+#topbar {
+    height: 4.2em;
+}
+
+#topbar, #bottombar {
+    padding: 0.3em 0.5em;
+}
+
+#bottombar {
+    margin-top: 15em;
+}
+
+#middle {
+    margin: 0em 1em;
+}
+
+#logo {
+    float: left;
+}
+
+#middle .inner {
+    padding: 0em;
+    width: 40em;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#links {
+    float: right;
+    text-align: right;
+    text-transform: lowercase;
+    font-size: small;
+}
+
+#topbar a, #bottombar a {
+    color: #993333;
+    text-decoration: none;
+}
+
+#topbar a:hover, #bottombar a:hover {
+    text-decoration: underline;
+}
+
+#topbar .link-separator, #bottombar .link-separator {
+    padding: 0.3em;
+}
+
+#title {
+    clear: both;
+    padding: 2em 0em 0em 0em;
+}
+
+#title .main {
+    background-color: white;
+    color: black;
+    
+    font-size: 250%;
+    font-weight: bold;
+}
+
+#title .bottom {
+    text-align: right;
+}
+
+body {
+    margin: 0em;
+    padding: 0em;
+
+    background-color: white;
+    color: black;
+    font-family: verdana, arial;
+}
+
+#entries {
+}
+
+.entry {
+    margin-bottom: 1em;
+}
+
+.speaker, .institution, .title {
+    color: #993333;
+    font-weight: bold;
+}
+
+#entries a {
+    color: #993333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#entries a:hover {
+    text-decoration: underline;
+}
+
+#bottom {
+    clear: both;
+}
+
+.entry .head, .entry .tail {
+    padding: 0.7em 1em;
+}
+
+.entry .head {
+    background-color: #cccccc;
+    color: black;
+}
+
+.entry .tail {
+    text-align: justify;
+    background-color: #dddddd;
+    color: black;
+    font-family: arial;
+}
+
+img {
+    border: 0px;
+}
