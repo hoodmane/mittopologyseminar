@@ -78,7 +78,14 @@
         "date": "2017/09/11",
         "speaker": "Zhouli Xu",
         "institution": "MIT",
-        "website": "https://math.mit.edu/directory/profile.php?pid=2011"
+        "website": "https://math.mit.edu/directory/profile.php?pid=2011",
+        "title": "Progress report on computing stable stems",
+        "abstract": "In this talk, I will review some classical methods computing stable homotopy groups of spheres, and report some recent progress using motivic homotopy theory.
+
+        Motivated by Dan Isaksen's work, Bogdan Gheorghe, Guozhen Wang and myself show that the category of motivic modules over the cofiber of $ \tau $ and the derived category of $ BP_*BP $ comodules are equivalent as stable infinity categories.
+        As a consequence, there is an isomorphism between the motivic Adams spectral sequence of the cofiber of tau and the algebraic Novikov spectral sequence, so one could prove classical Adams differentials through motivic methods.
+        In joint work with Dan Isaksen and Guozhen Wang, we extend the $ 2 $-primary computation of stable stems to the 90's.
+        If time permits, I will mention connections of this project to the Kervaire invariant problem and the new Doomsday conjecture."
     },   
     {
         "date": "2017/09/18",

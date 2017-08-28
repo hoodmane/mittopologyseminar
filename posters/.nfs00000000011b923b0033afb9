@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\usepackage{cmbright} 
+\usepackage{scalefnt} 
+\usepackage{amssymb} 
+\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+% Bad examples:
+% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
+\include{templates/poster_fitbox}
+\fontdim24pt % Maximum abstract font size for fitbox
+
+
+
+\DeclareMathOperator{\N}{\mathbb{N}} 
+\DeclareMathOperator{\Z}{\mathbb{Z}} 
+\DeclareMathOperator{\Q}{\mathbb{Q}} 
+\DeclareMathOperator{\R}{\mathbb{R}} 
+\DeclareMathOperator{\C}{\mathbb{C}}
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}} 
+\DeclareMathOperator{\A}{\mathbb{A}}
+
+
+\def\infinity{\ifmmode \infty\else ∞\fi}
+\catcode`\∞=\active
+\let∞\infinity
+
+
+\providecommand{\mparwidth}{1in} 
+\providecommand{\mtop}{0.5in} 
+\providecommand{\mbottom}{0.5in} 
+\providecommand{\mleft}{0.5in} 
+\providecommand{\mright}{0.5in} 
+\usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
+\pagenumbering{gobble}
+
+ 
+\begin{document}
+
+\begin{center}
+
+{\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
+
+{\scalefont{3.6}{\bf Zhouli Xu}}\\\vspace{20pt} {\scalefont{2}of MIT will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    Progress report on computing stable stems
+}\\\vspace{20pt} {\scalefont{2}on September 11 at 4:30 
+in \\\vspace{6pt}MIT Room 2-131}\\ 
+\end{center}
+
+\vfill
+
+\begin{fitbox}{0.9\textwidth}{11.5cm}
+In this talk, I will review some classical methods computing stable homotopy groups of spheres, and report some recent progress using motivic homotopy theory.
+
+Motivated by Dan Isaksen's work, Bogdan Gheorghe, Guozhen Wang and myself show that the category of motivic modules over the cofiber of tau and the derived category of $ BP_*BP $ comodules are equivalent as stable infinity categories.
+As a consequence, there is an isomorphism between the motivic Adams spectral sequence of the cofiber of tau and the algebraic Novikov spectral sequence, so one could prove classical Adams differentials through motivic methods.
+In joint work with Dan Isaksen and Guozhen Wang, we extend the $ 2 $-primary computation of stable stems to the 90's.
+If time permits, I will mention connections of this project to the Kervaire invariant problem and the new Doomsday conjecture. 
+\end{fitbox}
+
+\vfill
+\centerline{\scalefont{1.2} For information, write: \texttt{phaine@mit.edu} } 
+\vfill 
+\end{document}
+
+% vim:ft=tex 
