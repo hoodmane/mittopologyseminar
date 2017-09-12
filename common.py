@@ -98,37 +98,15 @@ def sanitize_key(input_str):
     return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
 
 def delatex(str):
-    return delatexquotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
+    return convert_quotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
 
-def delatexquotes(str):
-    return str.replace('``','"').replace("`","'").replace("''",'"')
+def convert_quotes(string):
+    return string.replace('``','"').replace("`","'").replace("''",'"')
 
+# Turn unicode characters into closest nonunicode equivalent, delete characters that don't end up being alphanumeric, or ._-, turn spaces into dashes
 def sanitizeFileName(str):
     keepcharacters = (' ','.','_','-')
     return "".join(c for c in unicodedata.normalize('NFKD',unicode(str)) if c.isalnum() or c in keepcharacters).rstrip().replace(' ','-')
-
-def convert_quotes(string):
-   return string.replace("``", '"').replace("''",'"')
-
-
-class MathJaxCompiler(object):
-    def __init__(self):
-        self.proc = subprocess.Popen('node ../topology/typesetMathJax.js', shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        
-    def typeset(self,math):
-        self.proc.stdin.write(math + "\n")
-        buff = []
-        for line in iter(self.proc.stdout.readline, 'done\n'):
-           buff.append(line)
-        return "".join(buff)
-    
-    def begin_group(self,macros):
-        self.proc.stdin.write('\\begingroup' + macros + '\n')
-
-    def end_group(self):
-        self.proc.stdin.write('\\endgroup')    
-    
-mjx = MathJaxCompiler()
 
 class EscapeHTMLParser(HTMLParser,object):
     def handle_starttag(self, tag, attrs): 
@@ -163,12 +141,6 @@ def paragraphs_to_html(string):
 def paragraphs_to_text(string):
    return "\n\n" + re.sub("<[^$]*?>","", delatex(re.sub('\n\s*\n',placeholder_string, string).replace('\n',' ').replace(placeholder_string,'\n\n')))
 
-def latex_to_mml(string,macros):
-    mjx.begin_group(macros)
-    output = re.sub("\$.*?\$", lambda m: mjx.typeset(m.group()[1:-1]),string)
-    mjx.end_group()
-    return output
-    
     
 
 
@@ -240,20 +212,6 @@ def promptSend(target_email):
 def sendEmail(msg):
     smtp.sendmail(msg['From'], msg['To'], msg.as_string())
 
-
-class nonblockingTimerStarter(threading.Thread):
-    def __init__(self, time, fun, args=[]):
-        threading.Thread.__init__(self)
-        self.time = time
-        self.fun = fun
-        self.args = args
-        #self.daemon = True
-
-    def run(self):
-        threading.Timer(self.time, self.fun, self.args).start()
-
-def nonblockingTimer(time, fun, args=[]):
-    nonblockingTimerStarter(time, fun, args).start()
     
 
 

@@ -7,6 +7,8 @@
 from common import *
 
 from itertools import groupby # For handling double headers (two talks same day)
+
+### Config stuff
 import config
 os.chdir(config.working_directory)
 
@@ -18,6 +20,7 @@ try:
 except AttributeError:
     webmaster_email = organizer_email
     
+## The time
 local_timezone = time.timezone / 60 / 60 # get the current time zone offset, ignoring daylight saving time (given in seconds, divide by 60 twice to get hours)
 epoch = datetime.fromtimestamp(0) # For converting datetime object to time object (time constructor takes seconds since Jan 1st 1970) for finding out about daylight saving time.
 standard_time = datetime.strptime(config.standard_time, '%H:%M').time()
@@ -26,7 +29,7 @@ standard_duration = timedelta(hours = int(config.standard_duration.split(":")[0]
 config.standard_duration = standard_duration
 
 
-### Templates
+### Load templates
 substitutePageTemplate = tenjin.Engine(layout='templates/layout.pyhtml').render
 talkTemplate = tenjin.Template('templates/talk.pyhtml').render
 pastsemesterTemplate = tenjin.Template('templates/pastsemester.pyhtml').render
@@ -125,7 +128,7 @@ class Talk:
 	self.title = title
         self.title_poster = title
         self.title_html = convert_quotes(title) if title else None
-	self.title_email = delatex(convert_quotes(title)) if title else None
+	self.title_email = delatex(title) if title else None
         self.abstract = abstract
 
         self.email_abstract = None
@@ -136,8 +139,8 @@ class Talk:
             if not email_abstract:
                 email_abstract = abstract
                 
-            self.email_abstract_html = paragraphs_to_html(delatex(convert_quotes(email_abstract))) # latex_to_mml( -- , self.macros)
-            self.email_abstract_text = paragraphs_to_text(delatex(     convert_quotes(email_abstract)))
+            self.email_abstract_html = paragraphs_to_html(delatex(email_abstract))
+            self.email_abstract_text = paragraphs_to_text(delatex(email_abstract))
         
         self.posterfilename = date.strftime('%Y%m%d') + "-" + (sanitizeFileName(speaker) if speaker else "No Speaker")
 
@@ -197,10 +200,6 @@ class Talk:
      
 postertemp = Template(readFile('templates/poster.template'))
 def makeposter(talk):
-    # if there is no talk we make no poster!
-#    if talk.cancellation_reason:
-#        return
-    # if there is no title there's no point in making a poster
     if not talk.title:
         return 
     try:
@@ -352,18 +351,6 @@ def makeemail(talks,temp=[]):
         
 
 
-
-
-
-
-
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-
 def makepasttalkslist(pastlist):
     pastlist.sort(key=dategetter, reverse=True)
     sem = ''
@@ -414,6 +401,17 @@ def makeoldpasttalks():
 
 
 
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+
+
+
+
+
 print "Reading data files"
 # insert downloading stuff from Google here <--what the heck does this mean??
 
@@ -445,8 +443,6 @@ for sem in talkTable.values():
         talks.append(Talk(talk,**talk))
         if talks[-1].invalid:
             talks.pop()
-
-
 
 
 upcoming = [talk for talk in talks if talk.upcoming]
