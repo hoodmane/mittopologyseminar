@@ -35,7 +35,7 @@ except ImportError:
 try:
    import markdown
 except ImportError:
-   os.system("pip install -user markdown")
+   os.system("pip install --user markdown")
    import markdown
 
 
