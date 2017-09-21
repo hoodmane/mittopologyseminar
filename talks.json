@@ -110,6 +110,22 @@
         "speaker": "Nora Ganter",
         "institution": "Melbourne",
         "website": "http://www.ms.unimelb.edu.au/~nganter@unimelb/"
+    },
+    {
+        "date": "2017/09/28",
+        "speaker": "Lars Hesselholt",
+        "institution": "Nagoya University; University of Copenhagen",
+        "website": "https://www.math.nagoya-u.ac.jp/~larsh/",
+        "title": "Higher algebra and arithmetic",
+        "abstract": "This talk concerns a twenty-thousand-year old mistake: The natural numbers record only the result of counting and not the process of counting.
+        As algebra is rooted in the natural numbers, the higher algebra of Joyal and Lurie is rooted in a more basic notion of number which also records the process of counting.
+        Long advocated by Waldhausen, the arithmetic of these more basic numbers should eliminate denominators.
+        Notable manifestations of this vision include the Bökstedt-Hsiang-Madsen topological cyclic homology, which receives a denominator-free Chern character, and the related Bhatt-Morrow-Scholze integral $ p $-adic Hodge theory, which makes it possible to exploit torsion cohomology classes in arithmetic geometry.
+        Moreover, for schemes smooth and proper over a finite field, the analogue of de Rham cohomology in this setting naturally gives rise to the cohomological interpretation of the Hasse-Weil zeta function by regularized determinants envisioned by Deninger.",
+        "alt_weekday": "Thursday",
+        "alt_room": "2-190",
+        "notice": "This talk is part of the Brandeis–Harvard–MIT–Northeastern joint Mathematics Colloquium",
+        "no_email": "None"
     },   
     {
         "date": "2017/10/02",

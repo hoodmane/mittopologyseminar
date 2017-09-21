@@ -6,7 +6,7 @@
 - ssh into runge.mit.edu and navigate to the directory `/math/www/docs/topology`.
 - Change the contact info in `config.py` (the email MUST BE yourusername@mit.edu)
 - Make sure yourusername@mit.edu is on the mit-topology google group. If it isn't, email Mike Hopkins and ask him to add you: mjh@math.harvard.edu
-- Ask the previous organizer to run `fix-permissions.sh` so file permissions don't become a worse mess.
+- Run `fix-permissions.sh`. Do this again if you have any permission problems.
 - Haynes will send you a list of speakers and dates. Add the talk info to `talks.json`.
   `talks.json` is structured like:
     ~~~~

@@ -32,6 +32,13 @@ except ImportError:
    os.system("cp -r /math/www/docs/topology/tenjin/* ~/.local/lib/python2.7/site-packages")
    import tenjin
 
+try:
+   import markdown
+except ImportError:
+   os.system("pip install -user markdown")
+   import markdown
+
+
 from tenjin.helpers import *
 
 # Email things
@@ -156,30 +163,36 @@ def paragraphs_to_text(string):
 # The regex all match the expression [<possible whitespace> reference <whitespace> text <possible whitespace>]
 # The text is defined as one or more characters, no ]'s. This is the same every time.
 # link_template stores the part that's the same every time, which is everything but the reference.
-link_template = "\[\s*%s\s+([^\]]+)\s*\]"
 
-link_file_only_quoted = re.compile(link_template % "'([^'/]*)'") # If it's only the filename, we'll add the notes folder
-link_file_only        = re.compile(link_template %  "([^'/ \]]*)") # To see that it's only the file name, we require there be no /'s
+link_file_only        = re.compile("^[^/]*$") # To see that it's only the file name, we require there be no /'s
+link_rel              = re.compile("^((?:[^'\. \]]*\.?){1,2})$") # To be relative, we check that there is at most one .
+link_full_http        = re.compile("^\w*://.*$") 
 
-link_rel_quoted       = re.compile(link_template % "'((?:[^'\.]*\.?){1,2})'") # To be relative, we check that there is at most one .
-link_rel              = re.compile(link_template %  "((?:[^'\. \]]*\.?){1,2})")
 
-link_full_http_quoted = re.compile(link_template % "'(\w*://[^']*)'") # This version can have anything except ' and has to start "stuff://"
-link_full_http        = re.compile(link_template %  "(\w*://[^' \]]*)") 
+class myLinkPattern(markdown.inlinepatterns.LinkPattern):
+    def sanitize_url(self, url):
+	if link_file_only.match(url):
+            return self.markdown.notes_path + url
+        elif link_rel.match(url):
+            return self.markdown.base_path + url
+        elif link_full_http.match(url):
+            return url
+        else:
+            return "http://"+url
 
-link_full_quoted      = re.compile(link_template % "'([^']*)'") # This version gets http:// added and can have anything except '
-link_full             = re.compile(link_template %  "([^' \]]*)" ) 
+class JuvitopExtension(markdown.Extension):
+    """ Extension for Python-Markdown. """
 
-def link_markup(string,notes_path,base_path):
-    string = link_file_only_quoted.sub('<a href="%s\\1">\\2</a>' % notes_path , string)
-    string = link_file_only       .sub('<a href="%s\\1">\\2</a>' % notes_path , string)
-    string = link_rel_quoted      .sub('<a href="%s\\1">\\2</a>' % base_path , string)        
-    string = link_rel             .sub('<a href="%s\\1">\\2</a>' % base_path , string)  
-    string = link_full_http       .sub('<a href="\\1">\\2</a>', string)
-    string = link_full_http_quoted.sub('<a href="\\1">\\2</a>', string)
-    string = link_full_quoted     .sub('<a href="http://\\1">\\2</a>' , string)        
-    string = link_full            .sub('<a href="http://\\1">\\2</a>' , string)    
-    return string
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns['link'] = myLinkPattern(markdown.inlinepatterns.LINK_RE, md)
+
+
+myExtension = JuvitopExtension()
+mymarkdown = markdown.Markdown(extensions=[myExtension])
+
+
+
+
 
 
 class MaybeLink:
