@@ -198,7 +198,7 @@ class Talk:
 
 
      
-postertemp = Template(readFile('templates/poster.template'))
+# postertemp = Template(readFile('templates/poster.template'))
 def makeposter(talk):
     if not talk.title:
         return 
