@@ -7,8 +7,6 @@
 from common import *
 
 from itertools import groupby # For handling double headers (two talks same day)
-
-### Config stuff
 import config
 os.chdir(config.working_directory)
 
@@ -20,7 +18,6 @@ try:
 except AttributeError:
     webmaster_email = organizer_email
     
-## The time
 local_timezone = time.timezone / 60 / 60 # get the current time zone offset, ignoring daylight saving time (given in seconds, divide by 60 twice to get hours)
 epoch = datetime.fromtimestamp(0) # For converting datetime object to time object (time constructor takes seconds since Jan 1st 1970) for finding out about daylight saving time.
 standard_time = datetime.strptime(config.standard_time, '%H:%M').time()
@@ -29,32 +26,25 @@ standard_duration = timedelta(hours = int(config.standard_duration.split(":")[0]
 config.standard_duration = standard_duration
 
 
-### Load templates
-substitutePageTemplate = tenjin.Engine(layout='templates/layout.pyhtml').render
-talkTemplate = tenjin.Template('templates/talk.pyhtml').render
-pastsemesterTemplate = tenjin.Template('templates/pastsemester.pyhtml').render
-posterTemplate = tenjin.Template('templates/poster.pyhtml').render
+### Templates
+jinjaEnv = jinja2.Environment( loader = jinja2.FileSystemLoader('templates') )
+jinjaEnv.globals['isfile'] = os.path.isfile
+jinjaEnv.globals['config'] = config
 
-dispatchEmailTemplate = tenjin.Template('templates/email_dispatch.pyhtml').render
+indexTemplate = jinjaEnv.get_template('index.html').render
+pastSeminarsTemplate = jinjaEnv.get_template('pastseminars.html').render
+linksTemplate = jinjaEnv.get_template('links.html').render
 
-textEmailTemplate = tenjin.Template('templates/email_text.pyhtml').render
-htmlEmailTemplate = tenjin.Template('templates/email_html.pyhtml').render
+talkTemplate = jinjaEnv.get_template('talk.html').render
+pastSemesterTemplate = jinjaEnv.get_template('pastsemester.html').render
+posterTemplate = latexJinjaEnv.get_template('poster.tex').render
 
-textDoubleEmailTemplateTenjin = tenjin.Template('templates/email_double_header_text.pyhtml').render
-htmlDoubleEmailTemplateTenjin = tenjin.Template('templates/email_double_header_html.pyhtml').render
+dispatchEmailTemplate = jinjaEnv.get_template('email_dispatch.html').render
 
-# In my templates, sometimes I want to use if statements, but because of the dumb way
-# that pyTenjin works, you can't do this without inserting some newlines which may be
-# undesirable. My solution: #nonewline before a newline causes its removal and all 
-# following spaces. Might be a more sensible way to do this (backslash at end of line?)
-# This has the advantage of being explicit.
-re_nonewline = re.compile("#nonewline[\r\t\f ]*\n[\r\t\f ]*")
-
-def textDoubleEmailTemplate(dict):
-   return re_nonewline.sub("",textDoubleEmailTemplateTenjin(dict))
-
-def htmlDoubleEmailTemplate(dict):
-   return re_nonewline.sub("",htmlDoubleEmailTemplateTenjin(dict))
+textEmailTemplate = jinjaEnv.get_template('email.text').render
+htmlEmailTemplate = jinjaEnv.get_template('email.html').render
+textDoubleEmailTemplate = jinjaEnv.get_template('email_double_header.text').render
+htmlDoubleEmailTemplate = jinjaEnv.get_template('email_double_header.html').render
 
 dategetter = lambda x: x.date.date()
 timegetter = lambda x: x.date
@@ -128,7 +118,7 @@ class Talk:
 	self.title = title
         self.title_poster = title
         self.title_html = convert_quotes(title) if title else None
-	self.title_email = delatex(title) if title else None
+	self.title_email = delatex(convert_quotes(title)) if title else None
         self.abstract = abstract
 
         self.email_abstract = None
@@ -139,8 +129,8 @@ class Talk:
             if not email_abstract:
                 email_abstract = abstract
                 
-            self.email_abstract_html = paragraphs_to_html(delatex(email_abstract))
-            self.email_abstract_text = paragraphs_to_text(delatex(email_abstract))
+            self.email_abstract_html = paragraphs_to_html(delatex(convert_quotes(email_abstract))) # latex_to_mml( -- , self.macros)
+            self.email_abstract_text = paragraphs_to_text(delatex(     convert_quotes(email_abstract)))
         
         self.posterfilename = date.strftime('%Y%m%d') + "-" + (sanitizeFileName(speaker) if speaker else "No Speaker")
 
@@ -197,9 +187,11 @@ class Talk:
        return talkTemplate(vars(self))
 
 
-     
-# postertemp = Template(readFile('templates/poster.template'))
 def makeposter(talk):
+    # if there is no talk we make no poster!
+#    if talk.cancellation_reason:
+#        return
+    # if there is no title there's no point in making a poster
     if not talk.title:
         return 
     try:
@@ -351,6 +343,18 @@ def makeemail(talks,temp=[]):
         
 
 
+
+
+
+
+
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+##############################################################################
+
 def makepasttalkslist(pastlist):
     pastlist.sort(key=dategetter, reverse=True)
     sem = ''
@@ -361,7 +365,7 @@ def makepasttalkslist(pastlist):
         curseason = getSeason(talk.date)
         cursem = curseason + " " + str(talk.date.year)
         if cursem != sem and sem: # Don't want to do this on first iteration
-            past.append( pastsemesterTemplate(dict(
+            past.append( pastSemesterTemplate(dict(
                 season = season.lower(),
                 semester = sem,
                 talks = cursemtalks
@@ -370,7 +374,7 @@ def makepasttalkslist(pastlist):
         sem = cursem        
         season = curseason
         cursemtalks += str(talk)
-    past.append( pastsemesterTemplate(dict( # Catch missing last semester
+    past.append( pastSemesterTemplate(dict( # Catch missing last semester
         season = season.lower(),
         semester = sem,
         talks = cursemtalks
@@ -398,17 +402,6 @@ def makeoldpasttalks():
     past = makepasttalkslist(talks)
     past = past.encode('ascii', 'xmlcharrefreplace')
     writeFile('oldpastseminars.html', past)
-
-
-
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-##############################################################################
-
-
 
 
 
@@ -445,6 +438,8 @@ for sem in talkTable.values():
             talks.pop()
 
 
+
+
 upcoming = [talk for talk in talks if talk.upcoming]
 upcoming.sort(key=dategetter)
 
@@ -471,7 +466,7 @@ def sendEmailToJon(date, subject, body,newJsonDicts):
    dataFileName = date.strftime('emails/dict-%b-%d.dat') 
    emailFileName = date.strftime('emails/sending-%b-%d.dat')
    if(not os.path.isfile(emailFileName)):
-      subprocess.Popen(['nohup', 'emails/sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('/dev/null', 'w'), stderr=open('emails/testerr.log', 'w'))
+      subprocess.Popen(['nohup', 'sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('/dev/null', 'w'), stderr=open('emails/testerr.log', 'w'))
    writeFile(emailFileName, pickle.dumps(dict(subject = subject, body = body,newJsonDicts = newJsonDicts, dataFileName = dataFileName)))      
 
 for g in talkgroups:
@@ -520,8 +515,7 @@ else:
     upcoming = "<b> There are no more talks this semester. Check back next semester.</b><br/><br/><br/>"
 
 writeFile('index.html', 
-    substitutePageTemplate(
-        "templates/index.pyhtml",
+    indexTemplate(
         dict(
             upcoming = upcoming, 
             standard_weekday = config.standard_weekday, 
@@ -551,8 +545,7 @@ past = past.encode('ascii', 'xmlcharrefreplace')
 pastold = readFile('oldpastseminars.html')
 
 writeFile('pastseminars.html', 
-    substitutePageTemplate(
-        "templates/pastseminars.pyhtml",
+    pastSeminarsTemplate(
         dict(
             past = past, 
             pastold = pastold,
@@ -565,8 +558,7 @@ writeFile('pastseminars.html',
 
 print 'Generating links page'
 writeFile('links.html', 
-    substitutePageTemplate(
-        "templates/links.pyhtml",
+    linksTemplate(
         dict(
             organizer_name = organizer_first_name + " " + organizer_last_name,
             organizer_email = organizer_email,
