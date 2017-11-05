@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% set page = "index" %}
+{% block content %}
+<h1>Upcoming Talks</h1>
+
+<p>
+    The seminar will meet at {{ standard_time }} on {{ standard_weekday }} in
+    <a href="http://whereis.mit.edu/?go=2">{{ standard_room }}</a> unless otherwise noted.
+</p>
+
+<ul class="talks" style="margin-top:60px;"> {{ upcoming }} </ul><!--talks-->
+
+<p>
+    The mailing list for this seminar is the <a href="https://groups.google.com/forum/#!forum/mit-topology">MIT topology google group</a>.
+    <br>
+    Email <a href="mailto:mjh@math.harvard.edu">Mike Hopkins</a> if you want to join the list.
+</p>
+{% endblock %}

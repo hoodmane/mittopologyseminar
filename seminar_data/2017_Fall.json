@@ -1,0 +1,187 @@
+[
+    {
+        "date": "2017/09/11",
+        "speaker": "Zhouli Xu",
+        "institution": "MIT",
+        "website": "https://math.mit.edu/directory/profile.php?pid=2011",
+        "title": "Progress report on computing stable stems",
+        "abstract": "In this talk, I will review some classical methods computing stable homotopy groups of spheres, and report some recent progress using motivic homotopy 
+        theory.
+
+        Motivated by Dan Isaksen's work, Bogdan Gheorghe, Guozhen Wang and myself show that the category of motivic modules over the cofiber of $ \tau $ and the derived 
+        category of $ BP_*BP $ comodules are equivalent as stable infinity categories.
+        As a consequence, there is an isomorphism between the motivic Adams spectral sequence of the cofiber of tau and the algebraic Novikov spectral sequence, so one could 
+        prove classical Adams differentials through motivic methods.
+        In joint work with Dan Isaksen and Guozhen Wang, we extend the $ 2 $-primary computation of stable stems to the 90's.
+        If time permits, I will mention connections of this project to the Kervaire invariant problem and the new Doomsday conjecture."
+    },
+    {
+        "date": "2017/09/18",
+        "speaker": "Nitu Kitchloo",
+        "website": "http://www.math.jhu.edu/~nitu/",
+        "institution": "JHU",
+        "title": "Real Johnson-Wilson theories and Landweber flat exact pairs",
+        "abstract": "Real Johnson-Wilson theories, $ ER(n) $ are a family of cohomology theories generalizing ($ 2 $-local) real $ K $-theory, $ KO $, which is $ ER(1) $.
+        They were first studied by Hu-Kriz and later by Kitchloo-Wilson.
+        Real Johnson-Wilson theories are defined as fixed points of an involution acting on the complex-oriented Johnson-Wilson theories $ E(n) $, but they are themselves 
+        not complex oriented.
+
+        Real Johnson-Wilson theories have proven to be remarkably useful, as well as computationally amenable.
+        For example, their properties were exploited to demonstrate some new nonimmersions of real projective spaces into euclidean space.
+        The main tool for computing real Johnson-Wilson cohomology is a (Bockstein-type) spectral sequence that begins with $ E(n) $-cohomology and converges to $ ER(n) 
+        $-cohomology.
+        We take advantage of the internal algebraic structure of this spectral sequence converging to $ ER(n)^*(\operatorname{pt}) $, to prove that for certain spaces $ Z $ 
+        with Landweber-flat $ E(n) $-cohomology, the cohomology ring $ ER(n)^*(Z) $ can be obtained from $ E(n)^*(Z) $ by a somewhat subtle base change.
+        In particular, our results allow us to compute the Real Johnson-Wilson cohomology of the Eilenberg-MacLane spaces $ Z = K(\mathbb{Z},2m+1), K(\mathbb{Z}/2,m), 
+        K(\mathbb{Z}/2^q, 2m) $ for any integers $ m $ and $ q $, as well as connective covers of $ BO $: $ BO $, $ BSO $, $ BSpin $ and $ BO\langle 8 \rangle $.
+
+        This is joint work with Stephen W. Wilson and Vitaly Lorman."
+    },
+    {
+        "date": "2017/09/25",
+        "speaker": "Nora Ganter",
+        "institution": "Melbourne",
+        "website": "http://www.ms.unimelb.edu.au/~nganter@unimelb/",
+        "title": "Examples of categorical groups",
+        "abstract": "The notion of categorical groups, also known as $2$-groups is increasingly recognised as the formalism governing symmetries in the context of string 
+        theory.
+        The talk aims to fill this formalism with life by providing an interesting set of examples, together with a link to the stable three stem."
+    },
+    {
+        "date": "2017/09/28",
+        "speaker": "Lars Hesselholt",
+        "institution": "Nagoya University; University of Copenhagen",
+        "website": "https://www.math.nagoya-u.ac.jp/~larsh/",
+        "title": "Higher algebra and arithmetic",
+        "abstract": "This talk concerns a twenty-thousand-year old mistake: The natural numbers record only the result of counting and not the process of counting.
+        As algebra is rooted in the natural numbers, the higher algebra of Joyal and Lurie is rooted in a more basic notion of number which also records the process of 
+        counting.
+        Long advocated by Waldhausen, the arithmetic of these more basic numbers should eliminate denominators.
+        Notable manifestations of this vision include the Bökstedt-Hsiang-Madsen topological cyclic homology, which receives a denominator-free Chern character, and the 
+        related Bhatt-Morrow-Scholze integral $p$-adic Hodge theory, which makes it possible to exploit torsion cohomology classes in arithmetic geometry.
+        Moreover, for schemes smooth and proper over a finite field, the analogue of de Rham cohomology in this setting naturally gives rise to the cohomological 
+        interpretation of the Hasse-Weil zeta function by regularized determinants envisioned by Deninger.",
+        "alt_weekday": "Thursday",
+        "alt_room": "2-190",
+        "notice": "This talk is part of the Brandeis–Harvard–MIT–Northeastern joint Mathematics Colloquium",
+        "no_email": "None"
+    },
+    {
+        "date": "2017/10/02",
+        "speaker": "Craig Westerland",
+        "institution": "Minnesota",
+        "website": "http://www-users.math.umn.edu/~cwesterl/",
+        "title": "Fox-Neuwirth/Fuks cells, quantum shuffle algebras, and Malle's conjecture for function fields",
+        "abstract": "In 2002, Malle formulated a conjecture regarding the distribution of number fields with specified Galois group.
+        The conjecture is an enormous strengthening of the inverse Galois problem; it is known to hold for abelian Galois groups, but for very few non-abelian groups.
+
+        We may reformulate Malle's conjecture in the function field setting, where it becomes a question about the number of branched covers of the affine line (over a 
+        finite field) with specified Galois group.
+        In joint work with Jordan Ellenberg and TriThang Tran, we have shown that the upper bound in Malle's conjecture does hold in this setting.
+
+        The techniques used involve a computation of the cohomology of the (complex points of the) Hurwitz moduli spaces of these branched covers.
+        Surprisingly (at least to me), these cohomology computations can be rephrased in terms of the homological algebra of certain braided Hopf algebras arising in 
+        combinatorial representation theory and the classification of Hopf algebras.
+        This relationship can be leveraged to provide the upper bound in Malle's conjecture."
+    },
+    {
+        "date": "2017/10/16",
+        "speaker": "David Ayala",
+        "institution": "Montana State University",
+        "website": "http://www.math.montana.edu/dayala/",
+	"title": "The Bruhat stratified orthogonal group acts on higher categories by adjoints",
+	"abstract": "The majority of this talk will examine the Bruhat stratified orthogonal group:
+
+    	- The Bruhat cells of the general linear group assemble as a combinatorial stratification of the orthogonal group.
+
+    	- Compatibility of this stratification with matrix multiplication can be articulated as an associative algebra structure on its exit-path category in a certain 
+    Morita category of categories.
+
+    	- Articulated as so, there is an action of this Bruhat stratified orthogonal group $O(n)$ on the category of $n$-categories; this action is given by adjoining 
+    adjoints.
+
+    	- This results in a continuous action of the topological group $O(n)$ on the category of $n$-categories with adjoints.
+
+	The last point is a ket input into a proof of the Cobordism Hypothesis using factorization homology -- this context will be discussed.
+	
+	This is joint work with John Francis.",
+    "email_abstract" : "The majority of this talk will examine the Bruhat stratified orthogonal group:
+        - The Bruhat cells of the general linear group assemble as a combinatorial stratification of the orthogonal group.
+        - Compatibility of this stratification with matrix multiplication can be articulated as an associative algebra structure on its exit-path category in a certain 
+        Morita category of categories.
+        - Articulated as so, there is an action of this Bruhat stratified orthogonal group O(n) on the category of n-categories; this action is given by adjoining adjoints.
+        - This results in a continuous action of the topological group O(n) on the category of n-categories with adjoints.
+    The last point is a ket input into a proof of the Cobordism Hypothesis using factorization homology -- this context will be discussed.
+
+    This is joint work with John Francis."
+    },
+    {
+        "date": "2017/10/23",
+        "speaker": "Dylan Wilson",
+        "institution": "UChicago",
+        "website": "https://www.math.uchicago.edu/~dwilson/",
+        "title" : "Slice spheres in equivariant and chromatic homotopy theory",
+        "abstract": "Motivated by a program of Hill-Hopkins-Ravenel to prove the $3$-primary Kervaire invariant problem, we are led to study a slight generalization of 
+        (induced) representation spheres called slice spheres.
+        These are simple to define: a compact $G$-spectrum is a slice sphere if each of its geometric fixed points is a finite wedge of spheres.
+        These objects appear fundamental in carrying over techniques from the case $G=C_2$ to other groups, such as $C_p$, and the goal of the talk is to give various 
+        examples of how they show up in interesting settings.
+        As a general application, we describe how one may compute the $n$-slice of a spectrum using slice spheres.
+        Then we specialize to the case $G=C_p$ and discuss ongoing work on the $3$-primary Kervaire invariant problem, following a program of Hill-Hopkins-Ravenel.
+        We describe several methods of attack, and our current partial results.
+        These include an equivariant refinement of $\alpha_1$, some information about the $C_p$-equivariant dual Steenrod algebra, and a computation of the $C_3$-slices of 
+        topological modular forms with full level $2$ structure."
+    },
+    {
+        "date": "2017/10/30",
+        "speaker": "",
+        "institution": "",
+        "website": ""
+    },
+    {
+        "date": "2017/11/06",
+        "speaker": "Ben Knudsen",
+        "institution": "Harvard",
+        "website": "https://scholar.harvard.edu/knudsen/home",
+        "title": "Subdivisional spaces and graph braid groups",
+        "abstract": "We develop an approach to the study of the configuration spaces of a cell complex $X$ that is both flexible and suitable for computation.
+        We proceed by viewing $X$, together with its subdivisions, as a ``subdivisional space,'' a kind of diagram object, which has associated to it certain diagrammatic 
+        versions of configuration spaces.
+        These objects, which model the correct homotopy types, mix the discrete and the continuous, and they may be attacked by combining techniques drawn from discrete 
+        Morse theory and factorization homology.
+        We apply our theory in the $1$-dimensional example of a graph, obtaining an enhanced version of a family of chain models for graph braid groups originally studied by 
+        Swiatkowski.
+        These complexes come equipped with a robust computational toolkit, which we exploit in numerous calculations, old and new.
+        This is joint work with Byung Hee An and Gabriel Drummond-Cole."
+    },
+    {
+        "date": "2017/11/13",
+        "speaker": "Sander Kupers",
+        "institution": "Harvard",
+        "website": ""
+    },
+    {
+        "date": "2017/11/20",
+        "speaker": "",
+        "institution": "",
+        "website": ""
+    },
+    {
+        "date": "2017/11/27",
+        "speaker": "Kathryn Mann",
+        "institution": "Brown University",
+        "website": "http://www.math.brown.edu/~mann/index.html"
+    },
+    {
+        "date": "2017/12/04",
+        "speaker": "Michael Ching",
+        "institution": "Amherst College",
+        "website": "https://www3.amherst.edu/~mching/"
+    },
+    {
+        "date": "2017/12/11",
+        "speaker": "Julie Bergner",
+        "institution": "University of Virginia",
+        "website": "http://www.people.virginia.edu/~jeb2md/"
+    },
+]

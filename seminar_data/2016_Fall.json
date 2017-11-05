@@ -1,0 +1,138 @@
+[
+    {
+        "date": "2016/12/12",
+        "speaker": "Ismar Volic",
+        "institution": "Wellesley College",
+        "website": "http://www.wellesley.edu/math/faculty/volici",
+        "title": "Some new applications of manifold calculus of functors",
+        "abstract": "Manifold calculus of functors has in recent years been applied with great success to various spaces of embeddings.  
+            In this talk, I will present some new applications and situations where this theory is proving useful.  One application is to 
+            spaces of homotopy string links where manifold calculus provides a connection to certain spaces of diagrams and trees, as well 
+            as to classical objects like Milnor invariants.  Another application is to spaces of immersions with a finite number of 
+            self-intersections where manifold calculus supplies a new understanding of some classical problems in combinatorial topology.  
+            A common theme (and difficulty) in these seemingly unrelated topics is a certain subspace arrangement, and some time will be 
+            devoted to the discussion of its structure."
+    },
+    {
+        "date": "2016/12/05",
+        "speaker": "Paul Goerss",
+        "institution": "Northwestern",
+        "website": "http://www.math.northwestern.edu/~pgoerss/",
+        "title": "Understanding chromatic splitting",
+        "abstract" : "The chromatic view of stable homotopy theory uses the geometry of formal groups to organize calculations. 
+        There are two steps; getting local information and then reassembly. Twenty-five years ago, Mike Hopkins made a remarkable 
+        conjecture for reassembly -- remarkable partly because it grew out a close analysis of local data. Recently this conjecture 
+        has been tested, modified, and ratified in various ways. I will report on joint work with Agnès Beaudry and Hans-Werner Henn exploring this circle of ideas."
+    },
+    {
+        "date": "2016/11/21",
+        "speaker": "Teena Gerhardt",
+        "institution": "Michigan State University",
+        "website": "http://users.math.msu.edu/users/teena/Home.html",
+        "title": "On the algebraic K-theory of $\Z[C_2]$",
+        "abstract": "The algebraic K-theory of integral group rings has been of interest since the early days of K-theory. 
+        Computations, however, have proven difficult. In this talk I will describe joint work with Vigleik Angeltveit on a strategy 
+        for studying the algebraic K-theory of the group ring $\Z[C_2]$. In particular I will discuss how methods and computations 
+        from equivariant stable homotopy theory yield new information about these algebraic K-theory groups."
+    },
+    {
+        "date": "2016/11/14",
+        "speaker": "Gabriel Drummond-Cole",
+        "institution": "CGP",
+        "website": "http://cgp.ibs.re.kr/~gabriel/",
+        "title": "Homotopy probability theory on a Riemannian manifold",
+        "abstract": "Homotopy probability theory is a homological enrichment of algebraic probability theory, a toy model for the algebra of observables in a quantum field theory. I will introduce the basics of the theory and use it to describe a reformulation of fluid flow equations on a compact Riemannian manifold."
+    },    
+    {
+        "date": "2016/11/07",
+        "speaker": "Ben Knudsen",
+        "institution": "Harvard University",
+        "website": "http://scholar.harvard.edu/knudsen",
+        "title": "Higher enveloping algebras and configuration spaces of manifolds",
+        "abstract": "I will describe a construction providing Lie algebras with enveloping algebras over the operad of little n-dimensional disks for any n. These algebras enjoy a combination of good formal properties and computability, the latter afforded by a Poincare-Birkhoff-Witt type result. The main application pairs this theory with the theory of factorization homology in a study of the rational homology of configuration spaces, leading to a wealth of computations, improvements of classical results, and a combinatorial proof of homological stability."
+    },
+    {
+        "date": "2016/10/24",
+        "speaker": "Rade Zivaljevic",
+        "institution": "Mathematical Institute SANU",
+        "website": "http://www.mi.sanu.ac.rs/mmm/engleski/Ljudi/Rade.html",
+        "title": "Topology and Combinatorics of multiple chessboard complexes and a new Van Kampen-Flores theorem",
+        "abstract": "Special classes of simplicial complexes (chessboard, `unavoidable’, threshold, `simple games’, etc.) frequently appear in applications of algebraic topology in discrete geometry and combinatorics. We outline some of these applications, including the proof of a new theorem of Van Kampren-Flores type (<a href=\"https://arxiv.org/abs/1502.05290\">arXiv:1502.05290</a> [math.CO], Theorem 1.2), which confirms a conjecture of Blagojevic, Frick, and Ziegler (<a href=\"https://arxiv.org/abs/1401.0690\">Tverberg plus constraints</a>). The lecture is based on a joint work with Dusko Jojic (University of Banja Luka) and Sinisa Vrecica (University of Belgrade)."
+    },
+    {
+        "date": "2016/10/17",
+        "speaker": "Chris Kottke",
+        "institution": "New College of Florida",
+        "website": "http://ckottke.ncf.edu/",
+        "title": "Transgression, fusion, and cohomology of free loop spaces",
+        "abstract": "In the geometry and analysis of loop spaces, a fundamental question is how to characterize geometric objects (functions, resp. line bundles, etc.) on the loop space of a manifold which are related by transgression to objects one degree higher (line bundles, resp. gerbes, etc.) on the manifold itself. There
+are various geometric results of this sort for low degrees, in which a key role is played by `fusion' -- a (partially defined) binary operation on loop space which was first introduced by Stolz and Teichner and further developed by Waldorf.
+
+I will present a joint result with Richard Melrose which answers this question for arbitrary degree in cohomology. More precisely, we define an enhanced version of Cech cohomology of the continuous loop space of M in terms of fusion and a second `figure-of-eight' product, through which transgression from M factors as an isomorphism, and which can be iterated to higher loop spaces."
+    },
+    {
+        "date": "2016/10/03",
+        "speaker": "Kyle Ormsby",
+        "institution": "Reed College",
+        "website": "http://people.reed.edu/~ormsbyk/",
+        "title": "Vanishing in motivic stable stems",
+        "abstract": "Recent work of Röndigs-Spitzweck-Østvær sharpens the connection between the slice and Novikov spectral sequences.  Using classical vanishing lines for the $E_2$-page of the Adams-Novikov spectral sequence and the work of Andrews-Miller on the $\eta$-periodic ANSS, I will deduce some new vanishing theorems in the bigraded homotopy groups of the $\eta$-complete motivic sphere spectrum.  In particular, I will show that the $m$th $\eta$-complete Milnor-Witt stem is bounded above (by an explicit piecewise linear function) when $m = 1$ or $2$ (mod $4$).  This is joint work with Oliver Röndigs and Paul Arne Østvær."
+    },
+    {
+        "date": "2016/09/26",
+        "speaker": "Emmanuel Dror Farjoun",
+        "institution": "Hebrew University of Jerusalem",
+        "website": "http://www.ma.huji.ac.il/~farjoun/",
+        "title": "Adjoint descent for infinity categories",
+        "abstract": "It is common practice to simplify an object of a given ``complicated'' category $X\in C$ via the application of collection of functors $F_\alpha: C\to C_\alpha$.
+            One then hopes to reconstruct $X$ via a (co-)limit from $(F_\alpha X)_{\alpha \in I}$. Examples include restricting a bundle over a space $X$ to subspaces $X_\alpha$,
+            extending a ring of scalars, truncating a homotopy type $X$ via the Postnikov tower $P_n X$, or forming polynomial approximations of a functor $F$.
+            
+            Here the question of conjugates arises: For a given $X$, find (the groupoid of) all objects $W$ in the category $C$ with the same given values $F_\alpha W\cong F_\alpha X$.
+            
+            It turns out that under adjoint conditions one can recover the category $C$ from the diagram of categories $C_\alpha$, this leads to
+            standard expressions for conjugates.
+            
+            This approach puts on the same footing the classification of forms via Galois cohomology, the Mislin genus and Postnikov conjugates, the Taylor
+            tower for functors and vectors bundles as well as usual descent to sub-schemes.
+            
+            For example, the equivalence of $\infty$-categories $Top \cong \lim_n Top_n$, where $Top_n$ is the category of $n$-truncated spaces is an immediate consequence.
+             (Work by Assaf Horev and Lior Yanovski, HU, Jerusalem.)",
+         
+        "email_abstract" : "It is common practice to simplify an object X of a given ``complicated'' category C via the application of collection of functors $F_\alpha: C \to C_\alpha$.
+            One then hopes to reconstruct $X$ via a (co-)limit of F_alpha(X) for alpha in I. Examples include restricting a bundle over a space $X$ to subspaces $X_\alpha$,
+            extending a ring of scalars, truncating a homotopy type $X$ via the Postnikov tower $P_n X$, or forming polynomial approximations of a functor $F$.
+     
+            Here the question of conjugates arises: For a given $X$, find (the groupoid of) all objects $W$ in the category $C$ with the same given values $F_\alpha(W) = F_\alpha(X)$.
+            
+            It turns out that under adjoint conditions one can recover the category $C$ from the diagram of categories $C_\alpha$, this leads to
+            standard expressions for conjugates.
+            
+            This approach puts on the same footing the classification of forms via Galois cohomology, the Mislin genus and Postnikov conjugates, the Taylor
+            tower for functors and vectors bundles as well as usual descent to sub-schemes.
+            
+            For example, the equivalence of $\infty$-categories between Top and $\lim_n Top_n$, where $Top_n$ is the category of $n$-truncated spaces is an immediate consequence.
+             (Work by Assaf Horev and Lior Yanovski, HU, Jerusalem.)"
+    },
+    {
+        "date": "2016/09/19",
+        "speaker": "Tyler Lawson",
+        "institution": "University of Minnesota",
+        "website": "http://www.math.umn.edu/~tlawson/",
+        "title": "Realizing the action of the Dyer-Lashof algebra",
+        "abstract": "The Steenrod operations act on the cohomology of a space, but this algebraic data has a more refined lift. 
+                     There is a ring spectrum $A$ so that every space has an associated $A$-module, and on taking homotopy groups 
+                     this recovers the action of the Steenrod algebra. The $A$-module structure, however, also contains the data of 
+                     secondary and higher operations. In this talk we'll discuss the Dyer-Lashof operations which act on the homology 
+                     of infinite loop spaces and $E_\infinity$ ring spectra, and how these operations can be realized by the action of 
+                     a ring spectrum $R$ with a concrete relationship to $A$."
+    },
+    {
+        "date": "2016/09/12",
+        "speaker": "Marc Hoyois",
+        "institution": "MIT",
+        "website": "http://math.mit.edu/~hoyois/",
+        "title": "Naive versus motivic $\Abb^1$-homotopy classes",
+        "abstract": "If $X$ and $Y$ are varieties over a field, there are two interesting candidates for the set of homotopy classes of maps from $X$ to $Y$: the first is simply the quotient of the set of maps by the relation generated by $\Abb^1$-homotopies, and the second is the set of maps in the $\Abb^1$-homotopy category of Morel-Voevodsky. They are different in general. The former often carries relevant algebro-geometric information, while the latter is more mysterious but also more computable. Comparing them is therefore an essential step to apply $\Abb^1$-homotopy theory to concrete classification problems in algebraic geometry. In this talk I will survey existing comparison results as well as some recent work with Aravind Asok and Matthias Wendt."
+    }
+]

@@ -1,0 +1,44 @@
+Dear all,
+
+On {{  talks[0].date.strftime("%A (%B %-d)")  }}, we will have TWO speakers.
+
+
+At {{  talks[0].date.strftime("%-I:%M")  }}, {{  talks[0].speaker.text  }} will be speaking 
+{%-  if talks[0].room != talks[1].room:  %}
+in {{  talks[0].room  }} 
+{%-  endif  -%}
+on:
+
+{{  talks[0].title_email  }}
+
+
+At {{  talks[1].date.strftime("%-I:%M")  }}, {{  talks[1].speaker.text  }} will be speaking 
+{%-  if talks[0].room != talks[1].room:  -%}
+in {{  talks[1].room  }} 
+{%-  endif  -%}
+on:
+
+{{  talks[1].title_email  }} 
+
+{%  if talks[0].room == talks[1].room:  %}
+Both talks will be meeting in room {{  talks[0].room  }}. 
+{%-  if not talk.email_notice:  %}
+
+{%  endif  %}
+{%  endif  %}
+{%  if talk.email_notice:  %}
+    {{  talk.email_notice  }}
+    
+{%  endif  %}
+See you there,
+
+-- {{  config.organizer_first_name  }}
+
+
+{%  if talks[0].email_abstract_text:  %}
+{{  talks[0].speaker.text  }}'s abstract: {{  talks[0].email_abstract_text  }}
+
+{%  endif  %}
+{%  if talks[1].email_abstract_text:  %}
+{{  talks[1].speaker.text  }}'s abstract: {{  talks[1].email_abstract_text  }}
+{%  endif  %}

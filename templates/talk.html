@@ -1,0 +1,48 @@
+<li class="talk">
+<ul class="meta">
+        <li class="date"><b> {{day}}</b>{{year}}</li>
+        {% if isfile("posters/%s.pdf" % posterfilename): %}
+           <li class="poster"><a href="posters/{{ posterfilename }}.pdf" title="Download Poster"></a></li>
+        {% endif %}
+        {% if upcoming and speaker: %}
+                <li class="calendar"><a title="Add to Google Calendar" href="{{ googleLink }}"></a></li>
+        {% endif %}
+</ul>
+{% if speaker: %}
+    <h3 class="speaker">{{ speaker }}<span> ({{ institutionLink }})</span></h3>
+    {% if title: %}
+        {% if abstract: %}
+            <div class="begroup">  $\begingroup {{ macros }} $ </div>
+            <h4 class="title"><label for="{{ posterfilename }}">{{ title_html }}</label></h4>
+            <input type="checkbox" id="{{ posterfilename }}" />
+            <label for="{{ posterfilename }}" class="plusminus"></label>
+        {% else: %}
+            <h4 class="title">{{ title_html }}</h4>
+        {% endif %}
+        <div style="clear: both;"></div>
+    {% endif %}
+{% endif %}
+{% if cancellation_reason: %}
+        <h3 class="cancellation_reason">{{ cancellation_reason }}</h3>
+{% endif %}
+{% if room != config.standard_room or date.strftime("%-I:%M")!=config.standard_time.strftime("%-I:%M") : %}
+        <p class="schedule_change"> {{ change_reason[:1].upper() + change_reason[1:] + ", the" if change_reason else "The" }}
+                seminar will meet at {{ date.strftime("%-I:%M %p") }} in {{ room }}.
+        </p>
+{% endif %}
+{% if notice: %}
+  <p class="notice">{{ notice }}</p>
+{% endif %}
+{% if abstract: %}
+        <div class="abstract">
+                {{ abstract_html }}
+        </div>
+        <div class="begroup">  $\endgroup$ </div>
+{% endif %}
+</li>
+
+
+
+
+
+

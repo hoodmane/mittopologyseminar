@@ -1,0 +1,86 @@
+[
+    {
+        "date": "2016/05/09",
+        "speaker": "Nat Stapleton",
+        "institution": "Max Planck Institute",
+        "website": "http://guests.mpim-bonn.mpg.de/nstapleton/",
+        "alt_time" : "15:30",
+        "notice" : "Nat will speak at 3:30 pm, followed by Saul at 4:30 pm",
+        "title": "The infinite prime in chromatic homotopy theory",
+        "abstract": "The behavior of the category of $E_n$-local spectra simplifies in various ways as $p \to \infty$. For a collection of categories indexed by the prime numbers we construct a category 'at the infinite prime' that captures behavior of all but finitely many of the input categories. We then apply this construction to the $E_n$-local and $K(n)$-local situations and analyze the resulting categories. This talk represents joint work with Barthel and Schlank."
+    },
+    {
+        "date": "2016/05/09",
+        "speaker": "Saul Glasman",
+        "institution": "IAS",
+        "website": "http://www.math.ias.edu/~sglasman/",
+        "title": "Categorical Tate constructions and cyclotomicity",
+        "abstract": "I'll give an exposition of the stratification viewpoint on equivariant homotopy theory, and describe how this helps inspire new approaches to equivariant algebraic K-theory. I'll propose a categorification of the classical norm cofibration sequence for a cyclic group of prime order and the equivariant fracture square, with a version of the stable module category standing in for the Tate spectrum, leading to a K-theoretic approximation to the Hill-Hopkins-Ravenel norm. Cyclotomic spectra look enoticely perspicuous in the stratification picture, and if possible I'll begin to describe how it harmonizes with our theory of cyclonic objects to give a natural construction of the THH of a Waldhausen infinity-category. This is joint work in progress with Clark Barwick."
+    },
+    {
+        "date": "2016/04/25",
+        "speaker": "Tom Church",
+        "institution": "Stanford University",
+        "website": "http://math.stanford.edu/~church/",
+        "alt_time" : "15:30",
+        "notice" : "Time changed to 3:30 pm and room number changed to 2-136 due to Simons lectures",  
+        "title": "Stable completed cohomology and excision in continuous K-theory",
+        "abstract": "Two of the recent successes of representation stability are the description of the stable completed cohomology of arithmetic groups by Calegari-Emerton, and the proof of excision in continuous K-theory by Calegari. I'll explain these theorems, focusing on concrete cases such as H_1, K_1 and K_2 where we can work out explicitly exactly what is going on; I won't say anything fancy unless we can see it in at least one case. No knowledge of representation stability or K-theory needed; in fact, I'll give an introduction to many aspects of classical K-theory such as the congruence subgroup property and the Steinberg group."
+    },
+    {
+        "date": "2016/04/11",
+        "speaker": "Rune Haugseng",
+        "institution": "University of Copenhagen",
+        "website": "https://sites.google.com/site/runehaugseng/",
+        "title": "Higher Lagrangian correspondences and topological field theories",
+        "abstract": "The AKSZ construction, as implemented by Pantev-Toën-Vaquié-Vezzosi in the context of derived algebraic geometry, gives a symplectic structure on the derived stack of maps from an oriented compact manifold to a symplectic derived stack. I will discuss how this gives rise to a family of extended topological field theories valued in higher categories of symplectic derived stacks, with the higher morphisms given by a notion of higher Lagrangian correspondences. This is ongoing work with Damien Calaque and Claudia Scheimbauer."
+    },
+    {
+        "date": "2016/04/04",
+        "speaker": "Emanuele Dotto",
+        "institution": "MIT",
+        "website": "http://math.mit.edu/~dotto/",
+        "title": "On the classification of equivariant homogeneous functors",
+        "abstract": "For every homotopy invariant endofunctor of the category of pointed G-spaces (G a finite group) equivariant calculus produces a 'genuine' tower, which under suitable circumstances converges to the original functor. The talk will focus on the description of the layers of this tower in terms of certain 'graph-equivariant' spectra, defined from Goodwillie's cross-effects."
+    },
+    {
+        "date": "2016/03/28",
+        "speaker": "Gijs Heuts",
+        "institution": "University of Copenhagen",
+        "website": "",
+        "title": "Lie algebras and v_n-periodic spaces",
+        "abstract": "We use the Goodwillie tower of the category of pointed spaces to relate the telescopic homotopy theory of spaces (in the sense of Bousfield) to the homotopy theories of Lie algebras and commutative coalgebras in T(n)-local spectra, in analogy with rational homotopy theory. As a consequence, one can determine the Goodwillie tower of the Bousfield-Kuhn functor in terms of topological Andre-Quillen homology, giving a different perspective on recent work of Behrens and Rezk."
+    },
+    {
+        "date": "2016/03/14",
+        "speaker": "Hiro Tanaka",
+        "institution": "Harvard",
+        "website": "http://math.harvard.edu/~hirolee/",
+        "title": "Lagrangian Cobordisms and Fukaya category",
+        "abstract": "In symplectic geometry, the Fukaya category of a symplectic manifold is about as important as DbCoh is in algebraic geometry. As such, one wouldn't expect a totally topological way to characterize the Fukaya category of a symplectic manifold. However, it turns out that in a large class of non-compact symplectic manifolds, one expects to have a topological characterization; more surprisingly, it seems that the stable homotopy theory of Lagrangian cobordisms may recover the Fukaya category altogether. We'll begin with some basics of Fukaya categories, illustrate how there is a functor of oo-categories from a category of Lagrangian cobordisms of M to its Fukaya category, and explain structural theorems that move us closer to proving a conjecture that the Fukaya category can be recovered from the category of Lagrangian cobordisms."
+    },
+    {
+        "date": "2016/03/07",
+        "speaker": "Inna Zakharevich",
+        "institution": "University of Chicago",
+        "website": "http://math.uchicago.edu/~zakh/",
+        "title": "The annihilator of the Lefschetz motive",
+        "abstract": "The Grothendieck ring of varieties is defined to be the free abelian group generated by varieties, modulo the relation that for a closed subvariety $Y$ of $X$, $[X] = [Y] + [X \backslash Y]$; the ring structure is defined via the Cartesian product.  For example, if $X$ and $Y$ are piecewise isomorphic, in the sense that there exist stratifications on $X$ and $Y$ with isomorphic strata, then $[X] = [Y]$ in the Grothendieck ring.
+        
+        There are two important questions about this ring: 
+        
+        1.  What does it mean when two varieties $X$ and $Y$ have equal classes in the Grothendieck ring?  Must $X$ and $Y$ be piecewise isomorphic? 
+        
+        2.  Is the class of the affine line a zero divisor? 
+        
+        Last December Borisov answered both of these questions with a single example, by constructing an element $[X] - [Y]$ in the kernel of multiplication by the affine line; in a beautiful coincidence, it turned out that $X \times \Abb^1$ and $Y \times \Abb^1$ were not piecewise isomorphic.  In this talk we will describe an approach using algebraic K-theory to construct a topological version of the Grothendieck ring of varieties. We shall prove that $\pi_1$ of this space is generated by birational automorphisms of varieties which extend to piecewise automorphisms, which allows us to construct a group that surjects onto the kernel of multiplication by the affine line.  By analyzing this group we will sketch a proof that Borisov's coincidence was not a coincidence at all: any element in the kernel of multiplication by the affine line can be represented as $[X]-[Y]$, where $X \times \Abb^1$ and $Y \times \Abb^1$ are not piecewise isomorphic."
+    },
+    {
+        "date": "2016/02/08",
+        "speaker": "Teena Gerhardt",
+        "institution": "Michigan State University",
+        "website": "http://users.math.msu.edu/users/teena/Home.html",
+        "title": "cancelled",
+        "abstract": ""
+    }
+]

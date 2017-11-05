@@ -76,7 +76,7 @@ class Talk:
         title = None, abstract = None, email_abstract = None, no_email=False,
         speaker = None,  institution = None, website = None
     ):
-	self.jsondict = jsondict
+        self.jsondict = jsondict
         if not (speaker or cancellation_reason):
             self.invalid = True
             return
@@ -113,12 +113,12 @@ class Talk:
         self.email_notice = email_notice if email_notice else notice     
         self.no_email = no_email   
         
-	self.macros = macros if macros else ""
+        self.macros = macros if macros else ""
 
-	self.title = title
+        self.title = title
         self.title_poster = title
         self.title_html = convert_quotes(title) if title else None
-	self.title_email = delatex(convert_quotes(title)) if title else None
+        self.title_email = delatex(convert_quotes(title)) if title else None
         self.abstract = abstract
 
         self.email_abstract = None
@@ -328,8 +328,8 @@ class Email:
             writeFile('emails/email_' + self.date.strftime("%m-%d") + '_noabs.dat', pickle.dumps(self.message_no_abstract))
         return
         
-    # TODO: copy the implementation of this from emailcron
     def markSent(self):
+        writeFile('emails/mark_' + self.date.strftime("%m-%d") + '.dat','sent')
         return
 
 def makeemail(talks,temp=[]):
@@ -424,20 +424,17 @@ if args.make_old_talks:
     print "Making old past talks"
     makeoldpasttalks()
 
-# Before we parse the json file, we make a few changes, documented in common.py where processJSON is defined.
-talkTable = processJSON('talks.json')
 
-# Semesters are just a bookkeeping tool to keep talks.json neat. 
-# No special handling here, but we'll figure out which semester talks come from later using their date
-# This design is a relic from the .csv era, but it works fine.
+
+# No special handling by semester here, we'll figure out the semester for each talk later using the date
+# Note that the semester files are not processed in order, but we don't care because we sort the individual talks by date.
+# In make-juvitop.py, the seminar_data files are sorted, we can copy the code from there if at some point we need to sort them here too.
 talks = []
-for sem in talkTable.values():
-    for talk in sem:
+for semJSON in os.listdir('seminar_data'):
+    for talk in processJSON('seminar_data/'+semJSON):
         talks.append(Talk(talk,**talk))
         if talks[-1].invalid:
             talks.pop()
-
-
 
 
 upcoming = [talk for talk in talks if talk.upcoming]

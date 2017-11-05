@@ -1,0 +1,15 @@
+Date: {{ talk.date.strftime("%A (%B %-d)") }}
+
+Speaker: {{ talk.speaker.text }}
+
+Speaker website: {{ talk.speaker.url }}
+
+Title: {{ talk.title }} {%  if talk.room!=config.standard_room: %}
+
+Room Change: {{ talk.room }} {%  endif %}
+
+Poster link: http://math.mit.edu/topology/posters/{{ talk.posterfilename }}.pdf
+
+Abstract:
+
+{{ talk.abstract }}

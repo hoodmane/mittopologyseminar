@@ -21,7 +21,6 @@ import pickle # For serializing messages
 from HTMLParser import HTMLParser
 import cgi
 
-from string import Template # Still use a few old templates as a holdover
 try:
    import jinja2
 except ImportError:
@@ -42,17 +41,13 @@ latexJinjaEnv = jinja2.Environment(
 	loader = jinja2.FileSystemLoader('templates')
 )
 
-try:
-   import tenjin # This is the main templating package we use
-except ImportError:
-   # I didn't bother to ask the MIT math admins to install the tenjin package globally
-   # So any time a new person tries to run it for the first time, the import will throw an error
-   # This code installs the package for them.
-   os.system("mkdir -p ~/.local/lib/python2.7/site-packages")
-   os.system("cp -r /math/www/docs/topology/tenjin/* ~/.local/lib/python2.7/site-packages")
-   import tenjin
 
-from tenjin.helpers import *
+try:
+   import markdown
+except ImportError:
+   os.system("pip install --user markdown")
+   import markdown
+
 
 # Email things
 from email.mime.multipart import MIMEMultipart
@@ -118,19 +113,15 @@ def sanitize_key(input_str):
     return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
 
 def delatex(str):
-    return delatexquotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
+    return convert_quotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
 
-def delatexquotes(str):
-    return str.replace('``','"').replace("`","'").replace("''",'"')
+def convert_quotes(string):
+    return string.replace('``','"').replace("`","'").replace("''",'"')
 
+# Turn unicode characters into closest nonunicode equivalent, delete characters that don't end up being alphanumeric, or ._-, turn spaces into dashes
 def sanitizeFileName(str):
     keepcharacters = (' ','.','_','-')
     return "".join(c for c in unicodedata.normalize('NFKD',unicode(str)) if c.isalnum() or c in keepcharacters).rstrip().replace(' ','-')
-
-def convert_quotes(string):
-   return string.replace("``", '"').replace("''",'"')
-
-
 
 class EscapeHTMLParser(HTMLParser,object):
     def handle_starttag(self, tag, attrs): 
@@ -165,7 +156,7 @@ def paragraphs_to_html(string):
 def paragraphs_to_text(string):
    return "\n\n" + re.sub("<[^$]*?>","", delatex(re.sub('\n\s*\n',placeholder_string, string).replace('\n',' ').replace(placeholder_string,'\n\n')))
 
-       
+    
 
 
 ## Handle links
@@ -180,30 +171,34 @@ def paragraphs_to_text(string):
 # The regex all match the expression [<possible whitespace> reference <whitespace> text <possible whitespace>]
 # The text is defined as one or more characters, no ]'s. This is the same every time.
 # link_template stores the part that's the same every time, which is everything but the reference.
-link_template = "\[\s*%s\s+([^\]]+)\s*\]"
 
-link_file_only_quoted = re.compile(link_template % "'([^'/]*)'") # If it's only the filename, we'll add the notes folder
-link_file_only        = re.compile(link_template %  "([^'/ \]]*)") # To see that it's only the file name, we require there be no /'s
+link_file_only        = re.compile("^[^/]*$") # To see that it's only the file name, we require there be no /'s
+link_rel              = re.compile("^((?:[^'\. \]]*\.?){1,2})$") # To be relative, we check that there is at most one .
+link_full_http        = re.compile("^\w*://.*$") 
 
-link_rel_quoted       = re.compile(link_template % "'((?:[^'\.]*\.?){1,2})'") # To be relative, we check that there is at most one .
-link_rel              = re.compile(link_template %  "((?:[^'\. \]]*\.?){1,2})")
 
-link_full_http_quoted = re.compile(link_template % "'(\w*://[^']*)'") # This version can have anything except ' and has to start "stuff://"
-link_full_http        = re.compile(link_template %  "(\w*://[^' \]]*)") 
+class myLinkPattern(markdown.inlinepatterns.LinkPattern):
+    def sanitize_url(self, url):
+	if link_file_only.match(url):
+            return self.markdown.notes_path + url
+        elif link_rel.match(url):
+            return self.markdown.base_path + url
+        elif link_full_http.match(url):
+            return url
+        else:
+            return "http://"+url
 
-link_full_quoted      = re.compile(link_template % "'([^']*)'") # This version gets http:// added and can have anything except '
-link_full             = re.compile(link_template %  "([^' \]]*)" ) 
+class JuvitopExtension(markdown.Extension):
+    """ Extension for Python-Markdown. """
 
-def link_markup(string,notes_path,base_path):
-    string = link_file_only_quoted.sub('<a href="%s\\1">\\2</a>' % notes_path , string)
-    string = link_file_only       .sub('<a href="%s\\1">\\2</a>' % notes_path , string)
-    string = link_rel_quoted      .sub('<a href="%s\\1">\\2</a>' % base_path , string)        
-    string = link_rel             .sub('<a href="%s\\1">\\2</a>' % base_path , string)  
-    string = link_full_http       .sub('<a href="\\1">\\2</a>', string)
-    string = link_full_http_quoted.sub('<a href="\\1">\\2</a>', string)
-    string = link_full_quoted     .sub('<a href="http://\\1">\\2</a>' , string)        
-    string = link_full            .sub('<a href="http://\\1">\\2</a>' , string)    
-    return string
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns['link'] = myLinkPattern(markdown.inlinepatterns.LINK_RE, md)
+
+
+myExtension = JuvitopExtension()
+mymarkdown = markdown.Markdown(extensions=[myExtension])
+
+
 
 
 class MaybeLink:
@@ -236,20 +231,6 @@ def promptSend(target_email):
 def sendEmail(msg):
     smtp.sendmail(msg['From'], msg['To'], msg.as_string())
 
-
-class nonblockingTimerStarter(threading.Thread):
-    def __init__(self, time, fun, args=[]):
-        threading.Thread.__init__(self)
-        self.time = time
-        self.fun = fun
-        self.args = args
-        #self.daemon = True
-
-    def run(self):
-        threading.Timer(self.time, self.fun, self.args).start()
-
-def nonblockingTimer(time, fun, args=[]):
-    nonblockingTimerStarter(time, fun, args).start()
     
 
 

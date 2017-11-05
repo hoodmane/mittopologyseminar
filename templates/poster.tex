@@ -3,12 +3,12 @@
 \usepackage{cmbright} 
 \usepackage{scalefnt} 
 \usepackage{amssymb} 
-\usepackage{amsmath} %\usepackage[utf8]{inputenc}
+\usepackage{amsmath} 
+%\usepackage[utf8]{inputenc} 
 \usepackage{fontspec}
 
-% Bad examples:
-% http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf
-\include{templates/poster_fitbox}
+% Bad examples: % http://math.mit.edu/topology/posters/20140303-Tyler-Lawson.pdf 
+\include{templates/poster_fitbox} 
 \fontdim24pt % Maximum abstract font size for fitbox
 
 
@@ -17,14 +17,14 @@
 \DeclareMathOperator{\Z}{\mathbb{Z}} 
 \DeclareMathOperator{\Q}{\mathbb{Q}} 
 \DeclareMathOperator{\R}{\mathbb{R}} 
-\DeclareMathOperator{\C}{\mathbb{C}}
-\let\H\relax
+\DeclareMathOperator{\C}{\mathbb{C}} 
+\let\H\relax 
 \DeclareMathOperator{\H}{\mathbb{H}} 
 \DeclareMathOperator{\A}{\mathbb{A}}
 
 
-\def\infinity{\ifmmode \infty\else ∞\fi}
-\catcode`\∞=\active
+\def\infinity{\ifmmode \infty\else ∞\fi} 
+\catcode`\∞=\active 
 \let∞\infinity
 
 
@@ -36,26 +36,27 @@
 \usepackage[top = \mtop, bottom = \mbottom, left = \mleft, right=\mright, marginparwidth=\mparwidth]{geometry} 
 \pagenumbering{gobble}
 
- 
+{{macros}} 
+
 \begin{document}
 
 \begin{center}
 
 {\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
 
-{\scalefont{3.6}{\bf Søren Galatius}}\\\vspace{20pt} {\scalefont{2}of Stanford University will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
-    Monoids of moduli spaces of manifolds.
-}\\\vspace{20pt} {\scalefont{2}on September 29 at 4:30 
-in \\\vspace{6pt}MIT Room 2-131}\\ 
-\end{center}
+{\scalefont{3.6}{\bf \VAR{speaker.text} }}\\\vspace{20pt} {\scalefont{2}of \VAR{institutionText} } will be speaking on}\\\vspace{30pt} {\scalefont{3.6}
+    {{ title_poster }}
+}\\\vspace{20pt} {\scalefont{2}on \VAR{date.strftime("%B %-d at %-I:%M")} in \\\vspace{6pt}MIT Room \VAR{room}}\\ \end{center}
 
 \vfill
 
-\begin{fitbox}{0.9\textwidth}{11.5cm}
- 
-\end{fitbox}
+\begin{fitbox}{0.9\textwidth}{11.5cm} \VAR{abstract} \end{fitbox}
 
-\vfill
+\vfill 
+%% if upcoming: 
+\centerline{\scalefont{1.2} 
+For information, write: \texttt{\VAR{contact_email}} } \vfill 
+%% endif
 \end{document}
 
 % vim:ft=tex 

@@ -1,0 +1,175 @@
+[
+   {
+        "date": "2017/02/13",
+        "speaker": "Sune Precht Reeh",
+        "institution": "MIT",
+        "website": "http://math.mit.edu/~reeh/Sune_Precht_Reeh.html",
+        "title": "Dimension functions, homotopy sphere actions, and fusion systems",
+        "abstract": "Given a representation $V$ of a finite group $G$ we can associate a dimension function that to
+            each subgroup $H$ of $G$ assigns the dimension of the fixed point space $V^H$. The dimension functions are 
+            ``super class functions'' that are constant on the conjugacy classes of subgroups in $G$. For a p-group 
+            the list of Borel-Smith conditions characterizes the super class functions that come from real representations.
+
+            In a joint paper with Ergün Yalcin we show that though we cannot lift Borel-Smith functions to real 
+            representations for a general group $G$, we can lift a multiple of any Borel-smith function to an action 
+            of $G$ on a finite homotopy sphere (which would be the unit sphere if we had a representation).
+
+            To solve the problem we localize at each prime p, and solve it in general for saturated fusion systems. 
+            That is, we give a list of Borel-Smith conditions for a fusion system that characterize the dimension 
+            functions of the fusion stable real representations. The proof for fusion systems involves biset functors 
+            and characteristic bisets for saturated fusion systems."
+    },
+    {
+        "date": "2017/02/20",
+        "speaker": "",
+        "institution": "",
+        "website": ""
+    },
+    {
+        "date": "2017/02/27",
+        "speaker": "Ben Antieau",
+        "institution": "UIC",
+        "website": "https://dantie1.people.uic.edu/",
+        "title": "Negative and homotopy K-theory of ring spectra and extensions of the theorem of the heart",
+        "abstract": "Barwick proved that the K-theory of a stable infinity-category with a bounded $t$-structure agrees with
+             the K-theory of its heart in non-negative degrees. Joint work with David Gepner and Jeremiah Heller extends this 
+             to an equivalence of nonconnective K-theory spectra when the heart satisfies certain finiteness conditions such 
+             as noetherianity. Applications to negative K-theory and homotopy K-theory of ring spectra are provided, which were 
+             the original motivation for our work."
+    },
+    {
+        "date": "2017/03/06",
+        "speaker": "Jack Morava",
+        "institution": "JHU",
+        "website": "http://math.jhu.edu/~jack/",
+        "title": "Some interesting perfectoid fields with possible topological applications",
+        "abstract": "A Lubin-Tate group for a local field L defines a maximal totally ramified abelian extension of L, whose completion is
+        perfectoid; Artin reciprocity identifies the Galois group of this
+        extension with the group of units of L. Scholze and Nikolaus, following
+        work of Hesselholt on the algebraic closure of $Q_p$, have calculated
+        the topological Hochschild homology of such fields; these are
+        complex orientable GEM spectra, whose associated formal groups
+        seem to be rigid analytic versions of the Lubin-Tate group defining
+        the extension, with the Galois group acting as generalized Adams
+        operations. These spectra may have interesting connections with
+        chromatic homotopy theory."
+    },
+    {
+        "date": "2017/03/13",
+        "speaker": "Mike Mandell",
+        "institution": "IU",
+        "website": "http://pages.iu.edu/~mmandell/",
+        "title": "The strong Kunneth theorem for periodic topological cyclic homology",
+        "abstract": "Hesselholt has recently been advertising ``periodic topological cyclic homology'' ($TP$) as 
+         potentially filling some of the same roles for finite primes as periodic cyclic homology plays rationally. 
+         It is constructed from topological Hochschild homology ($THH$) analogously to the way periodic cyclic homology
+	 is constructed from Hochschild homology.  In joint work with Andrew Blumberg, we prove a strong Kunneth theorem
+	 for the periodic topological cyclic homology of smooth and proper dg categories over a finite field $k$, namely,  
+	the derived smash product $TP(X) \wedge_{TP(k)} TP(Y)$ is weakly equivalent to $TP(X \otimes_k Y)$."
+    },
+    {
+        "date": "2017/03/20",
+        "speaker": "Bena Tshishiku",
+        "institution": "Harvard",
+        "website": "http://bena-tshishiku.squarespace.com/",
+        "title": "Obstructions to Nielsen realization",
+	"macros" : "\def\Mod{\mathop{\mathrm{Mod}}}\def\Diff{\mathop{\mathrm{Diff}}}",
+        "abstract" : "Let $M$ be a manifold, and let $\Mod(M)$ be the group of diffeomorphisms of $M$ modulo isotopy (the mapping class group). The Nielsen realization problem for diffeomorphisms asks, ``Can a given subgroup $G<\Mod(M)$ be lifted to the diffeomorphism group $\Diff(M)$?'' This question about group actions is related to a question about flat connections on fiber bundles with fiber $M$. In the case $M$ is a closed surface, the answer is ``yes'' for finite $G$ (by work of Kerckhoff) and ``no'' for $G=\Mod(M)$ (by work of Morita). For most infinite $G<\Mod(M)$, we don't know. I will discuss some obstructions that can be used to show that certain groups don’t lift. Some of this work is joint with Nick Salter."
+    },
+    {
+        "date": "2017/04/03",
+        "speaker": "Clark Barwick",
+        "institution": "MIT",
+        "website": "http://math.mit.edu/~clarkbar/",
+        "title": "The geometry of orbital $\infty$-categories"
+    },    
+    {
+        "date": "2017/04/10",
+        "speaker": "Denis Nardin",
+        "institution": "MIT",
+        "website": "https://math.mit.edu/~nardin/",
+        "title": "Stability and distributivity over an orbital $\infty$-category",
+        "abstract": "The category of $G$-spectra plays an important role in homotopy theory, even when a group action is 
+         not obviously involved. In this talk we will present a universal property for it providing an alternate proof 
+         of the Guillou-May theorem. If time permits, we will use it to provide a uniqueness theorem for the norm functors."
+    },
+    {
+        "alt_weekday": "Friday",
+        "date": "2017/04/21",
+        "speaker": "Dan Berwick-Evans",
+        "institution": "UIUC",
+        "alt_time": "15:00",
+        "website": "http://math.illinois.edu/~danbe/index.html",
+        "title": "Field theories and elliptic cohomology from the vantage of characters",
+        "abstract": "A basic way to probe a cohomology theory is through its complexification and the resulting Chern 
+         character map. Features of the cohomology theory can then be transferred to this complexification, e.g., 
+         pushforwards determine Riemann-Roch factors. Field theories also have a good notion of character theory via their 
+         partition functions, which are functions on certain moduli spaces. Constructions in field theories similarly 
+         endow partition functions with additional structure. I’ll apply these ideas to elliptic cohomology and 2-dimensional 
+         supersymmetric field theories, showing how the character theories of these objects line up with one another. 
+         Refining this comparison points toward a connection between field theories and topological modular forms."
+    },
+    {
+        "date": "2017/04/24",
+        "speaker": "Angelica Osorno",
+        "institution": "Reed",
+        "website": "http://people.reed.edu/~aosorno/",
+        "title": "2-Segal spaces and the Waldhausen construction",
+        "alt_time": "15:00",
+        "alt_room": "2-135",
+        "change_reason" : "due to the Simons lectures",
+        "email_notice" : "The time AND location are changed to 3:00 in room 2-135 due to the Simons lectures.",
+        "abstract": "The notion of 2-Segal spaces was introduced by Dyckerhoff and Kapranov as a higher dimensional 
+         version of Rezk's Segal spaces. In this talk we will explore the motivation for this notion, give examples, 
+         and show that it is related to a certain class of double categories via a version of Waldhausen's construction. 
+         This is joint work with J. Bergner, V. Ozornova, M. Rovelli, and C. Scheimbauer."
+    },
+    {
+        "date": "2017/05/01",
+        "speaker": "Jay Shah",
+        "institution": "MIT",
+        "title": "Parametrized higher category theory",
+        "abstract": "Parametrized or indexed $\infty$-category theory studies $\infty$-categories fibered over a given base $\infty$-category.
+         This theory can be harnessed for the purposes of equivariant homotopy theory when one specializes to the case 
+         where is the base is the orbit category of a finite group. In this talk, we present a theory of parametrized 
+         homotopy limits and colimits that recovers and extends the Dotto-Moi theory of $G$-colimits. We apply this theory 
+         to prove that the $G$-$\infty$-category of $G$-spaces is freely generated under $G$-colimits by the contractible $G$-space, 
+         thereby affirming a conjecture of Mike Hill."
+    },
+    {
+        "date": "2017/05/08",
+        "speaker": "Hiro Tanaka",
+        "institution": "Harvard",
+        "website": "http://math.harvard.edu/~hirolee/",
+        "title": "Morse theory and a stack of broken lines",
+        "abstract": "In Morse theory, it's important to understand how a gradient trajectory can break into multiple 
+         gradient trajectories--for instance, this is how one proves the Morse chain complex is a chain complex. In this 
+         talk, I'll define a stack classifying families of domains of such broken and breaking trajectories. I'll then 
+         sketch a proof that the $\infty$-category of factorizable sheaves on this stack is equivalent to the $\infty$-category of 
+         non-unital $A_\infty$ algebras. Much of this is motivated by a strategy to formulate Morse theory and Floer theory as 
+         a deformation problem (similar to Cohen-Jones-Segal), but I may not talk too much about that because the details 
+         are not worked out yet. This is joint work with Jacob Lurie."
+    },
+    {
+        "date": "2017/05/15",
+        "speaker": "John Francis",
+        "institution": "Northwestern",
+        "website": "http://www.math.northwestern.edu/~jnkf/",
+        "title": "Factorization homology and the cobordism hypothesis",
+	"macros" : "\def\TQFT{\mathop{\mathrm{TQFT}}}\def\obj{\mathop{\mathrm{obj}}}",
+        "abstract": "The cobordism hypothesis—after Baez–Dolan, Costello, Hopkins–Lurie, and Lurie—asserts that for a 
+        symmetric monoidal $(\infty,n)$-category $C$ in which every object has a dual and every $k$-morphism has a left and 
+        right adjoint for $k<n$, there is an equivalence $\TQFT(C) = \obj(C)$ between $C$-valued framed topological field theories 
+        and objects of $C$. This is the formulation due to Lurie. I'll give a proof of the cobordism hypothesis based on 
+        factorization homology. Factorization homology is a multiplicative analogue of ordinary homology. Usual homology 
+        integrates an abelian group, chain complex, or spectrum over a manifold $M$, which one can think as the moduli space 
+        of points in $M$ itself. The result takes disjoint unions of manifolds to direct sums. The alpha version of 
+        factorization homology integrates an $E_n$-algebra over a moduli space of finite subsets of a manifold $M$. The beta 
+        version of factorization homology integrates an $(\infty, n)$-category over the moduli space of stratifications of 
+        $M$. The result takes disjoint unions to tensor products. I'll define this beta version of factorization homology. 
+        It satisfies a version of the Eilenberg–Steenrod axioms—this part is work in progress. These Eilenberg–Steenrod 
+        axioms together with an argument in the spirit of Pontryagin–Thom theory implies the cobordism hypothesis. This 
+        is joint work with David Ayala."
+    },
+]
+
