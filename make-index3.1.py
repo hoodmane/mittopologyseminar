@@ -5,6 +5,8 @@
 ####
 
 from common import *
+from multiprocessing import Pool
+import signal
 
 from itertools import groupby # For handling double headers (two talks same day)
 import config
@@ -186,6 +188,22 @@ class Talk:
     def __str__(self):
        return talkTemplate(vars(self))
 
+def init_worker():
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+
+def makeposters(talklist,poolsize=5):
+    p = Pool(poolsize,init_worker)
+    try:
+        result = p.map_async(makeposter,talklist)
+        while True:
+            if result.ready():
+                return result.get()
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print "Quitting!"
+        p.terminate()
+        p.join()
+        sys.exit()
 
 def makeposter(talk):
     # if there is no talk we make no poster!
@@ -194,7 +212,7 @@ def makeposter(talk):
     # if there is no title there's no point in making a poster
     if not talk.title:
         return 
-    try:
+    try: 
         latexPoster(talk.posterfilename, posterTemplate(dict(vars(talk), contact_email = organizer_email)))
     except IOError:
         pass
@@ -387,18 +405,16 @@ def makeoldpasttalks():
     talkReader = csv.DictReader(open('oldtalks.csv'))
     talks = []
     for talk in talkReader:
-    
         if talk['REASON'] != '':
             talks.append(Talk(date=talk['DATE'], cancellation_reason=talk['REASON']))
         elif talk['SPEAKER'] != '':
             if talk['INSTITUTION'] != '':
-                talks.append(Talk(date=talk['DATE'], speaker=talk['SPEAKER'],
+                talks.append(Talk(jsondict=None,date=talk['DATE'], speaker=talk['SPEAKER'],
                                   institution=talk['INSTITUTION'],
                                   website=talk['WEBSITE'], title=talk['TITLE'],
                                   abstract=talk['ABSTRACT'].replace("\\\\","\n\n"), notice=talk['SPECIAL']))
-    
     if args.make_old_posters:
-        map(makeposter,talks)
+        makeposters(talks,10)
     past = makepasttalkslist(talks)
     past = past.encode('ascii', 'xmlcharrefreplace')
     writeFile('oldpastseminars.html', past)
@@ -490,7 +506,7 @@ for g in talkgroups:
             
 
 print 'Generating posters'
-map(makeposter, upcoming)
+makeposters(upcoming)
 
 print 'Generating emails'
 os.system("rm emails/email*")
@@ -529,7 +545,7 @@ print 'Generating past talks page'
 # for past talks we split them into semesters
 pasttalks = [talk for talk in talks if not talk.upcoming]
 if args.make_old_posters:
-    map(makeposter, pasttalks)
+    makeposters(pasttalks)
 
 past = makepasttalkslist(pasttalks)
 

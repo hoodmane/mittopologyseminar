@@ -378,20 +378,20 @@ The examples concern operad theory and Goodwillie calculus. One result identifie
 These notions can be abstracted to make no reference to the ambient group $G$, resulting in an \emph{abstract saturated fusion system} $\mathcal{F}$ on $S$ and a \emph{characteristic biset} $\Omega$ for $\mathcal{F}$.  Again, $\Omega$ determines $\mathcal{F}$, but each $\mathcal{F}$ has many associated characteristic bisets.  
 
 This talk will focus on the failure of a saturated fusion system to uniquely determine a characteristic biset.  We will show that there is a parametrization of all characteristic bisets for a fixed $\mathcal{F}$, which will have as a consequence the surprising result that each saturated fusion system has a unique \emph{minimal} associated characteristic biset."
-2013/03/04,,,,"Ethan Devinatz","University of Washington",,"Higher homotopy commutativity of small ring spectra","Given a finite spectrum of type n, explicit v_n self-maps are 
+2013/03/04,,,,"Ethan Devinatz","University of Washington",,"Higher homotopy commutativity of small ring spectra","Given a finite spectrum of type $n$, explicit $v_n$ self-maps are 
 more easily constructed if that spectrum is a ring spectrum, by which I
 mean the spectrum is provided with a pairing which has a two-sided unit 
 but is not necessarily homotopy commutative or homotopy associative. 
 If in addition, the spectrum is homotopy associative and homotopy 
 commutative, one can sometimes say more.
 
-Twenty five years ago I proved that if X is a finite ring spectrum of 
-type n, then there exists a v_n self-map f such that the cofiber X(f^i) of 
-the self-map f^i is a ring spectrum for any i, and the pairing on X(f^i) 
-extends the pairing on X.  In this talk, I will discuss my recent result 
-that if X is higher homotopy commutative up to some finite order, then f
+Twenty five years ago I proved that if $X$ is a finite ring spectrum of 
+type n, then there exists a $v_n$ self-map f such that the cofiber $X(f^i)$ of 
+the self-map $f^i$ is a ring spectrum for any $i$, and the pairing on $X(f^i)$
+extends the pairing on $X$.  In this talk, I will discuss my recent result 
+that if $X$ is higher homotopy commutative up to some finite order, then $f$
 may be chosen so that this higher homotopy commutative structure may be 
-extended to such a structure on X(f^i)."
+extended to such a structure on $X(f^i)$."
 2013/03/11,,,,"Dustin Clausen","MIT",,"Arithmetic duality in algebraic K-theory","We will discuss an analog in algebraic K-theory of the
 Poitou-Tate global duality in Galois cohomology.  A key point is that the
 use of algebraic K-theory instead of Galois cohomology allows to give a

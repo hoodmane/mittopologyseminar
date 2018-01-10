@@ -10,11 +10,11 @@ reown(){
     while [[ -e "$tmpfile" ]] ; do
         tmpfile="$tmpfile".tmp
     done
-    if cp "$1" "$tmpfile" 2>/dev/null ; then
+    if cp -a "$1" "$tmpfile" 2>/dev/null ; then
         if mv -f "$tmpfile" "$1" ; then
             # success
             chown :"$groupname" "$1"
-            chmod g+w "$1"
+            chmod g+rw "$1"
             echo "Fixed permissions on $1"
         else  # made copy but failed to move it into place
             rm "$tmpfile"
@@ -27,4 +27,4 @@ reown(){
 # need to export this so it can be used in a subshell in the find -exec
 export -f reown
 
-find \( -path ./node_modules -prune \) , \( -path ./.git -prune \) , -type f \! \( -perm -g=w -a -group "$groupname" \) -exec bash -c 'reown "$0"' {} \;
+find -type f \! \( -perm -g=rw -group "$groupname" \) -exec bash -c 'reown "$0"' {} \; 2>/dev/null

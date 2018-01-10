@@ -27,6 +27,12 @@ except ImportError:
    os.system("pip install --user jinja2")
    import jinja2
 
+try:
+    from unidecode import unidecode
+except ImportError:
+    os.system("pip install --user unidecode")
+    from unidecode import unidecode
+
 latexJinjaEnv = jinja2.Environment(
 	block_start_string = '\BLOCK{',
 	block_end_string = '}',
@@ -121,7 +127,7 @@ def convert_quotes(string):
 # Turn unicode characters into closest nonunicode equivalent, delete characters that don't end up being alphanumeric, or ._-, turn spaces into dashes
 def sanitizeFileName(str):
     keepcharacters = (' ','.','_','-')
-    return "".join(c for c in unicodedata.normalize('NFKD',unicode(str)) if c.isalnum() or c in keepcharacters).rstrip().replace(' ','-')
+    return "".join(c for c in unidecode(unicode(str)) if c.isalnum() or c in keepcharacters).rstrip().replace(' ','-')
 
 class EscapeHTMLParser(HTMLParser,object):
     def handle_starttag(self, tag, attrs): 
@@ -277,8 +283,11 @@ def processJSON(fileName):
            col += (i-k)/2 *2 if i-k>1 else 1  # add in the quote characters
            raise ValueError('Expecting "," delimiter: line %s column %s (after "%s")\nEither you forgot a comma or to escape a quote. Double quotes need to be printed as \\"' % (newlines, col,' '.join(('  '+talkStrs[i-1]).rsplit(None,5)[1:])))
 
+    # We strip initial spaces because we want to format the JSON file nicely, with indentation and stuff, but we don't want all of the initial spaces to creep in.
+    # Problem is, in markdown indentation has special meaning. The solution here: if a line starts with three dots, remove those three dots. Subsequent spaces are 
+    # kept.
     for i in range(1,len(talkStrs),2):
-        talkStrs[i] = '\\n'.join([x.strip(' ') for x in talkStrs[i].replace('\r','').split('\n')])
+        talkStrs[i] = '\\n'.join([x.strip(' ').strip('...') for x in talkStrs[i].replace('\r','').split('\n')])
 
     talkStr = '"'.join(talkStrs)
     
