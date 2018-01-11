@@ -54,6 +54,7 @@ except ImportError:
    os.system("pip install --user markdown")
    import markdown
 
+import markdown.extensions.fenced_code
 
 # Email things
 from email.mime.multipart import MIMEMultipart
@@ -201,9 +202,44 @@ class JuvitopExtension(markdown.Extension):
         md.inlinePatterns['link'] = myLinkPattern(markdown.inlinepatterns.LINK_RE, md)
 
 
+FENCED_BLOCK_RE = re.compile(
+    r'^[ ]*```[ ]*(\{(?P<lang>[a-zA-Z0-9_-]*)\})?[ ]*\n(?P<code>.*?)```[ ]*\n',
+    re.MULTILINE|re.DOTALL
+)
+
+CODE_WRAP = '<pre><code%s>%s</code></pre>'
+LANG_TAG = ' class="%s"'
+
+
+class myFencedCodeExtension(markdown.Extension):
+    def extendMarkdown(self, md, md_globals):
+        """ Add FencedBlockPreprocessor to the Markdown instance. """
+        md.registerExtension(self)
+        md.preprocessors.add('fenced_code_block',myFencedBlockPreprocessor(md),'>normalize_whitespace')
+
+
+class myFencedBlockPreprocessor(markdown.extensions.fenced_code.FencedBlockPreprocessor):
+    def run(self, lines):
+        """ Match and store Fenced Code Blocks in the HtmlStash. """
+        text = "\n".join(lines)
+        while 1:
+            m = FENCED_BLOCK_RE.search(text)
+            if m:
+                lang = ''
+                if m.group('lang'):
+                    lang = LANG_TAG % m.group('lang')
+                code = CODE_WRAP % (lang, self._escape(m.group('code')))
+                placeholder = self.markdown.htmlStash.store(code, safe=True)                
+                text = '%s\n%s\n%s'% (text[:m.start()], placeholder, text[m.end():])
+            else:
+                break
+        return text.split("\n")
+
 myExtension = JuvitopExtension()
 mymarkdown = markdown.Markdown(extensions=[myExtension])
 
+readmeExtension = myFencedCodeExtension()
+readmeMarkdown = markdown.Markdown(extensions=[readmeExtension]).convert
 
 
 

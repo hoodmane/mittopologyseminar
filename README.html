@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+	
+<?xml-stylesheet type="text/xsl" href="http://www.w3.org/Math/XSL/mathml.xsl"?> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:pref="http://www.w3.org/2002/Math/preference"  pref:renderer="css">
+    <script type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntilConfig"></script>
+	 <script src="./local-mathjax-macros.js"></script> <head>
+  <link rel="stylesheet" href="github-markdown.css" type="text/css" />
+  <title>MIT Topology Seminar Readme</title>
+  <meta name="google-site-verification" content="UFraLMG4ydAejwwTH5OpiSSYG3FGodWADGdCBmwV3hc" />
+</head>
+
+<body>
+
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+<article class="markdown-body">
+        <h1>How to organize the Topology Seminar:</h1>
+<h2>At the beginning of the semester:</h2>
+<ul>
+<li>Email help@math.mit.edu and ask them to add your account to the topology group.</li>
+<li>ssh into runge.mit.edu and navigate to the directory <code>/math/www/docs/topology</code>.</li>
+<li>Change the contact info in <code>config.py</code> (the email MUST BE yourusername@mit.edu)</li>
+<li>Make sure yourusername@mit.edu is on the mit-topology google group. If it isn't, email Mike Hopkins and ask him to add you: mjh@math.harvard.edu</li>
+<li>Run <code>fix-permissions.sh</code></li>
+<li>Make a new file for the new semester <code>seminar_data/year_season.json</code>, so for instance <code>2018_Spring.json</code> or <code>2018_Fall.json</code>.</li>
+<li>Haynes will send you a list of speakers and dates. Add the talk info to the json file for the current semester (see below for how to structure the file).  </li>
+<li>Run <code>make-index3.1.py</code> (with no arguments) to regenerate the main page and the past seminars page using the talk data in <code>talks.json</code>, generate the posters that are linked from the webpage, and the emails.</li>
+<li>If the speaker's institution isn't in <code>institutionTable.csv</code>, the script will complain to you and you will need to add the institution there.
+  Check to make sure that it isn't already in there with a different abbreviation -- if it is, please add your favorite abbreviation to the list of abbreviations for that institution.</li>
+</ul>
+<h2>During the semester:</h2>
+<ul>
+<li>Whenever Haynes emails you titles, abstracts, or new speakers, add the new info to the json file and rerun <code>make-index3.1.py</code></li>
+<li>Jon Harmon will automatically be emailed two weeks in advance of each seminar, and also whenever you make changes to talks that are happening in less than two weeks. There is a 10 minute delay before changes emails are sent to Jon, hopefully so that if you make a sequence of small changes all in a row, they will get combined into one email.</li>
+<li>There is a cronjob that automatically emails the list ( mit-topology@googlegroups.com ) two days before the seminar.</li>
+<li>If the talk is cancelled or changed you will likely need to email the list by hand.</li>
+<li>If you ever get permission related errors, run <code>fix-permissions.sh</code> again.</li>
+</ul>
+<hr />
+<h1>The json file</h1>
+<h2>Overall structure:</h2>
+<p>The json file should be structured as a list of talks:</p>
+<p><pre><code class="javascript">     [
+        talk1,
+        talk2,
+        ...
+    ]
+    </code></pre>
+    Each talk is an object structured as follows:</p>
+<p><pre><code class="javascript">        {
+            &quot;date&quot;: &quot;date1&quot;,
+            &quot;speaker&quot;: &quot;speaker1&quot;,
+            &quot;institution&quot;: &quot;speaker's institution&quot;,
+            &quot;website&quot;: &quot;speaker's website's url&quot;,
+            &quot;title&quot;: &quot;talk title&quot;,
+            &quot;abstract&quot;: &quot;talk abstract&quot;
+        }
+    </code></pre>
+    There are more fields, which are detailed below.</p>
+<h2>LaTeX in the json file:</h2>
+<ul>
+<li>LaTeX markup works; macro definitions are local to each talk and should go in the "macros" field.</li>
+<li>In the emails, all dollar signs and backslashes will be deleted, otherwise LaTeX will be left as-is.
+  You should define macros to make sure this produces a good result, for instance if the abstract uses
+  <code>\mathcal{C}</code>, you should make a local macro <code>\def\C{\mathcal{C}}</code> and write <code>\C</code> so that in the email it will appear as just "C" rather than "mathcal{C}".</li>
+<li>If you want to see what the email looks like ahead of time to make sure that everything is right, run <code>make-index3.1.py --test-email</code> and it will send the email just to you.</li>
+<li>
+<p>If this produces an unsatisfactory email, use the <code>email_abstract</code> field to specify by hand what the plaintext version of the abstract should look like.</p>
+</li>
+<li>
+<p>Double quotes should be escaped: \" e.g.,  <code>&lt;a href=\"the url\"&gt;link text&lt;/a&gt;</code></p>
+</li>
+<li>Use latex quotes <code>``...''</code> when the quotes are going to be printed (they will be substituted back to normal quotes where appropriate).</li>
+<li>Accents should be written using unicode: &#246; not \"o, &#233; not \'e.</li>
+<li>Math should be written like <code>$\inf$</code></li>
+<li>Passing an empty string to any talk field is treated in the same way as omitting the field.</li>
+</ul>
+<h2>Common Fields</h2>
+<p>A talk is a JSON object which will typically have the following fields:</p>
+<ul>
+<li>
+<p>date:
+  Every talk must have a date, formatted "year/month/day". Talks without dates will be ignored.</p>
+</li>
+<li>
+<p>speaker:
+  The name of the speaker, formatted "Firstname Lastname". Talks without speakers will be ignored.</p>
+</li>
+<li>
+<p>institution:
+  Every talk should have (at least one) institution.
+  Multiple institutions should be separated by semicolons, e.g., <code>"University of Oslo; MIT"</code>.
+  Each institution should appear as a name or key in institutionTable.csv which is a lookup table for the math department urls.
+  (If for some reason the institution has no url, leave the url entry empty.)
+  If you want the name of an institution to be displayed with a semicolon for some reason, you must define an abbreviation in institutionTable.</p>
+</li>
+<li>
+<p>website:
+  The speaker's home webpage. If present, the speaker's name on the webpage will appear as a link to their homepage.</p>
+</li>
+<li>
+<p>title:
+  The talk's title. Even if this title is absent, the talk entry will show up on the website with a blank title field.</p>
+</li>
+<li>
+<p>macros:
+  Macro definitions that are local to this talk. Use liberally to make sure the email looks good. For instance, if <code>\mathcal{C}</code> is used, even if it's only used once,
+  you should define <code>\C</code> to be <code>\mathcal{C}</code> by saying <code>"macros" : "\def\C{\mathcal{C}}"</code> and use <code>\C</code> in the abstract. 
+  This way, instead of appearing as <code>mathcal{C}</code> in the email it will appear as <code>C</code></p>
+</li>
+<li>
+<p>abstract:
+  The talk's abstract, optional. Newlines in the abstract work the same way as in a Latex file -- a single newline does nothing, a blank line starts a new paragraph.
+  All accented characters should be in unicode (don't use latex style accents). </p>
+</li>
+<li>
+<p>email_abstract:
+  The abstract is included in the email sent out to the topology mailing list. By default the way that the email is generated is by taking the abstract and
+  deleting all backslashes and dollar signs. This can produce an unsatisfactory result when the original abstract contains complicated math. The email_abstract
+  field specifies exactly how the abstract should be included in the email, usually by replacing the offensive math expressions with words.</p>
+</li>
+</ul>
+<h2>Less commonly used fields:</h2>
+<ul>
+<li>
+<p>no_email: Any nonempty value prevents any email from being sent for the talk. You will have to send your own by hand. Use this if something really weird happens (three talks in a day?
+two talks in the same week on different days?) or if you want to customize the email for some reason. Note that if there are multiple talks on the same day,
+putting this flag into ANY OF THEM suppresses the email for all of them.</p>
+</li>
+<li>
+<p>alt_weekday: If the talk is not on a monday, you must say e.g., '"alt_weekday": "Thursday"'. This is just to catch date typos.</p>
+</li>
+<li>
+<p>alt_time: An alternate time for the seminar, in 24 hour format hour:minute (other than standard_time defined in config.py, currently 16:30)</p>
+</li>
+<li>
+<p>alt_room: An alternate room for the seminar.</p>
+</li>
+<li>
+<p>change_reason: The reason the time or room has been changed. For example, "due to the Simon's lectures" or "because of the MIT holiday".</p>
+</li>
+<li>
+<p>notice: A special notice. This goes on the website and into the email (but not into the poster) if email_notice is not present. Note that a notice is automatically
+generated on the website and the email is automatically updated if 'alt_time' or 'alt_room' is present.</p>
+</li>
+<li>
+<p>email_notice: A special notice, which only goes into the email. Overrides notice for the purpose of the email (but only if it's nonempty).</p>
+</li>
+<li>
+<p>cancellation_reason: The reason the talk is cancelled. Will appear in GIANT BOLD LETTERS on the website.</p>
+</li>
+</ul>
+<hr />
+<h1>Notes/ changelog:</h1>
+<ul>
+<li>if you have a speaker, you must have an institution for the speaker</li>
+<li>requirements: python 2.7</li>
+<li>not valid date message will print if alternate time is formatted wrong</li>
+</ul>
+<h2>Michael Donovan writes:</h2>
+<ol>
+<li>if you get an error message like
+  ~~~~
+  Traceback (most recent call last):
+    File "make-index2.py", line 189, in <module>
+      day = datetime.strptime(row['DATE'], '%Y/%m/%d')
+  KeyError: 'DATE'
+  ~~~~
+it is likely to be because talks.csv has been saved by your editor as a
+UTF-8 with BOM. The BOM is three bytes at the start of the file which get
+misconstrued as part of the <code>DATE</code> key, killing the program. Use a decent
+editor like Notepad++ to change the encoding of <code>talks.csv</code> to ANSI.</li>
+<li>I added the line <code>os.system('chmod 755 posters/%s.pdf' % (talk.name))</code>
+in order to automatically give the posters the correct permissions.
+I wonder if the previous organisers did this manually.</li>
+</ol>
+<h2>Eva Belmont writes:</h2>
+<p>I modified <code>make-index2.py</code> to use mathjax instead of some tex-to-html converter
+that doesn't support as many special characters; the new version is called
+<code>make-index2.1.py</code>. It looks like someone already tried this before, and made the
+opposite decision? Mathjax doesn't support LaTeX     textmode accents; see
+<code>convert_accents()</code> in the script. The list of translations there isn't complete.</p>
+<p>The bit about <code>MathJax.Hub.Configured();</code> is because of this:
+https://groups.google.com/forum/#!msg/mathjax-users/J-36V22-G9Q/dG4i9vOdEK4J</p>
+<p>I added <code>email.template</code> etc.</p>
+<p>I messed with the poster template; I think it looks better now, but it does
+mean that the posters starting in Fall 2015 have a different format than the
+older ones. If the abstract is really long, you might have to adjust some of the
+parameters in <code>poster.template</code>.</p>
+<h2>Hood Chatham writes:</h2>
+<p>I replaced <code>talks.csv</code> with <code>talks.json</code> because there are lots of rare optional fields,
+so it's more appropriate to have named fields. This way not every entry has to have
+exactly the right number of commas in a row e.g., <code>2016/12/12,,,,"Ismar Volic</code> and
+also since the abstract is usually many lines long that doesn't work naturally in a csv file.</p>
+<p>I consolidated all of the stuff that a new organizer will certainly need to change in <code>config.py</code></p>
+<p>I messed around with the representation of the abstracts to fix the behavior of backslashes and newlines as follows:</p>
+<ol>
+<li>Newlines behave like they do in LaTeX -- a single newline has no effect, two newlines in a row create a new paragraph</li>
+<li><code>\"</code> represents an escaped quote</li>
+<li><code>\anythingelse</code> represents a LaTeX command</li>
+</ol>
+<p>I made the website work without javascript by using some css magic. To be clear,
+only the foldy-thingies for the abstract and semesters work without javascript, the math will just display as
+raw TeX input.</p>
+<p>I automated the email sending process. If the talk has all of its key fields (<code>speaker</code>, <code>title</code>, <code>abstract</code>),
+then on Saturday morning it will send an appropriate email to the list. If not all of these fields are
+filled out, it will send a reminder email to just the organizer to rectify the situation. The automated email
+fills out it's <code>From:</code> field with <code>organizer_email</code>, which must be <code>something@mit.edu</code>. You also must be subscribed
+to the topology list through <code>something@mit.edu</code></p>
+<h2>TODO:</h2>
+<ul>
+<li>Document things more.</li>
+<li>Send no talk today email with <code>cancellation_reason</code> or generic one if no reason given but no talk given in between actual talks? </li>
+<li>Send an extra email warning about late week talks? </li>
+<li>Auto-detect <code>no_email</code> cases? </li>
+<li>Send email to organizer telling them to write their own email(s) in no email cases?</li>
+</ul>
+</article>
+
+</body> </html> 

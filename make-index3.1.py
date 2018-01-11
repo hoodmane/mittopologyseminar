@@ -48,6 +48,8 @@ htmlEmailTemplate = jinjaEnv.get_template('email.html').render
 textDoubleEmailTemplate = jinjaEnv.get_template('email_double_header.text').render
 htmlDoubleEmailTemplate = jinjaEnv.get_template('email_double_header.html').render
 
+markdownTemplate = jinjaEnv.get_template('markdown.html').render
+
 dategetter = lambda x: x.date.date()
 timegetter = lambda x: x.date
 
@@ -414,7 +416,7 @@ def makeoldpasttalks():
                                   website=talk['WEBSITE'], title=talk['TITLE'],
                                   abstract=talk['ABSTRACT'].replace("\\\\","\n\n"), notice=talk['SPECIAL']))
     if args.make_old_posters:
-        makeposters(talks,10)
+        makeposters(talks,1,0)
     past = makepasttalkslist(talks)
     past = past.encode('ascii', 'xmlcharrefreplace')
     writeFile('oldpastseminars.html', past)
@@ -579,3 +581,5 @@ writeFile('links.html',
         )
     )
 )
+
+writeFile('README.html',markdownTemplate(dict(content = readmeMarkdown(readFile('README.md').encode('ascii', 'xmlcharrefreplace')))))
