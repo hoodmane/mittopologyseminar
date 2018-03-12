@@ -456,8 +456,8 @@ if args.make_old_talks:
 # Note that the semester files are not processed in order, but we don't care because we sort the individual talks by date.
 # In make-juvitop.py, the seminar_data files are sorted, we can copy the code from there if at some point we need to sort them here too.
 talks = []
-for semJSON in os.listdir('seminar_data'):
-    for talk in processJSON('seminar_data/'+semJSON):
+for semJSON in glob.glob('seminar_data/*.json'):
+    for talk in processJSON(semJSON):
         talks.append(Talk(talk,**talk))
         if talks[-1].invalid:
             talks.pop()
@@ -516,7 +516,7 @@ for g in talkgroups:
             
 
 print 'Generating posters'
-#makeposters(upcoming)
+makeposters(upcoming)
 
 print 'Generating emails'
 os.system("rm emails/email*")
