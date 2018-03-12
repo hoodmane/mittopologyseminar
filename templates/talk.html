@@ -33,6 +33,9 @@
 {% if notice: %}
   <p class="notice">{{ notice }}</p>
 {% endif %}
+{%  if notes:  %}
+        <div class="notes">{{ notes }}</div>
+{%  endif %}
 {% if abstract: %}
         <div class="abstract">
                 {{ abstract_html }}

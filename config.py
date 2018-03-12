@@ -1,6 +1,6 @@
-organizer_first_name = "Peter"
-organizer_last_name = "Haine"
-organizer_email = "phaine@mit.edu"  # This must be your @mit.edu email.
+organizer_first_name = "Rasmus"
+organizer_last_name = "Johansen"
+organizer_email = "rasmusj@mit.edu"  # This must be your @mit.edu email.
 
 webmaster_email = "hood@mit.edu"
 

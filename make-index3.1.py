@@ -50,6 +50,11 @@ htmlDoubleEmailTemplate = jinjaEnv.get_template('email_double_header.html').rend
 
 markdownTemplate = jinjaEnv.get_template('markdown.html').render
 
+markdown = markdown.Markdown(extensions=[myExtension])
+markdown.notes_path = 'notes/'
+markdown.base_path = ''
+
+
 dategetter = lambda x: x.date.date()
 timegetter = lambda x: x.date
 
@@ -78,7 +83,7 @@ class Talk:
         date,  alt_time = None, alt_weekday = None, alt_room = None,
         cancellation_reason = None, change_reason = None, notice = None, email_notice = None, macros = None,
         title = None, abstract = None, email_abstract = None, no_email=False,
-        speaker = None,  institution = None, website = None
+        speaker = None,  institution = None, website = None, notes = None
     ):
         self.jsondict = jsondict
         if not (speaker or cancellation_reason):
@@ -124,6 +129,9 @@ class Talk:
         self.title_html = convert_quotes(title) if title else None
         self.title_email = delatex(convert_quotes(title)) if title else None
         self.abstract = abstract
+        if(notes):
+            self.notes = markdown.convert(notes)
+            
 
         self.email_abstract = None
         self.email_abstract_html = None
@@ -416,7 +424,7 @@ def makeoldpasttalks():
                                   website=talk['WEBSITE'], title=talk['TITLE'],
                                   abstract=talk['ABSTRACT'].replace("\\\\","\n\n"), notice=talk['SPECIAL']))
     if args.make_old_posters:
-        makeposters(talks,1,0)
+        makeposters(talks,10)
     past = makepasttalkslist(talks)
     past = past.encode('ascii', 'xmlcharrefreplace')
     writeFile('oldpastseminars.html', past)
@@ -508,7 +516,7 @@ for g in talkgroups:
             
 
 print 'Generating posters'
-makeposters(upcoming)
+#makeposters(upcoming)
 
 print 'Generating emails'
 os.system("rm emails/email*")

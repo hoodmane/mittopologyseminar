@@ -43,10 +43,12 @@
 \begin{center}
 
 {\scalefont{5}Topology Seminar} \medskip\vspace{1.2cm}
-
-{\scalefont{3.6}{\bf \VAR{speaker.text} }}\\[20pt] 
+{\scalefont{3.6}{\bf \VAR{speaker.text} }\\[20pt] }
 {\scalefont{2}of \VAR{institutionText}  will be speaking on}\\\vspace{30pt} 
-{\scalefont{3.6}\VAR{title_poster}}\\[20pt] 
+% It's important here to end the paragraph inside the group, because changing the font size changes the 
+% linespread but the linespread is restored when the group ends and the paragraph is formatted with whatever
+% the linespread is when the paragraph ends.
+{\scalefont{3.6}\VAR{title_poster}\\[20pt] }
 {\scalefont{2}on \VAR{date.strftime("%B %-d at %-I:%M")} in \\[6pt]
 MIT Room \VAR{room}}\\ \end{center}
 

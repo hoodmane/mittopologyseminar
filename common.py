@@ -104,7 +104,7 @@ def latexPoster(name, contents):
    writeFile("posters/%s.tex" % name, contents)
    os.system('lualatex -interaction=batchmode "posters/%s.tex" >/dev/null' % name)
    os.system('mv "%s.pdf" posters/ && rm -f "%s."*' % (name, name))
-   #os.system("chmod o+r posters/%s.pdf" % name)
+   os.system("chmod o+r posters/%s.pdf" % name)
 
 
 ### String sanitization commands
@@ -322,8 +322,11 @@ def processJSON(fileName):
     # We strip initial spaces because we want to format the JSON file nicely, with indentation and stuff, but we don't want all of the initial spaces to creep in.
     # Problem is, in markdown indentation has special meaning. The solution here: if a line starts with three dots, remove those three dots. Subsequent spaces are 
     # kept.
+    def stripInitialElipses(s):
+        return s if len(s)<3 or s[:3]!="..." else s[3:]
+    
     for i in range(1,len(talkStrs),2):
-        talkStrs[i] = '\\n'.join([x.strip(' ').strip('...') for x in talkStrs[i].replace('\r','').split('\n')])
+        talkStrs[i] = '\\n'.join([stripInitialElipses(x.strip(' ')) for x in talkStrs[i].replace('\r','').split('\n')])
 
     talkStr = '"'.join(talkStrs)
     
