@@ -296,35 +296,37 @@ class Email:
         # TODO: The mixture of the abstract / noabstract and one talk two talks logic here is a little muddled. Straighten it out?    
         # TODO: Finish the setup for alt_time and alt_room for single talks.
         # if there is an abstract, just make an email to the google group
-        if talk.abstract:
-    	   if len(talks) == 1:
-              self.textEmail = re.sub("<.*?>","",textEmailTemplate(email_dict))
-              self.htmlEmail = htmlEmailTemplate(email_dict)
-           else:
-              self.textEmail = textDoubleEmailTemplate(email_dict)
-              self.htmlEmail = htmlDoubleEmailTemplate(email_dict)
-           msg.attach(MIMEText(self.textEmail,'plain', 'UTF-8'))
-           msg.attach(MIMEText(self.htmlEmail,'html', 'UTF-8'))
-           self.message = msg
-           self.list_message = msg
-           self.message_no_abstract = None
-        # if not, make a '-noabs' email to the group and the main email to the organizer complaining
-        else:
-           email_dict['abstract'] = ''
-           msg.attach(MIMEText(textEmailTemplate(email_dict), 'plain', 'UTF-8'))
-           msg.attach(MIMEText(htmlEmailTemplate(email_dict), 'html', 'UTF-8'))
-           self.message_no_abstract = msg
-           self.list_message = msg
-                   
-           msg = MIMEMultipart('alternative')
-           msg['From'] = organizer_email
-           msg['Reply-to'] = organizer_email
-           msg['To'] = organizer_email
-           msg['Subject'] = "No abstract for " +talk.date.strftime("%A") + "'s talk"
-           email_dict['extra_prefix'] = \
-             "Either add an abstract or don't, then run '%s --send-email' to send the email.\n\n " % (scriptname,scriptname)
-           msg.attach(MIMEText(textEmailTemplate(email_dict), 'plain', 'UTF-8'))
-           self.message = msg
+
+       if not talk.abstract:
+          email_dict['abstract'] = ''
+
+	   if len(talks) == 1:
+          self.textEmail = re.sub("<.*?>","",textEmailTemplate(email_dict))
+          self.htmlEmail = htmlEmailTemplate(email_dict)
+       else:
+          self.textEmail = textDoubleEmailTemplate(email_dict)
+          self.htmlEmail = htmlDoubleEmailTemplate(email_dict)
+       msg.attach(MIMEText(self.textEmail,'plain', 'UTF-8'))
+       msg.attach(MIMEText(self.htmlEmail,'html', 'UTF-8'))
+       self.message = msg
+       self.list_message = msg
+       self.message_no_abstract = None        
+        
+       # if not, make a '-noabs' email to the group and the main email to the organizer complaining
+       if not talk.abstract:
+          email_dict['abstract'] = ''
+          self.message_no_abstract = msg
+          self.list_message = msg
+                  
+          msg = MIMEMultipart('alternative')
+          msg['From'] = organizer_email
+          msg['Reply-to'] = organizer_email
+          msg['To'] = organizer_email
+          msg['Subject'] = "No abstract for %s's talk" % talk.date.strftime("%A")
+          email_dict['extra_prefix'] = \
+            "Either add an abstract or don't, then run '%s --send-email' to send the email.\n\n " % (scriptname,scriptname)
+          msg.attach(MIMEText(textEmailTemplate(email_dict), 'plain', 'UTF-8'))
+          self.message = msg
                
         self.writeToFile()
            
