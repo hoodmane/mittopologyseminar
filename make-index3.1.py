@@ -5,6 +5,7 @@
 ####
 
 from common import *
+scriptname = os.path.basename(__file__)
 from multiprocessing import Pool
 import signal
 
@@ -321,7 +322,7 @@ class Email:
            msg['To'] = organizer_email
            msg['Subject'] = "No abstract for " +talk.date.strftime("%A") + "'s talk"
            email_dict['extra_prefix'] = \
-             "Either add an abstract and run '%s --send-email' or run '%s --send-email-no-abs'.\n\n " % (scriptname,scriptname)
+             "Either add an abstract or don't, then run '%s --send-email' to send the email.\n\n " % (scriptname,scriptname)
            msg.attach(MIMEText(textEmailTemplate(email_dict), 'plain', 'UTF-8'))
            self.message = msg
                
@@ -330,7 +331,7 @@ class Email:
         
 
     def sendToOrganizer(self):
-        self.list_message.replace_header('To', webmaster_email)
+        self.list_message.replace_header('To', "hood@mit.edu")# webmaster_email)
         sendEmail(self.list_message)
         print("Sent email to organizer")
         return

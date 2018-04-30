@@ -1,0 +1,100 @@
+[
+    {
+	"date": "2018/02/12",
+	"speaker": "Bena Tshishiku",
+	"institution": "Harvard",
+	"website": "http://www.math.harvard.edu/~bena/",
+	"title": "Cohomology of arithmetic groups and characteristic classes of manifold bundles",
+	"abstract": "A basic problem in the study of fiber bundles is to compute the ring $H^*(BDiff(M))$ of characteristic classes of bundles with fiber a smooth manifold M. When M is a surface, this problem has ties to algebraic topology, geometric group theory, and algebraic geometry. Currently, we know only a very small percentage of the total cohomology. In this talk I will explain some of what is known and discuss some new characteristic classes (in the case dim M >>0) that come from the unstable cohomology of arithmetic groups. "
+    },
+    {
+	"date": "2018/03/05",
+	"speaker": "Alex Suciu",
+	"institution": "Northeastern University",
+	"website": "https://web.northeastern.edu/suciu/",
+	"title": "Algebraic models, duality, and resonance",
+	"abstract": "I will discuss some of the interplay between duality and finiteness properties of spaces and groups, the structure of differential graded algebra models associated to them, and the geometry of the corresponding cohomology jump loci.",
+	"notes": "[Slides](seminar-sucio-spring2018.pdf)"
+    },
+    {
+            "date": "2018/03/12",
+            "speaker": "Mark Behrens",
+            "institution": "University of Notre Dame",
+            "website": "https://www3.nd.edu/~mbehren1/",
+            "title": "A $C_2$-equivariant analog of Mahowald's Thom spectrum theorem",
+            "abstract": "I will show that the $C_2$-equivariant Eilenberg-MacLane spectrum associated to the constant mod 2 Mackey functor can be realized as a Thom spectrum.  This is joint work with Dylan Wilson."
+    },
+    {
+            "date": "2018/03/19",
+            "speaker": "Maria Basterra",
+            "institution": "University of New Hampshire",
+            "website": "https://ceps.unh.edu/faculty/basterra",
+            "title": "Operads with Homological Stability detect Infinite Loop Spaces.",
+            "abstract": "An earlier result of Tillmann shows that a carefully constructed surface operad detects infinite loop spaces in the sense that its algebras group complete to infinite loop spaces.  An important ingredient in this result is Harer's homological stability theorem for mapping class groups of surfaces.
+
+Motivated by this example, we consider a general class of operads in the category of spaces that satisfy certain homological stability conditions (OHS). We prove that such operads detect infinite loop spaces in the sense above.  In fact, we show that for these operads  group completion provides a functor from their category of algebras to the category of infinite loop spaces.
+
+I will sketch the proof of this result and, as time permits, present some examples and applications.",
+	    "notes": "[Slides](seminar-basterra-spring2018.pdf)"
+    },
+    {
+            "date": "2018/04/02",
+            "speaker": "Sam Nariman",
+            "institution": "Northwestern University",
+            "website": "http://www.math.northwestern.edu/~sam/",
+            "title": "On the moduli space of flat symplectic surface bundles.",
+            "abstract": "There are at least three different approaches to construct characteristic invariants of flat symplectic bundle. Reznikov generalized Chern-Weil theory for finite dimension Lie groups to the infinite dimensional group of symplectomorphisms. He constructed nontrivial invariants of symplectic bundles whose fibers are diffeomorphic to complex projective spaces. Kontsevich used formal symplectic geometry to build interesting classes that are not yet known to be nontrivial.  For surface bundles whose holonomy groups preserve the symplectic form, Kotschick and Morita used the flux homomorphism to construct many nontrivial stable classes.
+
+In this talk, we introduce infinite loop spaces whose cohomolgy groups describe the stable characteristic invariants of symplectic surface bundles. As an application, we give a homotopy theoretic description of Kotschick and Morita's classes and prove a result about codimension 2 foliations that implies the nontriviality of KM classes."
+    },
+    {
+	"date": "2018/04/09",
+	"speaker": "Gijs Heuts",
+	"institution": "Utrecht",
+	"website": "https://www.uu.nl/staff/GSKSHeuts",
+	"title": "Lie algebras and $v_n$-periodic spaces",
+	"abstract": "I will discuss a homotopy theory obtained from that of pointed spaces by inverting the maps inducing isomorphisms in $v_n$-periodic homotopy groups. The case $n = 0$ corresponds to rational homotopy theory. In analogy with Quillen’s results in the rational case, I will outline how this $v_n$-periodic homotopy theory is equivalent to the homotopy theory of Lie algebras in $T(n)$-local spectra. One can also compare it to the homotopy theory of cocommutative coalgebras in $T(n)$-local spectra. For $n > 0$ these theories are no longer equivalent; the failure can be expressed in terms of the convergence of the Goodwillie tower of the identity in periodic homotopy."
+    },
+    {
+            "date": "2018/04/23",
+            "speaker": "David Gepner",
+            "institution": "Purdue",
+            "website": "https://www.math.purdue.edu/~dgepner/",
+            "title": "K-theoretic obstructions to bounded t-structures",
+            "abstract": "No abstract"
+    },
+    {
+            "date": "2018/04/30",
+            "speaker": "Eva Belmont",
+            "institution": "MIT",
+            "website": "https://math.mit.edu/~ebelmont/",
+            "title": "Localization at $b_{10}$ in the stable category of comodules over the Steenrod reduced powers ",
+            "abstract": "Chromatic localization can be seen as a way to calculate a particular infinite piece of the homotopy of a spectrum. For example, the (finite) chromatic localization of a $p$-local sphere is its rationalization, and the corresponding chromatic localization of its Adams $E_2$ page recovers just the zero-stem. We study a different localization of Adams $E_2$ pages for spectra, which recovers more information than the chromatic localization. This approach can be seen as the analogue of chromatic localization in a category related to the derived category of comodules over the dual Steenrod algebra, a setting in which Palmieri has developed an analogue of chromatic homotopy theory. We work at $p=3$ and compute the $E_2$ page and first nontrivial differential of a spectral sequence converging to $b_{10}^{-1}Ext_P^*(\mathbb{F}_3,\mathbb{F}_3)$ (where $P$ is the Steenrod reduced powers), and give a complete calculation of other localized Ext groups, including $b_{10}^{-1}Ext_P^*(\mathbb{F}_3,\mathbb{F}_3[\xi_1^3])$."
+    },
+    {
+	"date": "2018/05/07",
+	"speaker": "Jeremiah Heller",
+	"institution": "UIUC",
+	"website": "https://faculty.math.illinois.edu/~jbheller/",
+	"title": "A motivic homotopy limit problem",
+	"abstract": "One formulation of Segal's conjecture is as a comparison between fixed points and homotopy fixed points of the sphere, for a finite group.  I'll discuss a generalization for the motivic sphere, based on joint work with several collaborators.",
+	"alt_time": "15:00",
+	"alt_room": "2-236"
+    },
+    {
+            "date": "2018/05/07",
+            "speaker": "Vesna Stojanska",
+            "institution": "UIUC",
+            "website": "https://faculty.math.illinois.edu/~vesna/",
+            "title": "Homotopical Motivic Galois Extensions",
+            "abstract": "I will discuss a formal framework for homotopical Galois extensions, and consider a couple of different adaptations in the context of motivic homotopy theory. Each will be accompanied with interesting basic examples, including Eilenberg-MacLane and K-theory spectra. This is based on work with Beaudry, Heller, Hess, Kedziorek, and Merling."
+    },
+    {
+            "date": "2018/05/14",
+            "speaker": "Hiro Tanaka",
+            "institution": "Harvard",
+            "website": "http://math.harvard.edu/~hirolee/",
+            "title": "",
+            "abstract": ""
+    },
+]
