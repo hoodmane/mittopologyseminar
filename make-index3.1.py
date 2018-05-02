@@ -66,6 +66,7 @@ parser.add_argument('--make-old-posters', action = 'store_true')
 parser.add_argument('--make-old-talks'  , action = 'store_true')
 parser.add_argument('--send-email', nargs='?', const='most_recent', default=False)
 parser.add_argument('--test-email', nargs='?', const='most_recent', default=False)
+parser.add_argument('--wm-test-email', nargs='?', const='most_recent', default=False)
 
 # If the user ran it with "python make-index3.1.py" instead of ./make-index3.1.py, the first argument will be make-index3.1.py
 if sys.argv[0].find("make-index") != -1:
@@ -297,23 +298,23 @@ class Email:
         # TODO: Finish the setup for alt_time and alt_room for single talks.
         # if there is an abstract, just make an email to the google group
 
-       if not talk.abstract:
-          email_dict['abstract'] = ''
+        if not talk.abstract:
+           email_dict['abstract'] = ''
 
-	   if len(talks) == 1:
+        if len(talks) == 1:
           self.textEmail = re.sub("<.*?>","",textEmailTemplate(email_dict))
           self.htmlEmail = htmlEmailTemplate(email_dict)
-       else:
+        else:
           self.textEmail = textDoubleEmailTemplate(email_dict)
           self.htmlEmail = htmlDoubleEmailTemplate(email_dict)
-       msg.attach(MIMEText(self.textEmail,'plain', 'UTF-8'))
-       msg.attach(MIMEText(self.htmlEmail,'html', 'UTF-8'))
-       self.message = msg
-       self.list_message = msg
-       self.message_no_abstract = None        
+        msg.attach(MIMEText(self.textEmail,'plain', 'UTF-8'))
+        msg.attach(MIMEText(self.htmlEmail,'html', 'UTF-8'))
+        self.message = msg
+        self.list_message = msg
+        self.message_no_abstract = None        
         
        # if not, make a '-noabs' email to the group and the main email to the organizer complaining
-       if not talk.abstract:
+        if not talk.abstract:
           email_dict['abstract'] = ''
           self.message_no_abstract = msg
           self.list_message = msg
@@ -332,8 +333,9 @@ class Email:
            
         
 
-    def sendToOrganizer(self):
-        self.list_message.replace_header('To', "hood@mit.edu")# webmaster_email)
+    def sendToOrganizer(self,target_email):
+        self.list_message.replace_header('To', target_email)
+        msg['To'] = organizer_email
         sendEmail(self.list_message)
         print("Sent email to organizer")
         return
@@ -365,10 +367,13 @@ class Email:
 
 def makeemail(talks,temp=[]):
     email = Email(talks)
-    if args.test_email:
-        if not temp:
-            email.sendToOrganizer()
+    if not temp:
+        if args.test_email:
+            email.sendToOrganizer(organizer_email)
+        if args.wm_test_email:
+            email.sendToOrganizer(webmaster_email)
             temp.append(1)
+            
     return email
 
         
@@ -489,20 +494,21 @@ for k, g in groupby(upcoming,dategetter):
 ## for the email to be sent, so seems that the email has to be sent by a second program which is emails/sendEmailToJon.py
 
 def sendEmailToJon(date, subject, body,newJsonDicts):
-   dataFileName = date.strftime('emails/dict-%b-%d.dat') 
-   emailFileName = date.strftime('emails/sending-%b-%d.dat')
+   dataFileName = date.strftime('emails/dict-%m-%d.dat') 
+   emailFileName = date.strftime('emails/sending-%m-%d.dat')
    if(not os.path.isfile(emailFileName)):
-      subprocess.Popen(['nohup', 'sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('/dev/null', 'w'), stderr=open('emails/testerr.log', 'w'))
+      subprocess.Popen(['nohup', 'sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('/dev/null', 'w'), stderr=open('/dev/null', 'w')) 
+       # for testing, replace /dev/null with an actual file...
    writeFile(emailFileName, pickle.dumps(dict(subject = subject, body = body,newJsonDicts = newJsonDicts, dataFileName = dataFileName)))      
 
 for g in talkgroups:
    # dataFileName is the name of the file storing the record for the current talk if an email has been sent to Jon yet.
-   dataFileName = g[0].date.strftime('emails/dict-%b-%d.dat') 
+   dataFileName = g[0].date.strftime('emails/dict-%m-%d.dat') 
    newJsonDicts = map(lambda x: x.jsondict,g)
    try:
       oldJsonDicts = pickle.load(file(dataFileName))
    except: # dataFileName doesn't exist, so haven't sent Jon an email yet for this talk, check if it's soon enough that we should send it
-      if (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
+      if 0 <= (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
         sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talk=g[0])), newJsonDicts)
         
    else: # Have sent Jon an email
@@ -516,13 +522,22 @@ for g in talkgroups:
          changes += "\n\n" + "And the poster link: http://math.mit.edu/topology/posters/" + g[0].posterfilename + ".pdf"
          sendEmailToJon(g[0].date, "Changes for " + g[0].day + " talk", changes, newJsonDicts)
 
-            
+
+# Clean up old enough "sending-" files. 
+emailfiles = subprocess.check_output('ls emails/sending*', shell=True).split('\n')[:-1]
+emailfiles = [(x.split('sending-')[-1].split(".")[0],x) for x in emailfiles]
+
+for l in emailfiles:
+    fileDate = datetime.strptime(l[0] + "-" + str(datetime.today().year),'%m-%d-%Y')
+    if fileDate < datetime.today():
+        os.system("rm "+l[1])
+        
 
 print 'Generating posters'
 makeposters(upcoming)
 
 print 'Generating emails'
-os.system("rm emails/email*")
+os.system("rm emails/email* 2> /dev/null")
 emails = map(makeemail, talkgroups)
 if args.send_email:
     emails[0].sendToList()
