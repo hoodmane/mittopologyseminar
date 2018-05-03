@@ -10,17 +10,18 @@ from common import *
 emailFileName = "emails/" + sys.argv[1]
 
 # Wait ten minutes
-time.sleep(600)
+time.sleep(60)#600
 
 emailData = pickle.load(file(emailFileName))
+print emailData
 os.remove(emailFileName)
-subject = emailData.subject
-body = emailData.body
-newJsonDicts = emailData.newJsonDicts
-dataFileName = emailData.dataFileName
+subject = emailData['subject']
+body = emailData['body']
+newJsonDicts = emailData['newJsonDicts']
+dataFileName = emailData['dataFileName']
     
 msg = MIMEMultipart('alternative')
-msg['From'] = "topology-seminar-event-dispatch@math.mit.edu"
+msg['From'] = "topology-seminar-events@math.mit.edu"
 msg['Reply-To'] = "hood@mit.edu"
 msg['To'] = "harmonjo@mit.edu"
 msg['cc'] = "hood@mit.edu"

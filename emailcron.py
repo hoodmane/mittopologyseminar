@@ -71,7 +71,7 @@ test = False
 if not test:
    # Send email
    msg = pickle.load(file('emails/' + filedatename))
-   msg.replace_header('To',"hood@mit.edu") # Uncomment this to prevent email from being sent to list
+   #msg.replace_header('To',"hood@mit.edu") # Uncomment this to prevent email from being sent to list
    smtp = smtplib.SMTP("outgoing.mit.edu")
    smtp.sendmail(msg['From'], msg['To'], msg.as_string())
    markSent(filedatename.split("_")[1]) # make a mark file to prevent email from being sent again
