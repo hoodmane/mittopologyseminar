@@ -264,7 +264,7 @@ class Email:
     	if len(talks) == 1:
             self.subject = "MIT topology seminar: " + talk.speaker_name
             changelist = []
-            if talk.date.timetz() != standard_time:
+            if talk.date.timetz() != config.standard_time:
                changelist.append("TIME") 
             if talk.weekday != config.standard_weekday:
                changelist.append("DAY") 
@@ -497,7 +497,7 @@ def sendEmailToJon(date, subject, body,newJsonDicts):
    dataFileName = date.strftime('emails/dict-%m-%d.dat') 
    emailFileName = date.strftime('emails/sending-%m-%d.dat')
    if(not os.path.isfile(emailFileName)):
-      subprocess.Popen(['nohup', 'sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('/dev/null', 'w'), stderr=open('/dev/null', 'w')) 
+      subprocess.Popen(['nohup', './sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('emails/testout', 'w'), stderr=open('emails/testerr', 'w')) 
        # for testing, replace /dev/null with an actual file...
    writeFile(emailFileName, pickle.dumps(dict(subject = subject, body = body,newJsonDicts = newJsonDicts, dataFileName = dataFileName)))      
 
@@ -509,28 +509,19 @@ for g in talkgroups:
       oldJsonDicts = pickle.load(file(dataFileName))
    except: # dataFileName doesn't exist, so haven't sent Jon an email yet for this talk, check if it's soon enough that we should send it
       if 0 <= (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
-        sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talk=g[0])), newJsonDicts)
+        sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talks=g)), newJsonDicts)
         
    else: # Have sent Jon an email
       if oldJsonDicts!=newJsonDicts: # check if there's been an update we need to tell him about
-         print "changed"
-         changedFields=[]
-         changes="Changes: \n"
-         for k, v in newJsonDicts[0].iteritems():
-            if(k not in oldJsonDicts[0] or v!=oldJsonDicts[0][k]):
-               changes+= str(k) +  ": " + str(v) + '\n'
-         changes += "\n\n" + "And the poster link: http://math.mit.edu/topology/posters/" + g[0].posterfilename + ".pdf"
-         sendEmailToJon(g[0].date, "Changes for " + g[0].day + " talk", changes, newJsonDicts)
+         changes=""
+         for i in range(0,len(g)):
+	     changes += "\n\n\nChanges to %s's talk: \n" % g[i].speaker_name
+	     for k, v in newJsonDicts[0].iteritems():
+	        if(k not in oldJsonDicts[i] or v!=oldJsonDicts[i][k]):
+	           changes+= str(k) +  ": " + str(v) + '\n'
+             changes += "\n" + "Updated poster: http://math.mit.edu/topology/posters/" + g[i].posterfilename + ".pdf"
+         sendEmailToJon(g[i].date, "Changes for " + g[i].day + " talk", changes[3:], newJsonDicts)
 
-
-# Clean up old enough "sending-" files. 
-emailfiles = subprocess.check_output('ls emails/sending*', shell=True).split('\n')[:-1]
-emailfiles = [(x.split('sending-')[-1].split(".")[0],x) for x in emailfiles]
-
-for l in emailfiles:
-    fileDate = datetime.strptime(l[0] + "-" + str(datetime.today().year),'%m-%d-%Y')
-    if fileDate < datetime.today():
-        os.system("rm "+l[1])
         
 
 print 'Generating posters'

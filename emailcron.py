@@ -30,7 +30,7 @@ def markSent(filedatename):
 # email_date.dat has a pickled email record, markSent_date.dat indicates that the email for that date has already been sent and shouldn't be duplicated.
 emailfiles = subprocess.check_output('ls emails/*_*', shell=True).split('\n')[:-1]
 emailfiles = [(x.split('/')[-1]) for x in emailfiles]
-emailfiles = [ x.split(".")[0].split("_") + (x,) for x in emailfiles]
+emailfiles = [ x.split(".")[0].split("_") + [x] for x in emailfiles]
 emailfiles = [(l[0],datetime.strptime(l[1] + "-" + str(datetime.today().year),'%m-%d-%Y'),l[2]) for l in emailfiles]
 # At this point, emailfiles is a list of triples: ("markSent" or "email", a date object, the original file name)
 
@@ -71,7 +71,7 @@ test = False
 if not test:
    # Send email
    msg = pickle.load(file('emails/' + filedatename))
-   #msg.replace_header('To',"hood@mit.edu") # Uncomment this to prevent email from being sent to list
+   # msg.replace_header('To',"hood@mit.edu") # Uncomment this to prevent email from being sent to list
    smtp = smtplib.SMTP("outgoing.mit.edu")
    smtp.sendmail(msg['From'], msg['To'], msg.as_string())
    markSent(filedatename.split("_")[1]) # make a mark file to prevent email from being sent again

@@ -1,4 +1,8 @@
-Date: {{ talk.date.strftime("%A (%B %-d)") }}
+Date: {{ talks[0].date.strftime("%A (%B %-d)") }} {% if talks|length > 1 %}
+
+Double header!! {% endif %}
+
+{% for talk in talks %}
 
 Speaker: {{ talk.speaker.text }}
 
@@ -6,10 +10,16 @@ Speaker website: {{ talk.speaker.url }}
 
 Title: {{ talk.title }} {%  if talk.room!=config.standard_room: %}
 
-Room Change: {{ talk.room }} {%  endif %}
+Room Change: {{ talk.room }} {%  endif %} {% if talk.date.timetz() != config.standard_time %}
+
+Time Change: {{ talk.date.strftime('%-I:%M') }} {% endif %} {% if talk.weekday != config.standard_weekday %}
+
+Weekday change: {{ talk.weekday }}  {% endif %}
 
 Poster link: http://math.mit.edu/topology/posters/{{ talk.posterfilename }}.pdf
 
 Abstract:
 
 {{ talk.abstract }}
+
+{% endfor %}
