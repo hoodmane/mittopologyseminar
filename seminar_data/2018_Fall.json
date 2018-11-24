@@ -1,0 +1,111 @@
+[
+   {
+        "date": "2018/09/10",
+        "speaker": "Akhil Mathew",
+        "institution": "UChicago",
+        "website": "http://math.uchicago.edu/~amathew/",
+	"title": "$p$-adic $K$-theory and topological cyclic homology",
+	"abstract": "The cyclotomic trace from algebraic $K$-theory to topological cyclic homology (TC) is an important tool in describing the $p$-adic $K$-theory of $p$-adic rings, and has been used in several computations (such as Hesselholt-Madsen's computation of the $K$-theory of local fields). TC, while more complicated to define, has somewhat simpler formal properties than $K$-theory and is as a result often easier to compute. I will describe some new results to the effect that TC is a strong approximation to $p$-adic $K$-theory, and some resulting structural consequences for $p$-adic $K$-theory. This is joint work with Dustin Clausen and Matthew Morrow."
+    },
+    {
+        "date": "2018/09/17",
+        "speaker": "Jeremy Hahn",
+        "institution": "MIT",
+        "website": "http://www.math.harvard.edu/~jhahn01/",
+	"title": "The spectrum of units of a height 2 theory",
+	"abstract": "The space BSU admits two infinite loop space structures, one arising from addition of vector bundles and the other from tensor product. A surprising fact, due to Adams and Priddy, is that these two infinite loop spaces become equivalent after $p$-completion. I will explain how the Adams-Priddy theorem allows for an identification of $sl_1(ku_p)$, the spectrum of units of $p$-complete complex $K$-theory. I will then describe work, joint with Andrew Senger, that attempts to similarly understand the spectrum of units of the 2-completion of $tmf_1(3)$. Our computations seem suggestive of broader phenomena, and I hope to end with several open questions."
+    },
+    {
+        "date": "2018/09/24",
+        "speaker": "Tom Bachmann",
+        "institution": "MIT",
+        "website": "http://tom-bachmann.com/",
+	"title": "Power operations in normed motivic spectra",
+	"abstract": "In joint work with M. Hoyois, we established (the beginnings of) a theory of \"normed motivic spectra\". These are motivic spectra with some extra structure, enhancing the standard notion of a motivic $E_\infty$-ring spectrum (this is similar to the notion of $G$-commutative ring spectra in equivariant stable homotopy theory). It was clear from the beginning that the homotopy groups of such normed spectra afford interesting power operations. In ongoing joint work with E. Elmanto and J. Heller, we attempt to establish a theory of these operations and exploit them calculationally. I will report on this, and more specifically on our proof of a weak motivic analog of the following classical result of Würgler: any homotopy commutative ring spectrum with $2=0$ is generalized Eilenberg-MacLane."
+    },
+    {
+        "date": "2018/10/01",
+        "speaker": "Prasit Bhattacharya",
+        "institution": "University of Virginia",
+        "website": "http://www.people.virginia.edu/~pb9wh/",
+	"title": "A $2$-local type $3$ spectrum, its periodic $v_3$-self-map, and its $K(3)$-local homotopy groups",
+	"abstract": "Constructing type n spectrum and understanding its periodic $v_n$-self-map is an integral part chromatic homotopy theory, potentially can produce infinite families in chromatic layer $n$ of the stable homotopy groups of spheres.  Recently, in a joint work with Philip Egger, we produce $2$-local type $2$ spectra $Z$ which admit $v_2^1$-self-map. In fact, $Z$ in many ways the height 2 analogue of the spectrum $Y:= M_2(1) \wedge C\eta$. In a joint work with Nicolas Ricka, we extend the family consisting of $Y$ and $Z$ to chromatic height 3, by producing a type $3$ spectrum at the prime $2$. In this talk, I will explain multiple ways of constructing this spectrum, one of them uses the technique of Jeff Smith that is used in the proof of the famous `thick subcategory theorem’ due to Hopkins and Smith. Then I will outline the proof of $v_3^4$-self-map and give evidences in favor of this spectrum admitting $v_3^1$-self-map. Time permitting, I will also talk about the action of height $3$ Morava stabilizer group on Morava E-theory of this spectrum and give a complete answer for the $E_2$-page of the descent spectral sequence which computes $K(3)$-local homotopy groups of this spectrum."
+    },
+    {
+        "date": "2018/10/15",
+        "speaker": "Dylan Wilson",
+        "institution": "UChicago",
+        "website": "https://www.math.uchicago.edu/~dwilson/",
+	"title": "Complex conjugation at odd primes",
+	"abstract": "Complex conjugation gives rise to many natural $C_2$ actions on objects in homotopy theory (projective spaces, $K$-theory, complex cobordism, etc.) Recent work on homotopy theory at the prime $2$ has exploited these actions to great effect. We discuss work in progress, joint with Jeremy Hahn, that tries to answer the following questions: Is there an odd primary analogue of complex conjugation? If there is, can we use it? We describe some potential answers to this question as well as the current status of a program, initiated by Hill-Hopkins-Ravenel, for applying $C_p$ equivariant homotopy theory to the study of Morava $E$-theory."
+    },
+    {
+        "date": "2018/10/22",
+        "speaker": "Ben Knudsen",
+        "institution": "Harvard",
+        "website": "https://scholar.harvard.edu/knudsen/home",
+	"title": "Toward the cohomology of the pure elliptic braid group",
+	"abstract": "I will report on a program of research aimed at computing stable multiplicities of symmetric group representations in the cohomology of the ordered configuration spaces of the torus. Our approach is premised on a multiplicative decomposition of configuration spaces of product manifolds in terms of a Boardman--Vogt tensor product of operadic modules. The decomposition gives rise to a ``Kuenneth'' spectral sequence with second page identifiable in purely algebraic terms. The spectral sequence collapses in characteristic zero, reducing such computations to problems in the complex representation theory of certain combinatorial categories. This work is joint with W. Dwyer and K. Hess."
+    },
+    {
+        "date": "2018/10/29",
+        "speaker": "Jianfeng Lin and Zhouli Xu",
+        "institution": "MIT",
+	"title": "The geography problem on $4$-manifolds: $10/8 + 4$",
+	"abstract": "A fundamental problem in $4$-dimensional topology is the following geography question: ``which simply connected topological $4$-manifolds admit a smooth structure?'' After the celebrated work of Kirby-Siebenmann, Freedman, and Donaldson, the last uncharted territory of this geography question is the ``$11/8$-Conjecture''. This conjecture, proposed by Matsumoto, states that for any smooth spin $4$-manifold, the ratio of its second-Betti number and signature is least $11/8$.
+
+	Furuta proved the ``$10/8+2$''-Theorem by studying the existence of certain $Pin(2)$-equivariant stable maps between representation spheres. In this talk, we will present a complete solution to this problem by analyzing the $Pin(2)$-equivariant Mahowald invariants. In particular, we improve Furuta's result into a ``$10/8+4$''-Theorem. Furthermore, we show that within the current existing framework, this is the limit. This is joint work with Mike Hopkins and XiaoLin Danny Shi.",
+	"alt_time": "15:30",
+	"alt_room": "4-153"
+    },
+    {
+        "date": "2018/10/29",
+        "speaker": "Jianfeng Lin and Zhouli Xu",
+        "institution": "MIT",
+	"title": "The $Pin(2)$-Equivariant Mahowald Invariant",
+	"abstract": "The existence of $Pin(2)$-equivariant stable maps between representation spheres has deep applications in $4$-dimensional topology. We will sketch the proof for our main result on the $Pin(2)$-equivariant Mahowald invariants.
+
+More specifically, we will discuss the $Pin(2)$-equivariant Mahowald invariants of powers of certain Euler classes in the $RO(Pin(2))$-graded equivariant stable homotopy groups of spheres. The proof analyzes maps between certain finite spectra arising from $BPin(2)$ and various Thom spectra associated with it. To analyze these maps, we use the technique of cell-diagrams, known results on the stable homotopy groups of spheres, and the $j$-based Atiyah-Hirzebruch spectral sequence.
+
+This is joint work with Mike Hopkins and XiaoLin Danny Shi. This talk provides the homotopy theory required by the first talk but will not depend upon it.",
+	"alt_time": "16:30",
+	"alt_room": "4-153"
+    },
+    {
+        "date": "2018/11/05",
+        "speaker": "Dan Isaksen",
+        "institution": "Wayne State",
+        "website": "http://www.clas.wayne.edu/disaksen/",
+	"title": "Motivic and equivariant stable homotopy groups",
+	"abstract": "I will describe various computational aspects of motivic and  equivariant stable homotopy groups.  The discussion will include some techniques for brute force computations, as well as some larger structural phenomena uncovered through these calculations."
+    },
+    {
+        "date": "2018/11/19",
+        "speaker": "Emily Riehl",
+        "institution": "Johns Hopkins University",
+        "website": "http://www.math.jhu.edu/~eriehl/",
+	"title": "The synthetic theory of $\infty$-categories",
+	"abstract": "The pioneering work of Joyal, Lurie, et al to extend ordinary category theory to the setting of $\infty$-categories is ``analytic'', with the precise statements of theorems given in reference to a particular model (quasi-categories) and proofs drawing on the combinatorics of simplicial sets. This talk will describe joint work with Dominic Verity that reveals that much of that theory can be redeveloped ``synthetically'' in an axiomatic framework that is natively ``model-independent'', casting new light on the theory of quasi-categories while simultaneously generalizing it to other models. At the conclusion, we consider the question of the model-invariance of $\infty$-category theory, proving that $\infty$-categorical structures are preserved, reflected, and created by a number of ``change-of-model'' functors. As we explain, it follows that even the ``analytically-proven'' theorems that exploit the combinatorics of one particular model remain valid in the other ``biequivalent'' models."
+    },
+    {
+        "date": "2018/11/26",
+        "speaker": "Nathaniel Stapleton",
+        "institution": "University of Kentucky",
+        "website": "https://homepages.uni-regensburg.de/~stn30788/",
+	"title": "Classifying spectra of finite groups and chromatic homotopy theory",
+	"abstract": "We will discuss a question about the functoriality of certain evaluation maps for classifying spectra of finite groups that arose when thinking about questions related to chromatic homotopy theory. I will describe an algebraic solution to this problem found in joint work with Reeh, Schlank. If time permits, I hope to describe a related question regarding idempotents of $p$-groups in the $K(n)$-local category."
+    },
+    {
+        "date": "2018/12/3",
+        "speaker": "Arnav Tripathy",
+        "institution": "Harvard University",
+        "website": "http://www.math.harvard.edu/people/TripathyArnav.html"
+    },
+    {
+        "date": "2018/12/10",
+        "speaker": "Irina Bobkova",
+        "institution": "IAS",
+        "website": "http://www.math.ias.edu/~ibobkova/"
+    },    
+]
+

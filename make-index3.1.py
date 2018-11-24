@@ -21,8 +21,6 @@ try:
 except AttributeError:
     webmaster_email = organizer_email
     
-local_timezone = time.timezone / 60 / 60 # get the current time zone offset, ignoring daylight saving time (given in seconds, divide by 60 twice to get hours)
-epoch = datetime.fromtimestamp(0) # For converting datetime object to time object (time constructor takes seconds since Jan 1st 1970) for finding out about daylight saving time.
 standard_time = datetime.strptime(config.standard_time, '%H:%M').time()
 config.standard_time = standard_time 
 standard_duration = timedelta(hours = int(config.standard_duration.split(":")[0]), minutes=int(config.standard_duration.split(":")[1]))
@@ -109,6 +107,7 @@ class Talk:
         self.invalid = False            
         date = datetime.combine(day, t)
         self.date = date
+        self.enddate = date + standard_duration
         self.upcoming = date > datetime.today()
         self.weekday = alt_weekday if alt_weekday else config.standard_weekday
         if self.upcoming and date.strftime('%A') != self.weekday:
@@ -128,8 +127,8 @@ class Talk:
 
         self.title = title
         self.title_poster = title
-        self.title_html = convert_quotes(title) if title else None
-        self.title_email = delatex(convert_quotes(title)) if title else None
+        self.title_html = delatex_quotes(title) if title else None
+        self.title_email = delatex(title) if title else None
         self.abstract = abstract
         if(notes):
             self.notes = markdown.convert(notes)
@@ -139,24 +138,24 @@ class Talk:
         self.email_abstract_html = None
         self.email_abstract_text = None
         if abstract:
-            self.abstract_html = paragraphs_to_html(convert_quotes(abstract))
+            self.abstract_html = paragraphs_to_html(delatex_quotes(abstract))
             if not email_abstract:
                 email_abstract = abstract
                 
-            self.email_abstract_html = paragraphs_to_html(delatex(convert_quotes(email_abstract))) # latex_to_mml( -- , self.macros)
-            self.email_abstract_text = paragraphs_to_text(delatex(     convert_quotes(email_abstract)))
+            self.email_abstract_html = paragraphs_to_html(delatex(email_abstract)) # latex_to_mml( -- , self.macros)
+            self.email_abstract_text = paragraphs_to_text(delatex(email_abstract))
         
-        self.posterfilename = date.strftime('%Y%m%d') + "-" + (sanitizeFileName(speaker) if speaker else "No Speaker")
+        self.posterfilename = date.strftime('%Y%m%d%H%M') + "-" + (sanitizeFileName(speaker) if speaker else "No Speaker")
 
         # self.speaker might have a URL; self.speaker_name is just the name
         self.speaker_name = speaker
         if speaker:
-           self.speaker = MaybeLink(convert_quotes(speaker), website)
+           self.speaker = MaybeLink(delatex_quotes(speaker), website)
         else:
            self.speaker = None
         self.institution = institution
         self.initInstitutions()
-        self.makeGoogleLink()
+        # self.makeGoogleLink()
             
 
     def initInstitutions(self):
@@ -180,7 +179,7 @@ class Talk:
         else:
             self.institutionLink = ", ".join(map(str,institutionList[:-1])) + ", and " + str(institutionList[-1])
             self.institutionText = ", ".join(map(lambda inst: inst.text,institutionList[:-1])) + ", and " + institutionList[-1].text
-        self.institutionLink = convert_quotes(self.institutionLink)
+        self.institutionLink = delatex_quotes(self.institutionLink)
 
    # creates a link to a Google calendar event
     def makeGoogleLink(self):
@@ -189,10 +188,7 @@ class Talk:
       l = ['http://www.google.com/calendar/event?action=TEMPLATE&text=', self.speaker.text]
       if self.title:
           l.append(': %s' % self.title)
-      dst = time.localtime((self.date-epoch).total_seconds()).tm_isdst
-      l.append('&dates=%s%d%s' % ((self.date.strftime('%Y%m%dT'),self.date.hour + local_timezone - dst,self.date.strftime('%M00Z'))))
-      end = self.date + standard_duration
-      l.append('/%s%d%s' % (end.strftime('%Y%m%dT'), end.hour + local_timezone - dst, end.strftime('%M00Z')))
+      l.append('&dates=%s/%s' % (localToUTC(self.date).strftime("%Y%m%dT%H%M%SZ"), localToUTC(self.enddate).strftime("%Y%M%dT%H%M%SZ")))
       l.append('&sprop=MIT Topology Seminar&location=%s' % 'MIT ' + self.room)
       self.googleLink = ''.join(l)
         
@@ -225,7 +221,7 @@ def makeposter(talk):
     if not talk.title:
         return 
     try: 
-        latexPoster(talk.posterfilename, posterTemplate(dict(vars(talk), contact_email = organizer_email)))
+        latexPoster(talk.posterfilename, latex_quotes(posterTemplate(dict(vars(talk), contact_email = organizer_email))))
     except IOError:
         pass
     
@@ -362,7 +358,7 @@ class Email:
         return
         
     def markSent(self):
-        writeFile('emails/mark_' + self.date.strftime("%m-%d") + '.dat','sent')
+        writeFile('emails/markSent_' + self.date.strftime("%m-%d") + '.dat','sent')
         return
 
 def makeemail(talks,temp=[]):
@@ -493,34 +489,36 @@ for k, g in groupby(upcoming,dategetter):
 ## and then send a list of all changes that occurred in the ten minutes from the first one. We want this python program to quick gracefully even while waiting
 ## for the email to be sent, so seems that the email has to be sent by a second program which is emails/sendEmailToJon.py
 
+dataFileNamePattern = 'emails/dict-%m-%d-%H-%M.dat'
 def sendEmailToJon(date, subject, body,newJsonDicts):
-   dataFileName = date.strftime('emails/dict-%m-%d.dat') 
+   dataFileName = date.strftime(dataFileNamePattern) 
    emailFileName = date.strftime('emails/sending-%m-%d.dat')
    if(not os.path.isfile(emailFileName)):
       subprocess.Popen(['nohup', './sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('emails/testout', 'w'), stderr=open('emails/testerr', 'w')) 
        # for testing, replace /dev/null with an actual file...
    writeFile(emailFileName, pickle.dumps(dict(subject = subject, body = body,newJsonDicts = newJsonDicts, dataFileName = dataFileName)))      
 
-for g in talkgroups:
-   # dataFileName is the name of the file storing the record for the current talk if an email has been sent to Jon yet.
-   dataFileName = g[0].date.strftime('emails/dict-%m-%d.dat') 
-   newJsonDicts = map(lambda x: x.jsondict,g)
-   try:
-      oldJsonDicts = pickle.load(file(dataFileName))
-   except: # dataFileName doesn't exist, so haven't sent Jon an email yet for this talk, check if it's soon enough that we should send it
-      if 0 <= (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
-        sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talks=g)), newJsonDicts)
-        
-   else: # Have sent Jon an email
-      if oldJsonDicts!=newJsonDicts: # check if there's been an update we need to tell him about
-         changes=""
-         for i in range(0,len(g)):
-	     changes += "\n\n\nChanges to %s's talk: \n" % g[i].speaker_name
-	     for k, v in newJsonDicts[0].iteritems():
-	        if(k not in oldJsonDicts[i] or v!=oldJsonDicts[i][k]):
-	           changes+= str(k) +  ": " + str(v) + '\n'
-             changes += "\n" + "Updated poster: http://math.mit.edu/topology/posters/" + g[i].posterfilename + ".pdf"
-         sendEmailToJon(g[i].date, "Changes for " + g[i].day + " talk", changes[3:], newJsonDicts)
+
+if(config.sendJonEmails):
+    for g in talkgroups:
+       # dataFileName is the name of the file storing the record for the current talk if an email has been sent to Jon yet.
+       dataFileName = g[0].date.strftime(dataFileNamePattern) 
+       newJsonDicts = map(lambda x: x.jsondict,g)
+       try:
+          oldJsonDicts = pickle.load(file(dataFileName))
+       except: # dataFileName doesn't exist, so haven't sent Jon an email yet for this talk, check if it's soon enough that we should send it
+          if 0 <= (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
+            sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talks=g)), newJsonDicts)
+       else: # Have sent Jon an email
+          if oldJsonDicts!=newJsonDicts: # check if there's been an update we need to tell him about
+             changes=""
+             for i in range(0,len(g)):
+        	     changes += "\n\n\nChanges to %s's talk: \n" % g[i].speaker_name
+        	     for k, v in newJsonDicts[0].iteritems():
+        	        if(k not in oldJsonDicts[i] or v!=oldJsonDicts[i][k]):
+        	           changes+= str(k) +  ": " + str(v) + '\n'
+        	     changes += "\n" + "Updated poster: http://math.mit.edu/topology/posters/" + g[i].posterfilename + ".pdf"
+             sendEmailToJon(g[i].date, "Changes for " + g[i].day + " talk", changes[3:], newJsonDicts)
 
         
 
@@ -535,6 +533,8 @@ if args.send_email:
    
 
 
+print 'Generating ical'
+writeFile('topology_seminar.ics', getIcal(upcoming, "topology-seminar"))
 
 print 'Generating upcoming talks page'
 if upcoming:

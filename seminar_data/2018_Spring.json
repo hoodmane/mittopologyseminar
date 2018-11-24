@@ -94,7 +94,7 @@ In this talk, we introduce infinite loop spaces whose cohomolgy groups describe 
             "speaker": "Hiro Tanaka",
             "institution": "Harvard",
             "website": "http://math.harvard.edu/~hirolee/",
-            "title": "",
-            "abstract": "A"
+            "title": "Open and closed questions about cobordisms of Lagrangians",
+            "abstract": "I'll talk about my attempts at applying modern homotopy-theoretic techniques to study (i) the theory of Lagrangian cobordisms, and (ii) its applications to Lagrangian Floer theory and Fukaya categories. It's a tantalizing world where Thom spaces aren't the obvious doorway to cobordism spectra, where there seem to be geometric explanations for really rich algebraic structures (like the paracyclic action on the s-dot construction), and where (frankly) not nearly enough is known."
     },
 ]

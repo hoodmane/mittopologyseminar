@@ -7,6 +7,7 @@ import glob
 import subprocess
 import threading
 import argparse
+import config
 
 from datetime import datetime, date, timedelta
 import time
@@ -55,8 +56,21 @@ except ImportError:
    os.system("pip install --user markdown")
    import markdown
 
-import markdown.extensions.fenced_code
+try:
+    from icalendar import Calendar, Event, vCalAddress, vText
+except ImportError:
+    os.system("pip install --user icalendar")    
+    from icalendar import Calendar, Event, vCalAddress, vText
 
+try:
+    import pytz
+except ImportError:
+    os.system("pip install --user pytz")    
+    import pytz
+timezone = pytz.timezone(config.timezone)
+
+
+import markdown.extensions.fenced_code
 # Email things
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -75,12 +89,6 @@ if 'topology' not in subprocess.check_output('id -G -n', shell = True).split():
 os.umask(0002) # Make files with group write privileges.
 
 scriptname = __file__
-
-local_timezone = time.timezone / 60 / 60 # get the current time zone offset, ignoring daylight saving time (given in seconds, divide by 60 twice to get hours)
-epoch = datetime.fromtimestamp(0) # For converting datetime object to time object (time constructor takes seconds since Jan 1st 1970) for finding out about daylight saving time.
-    
-
-
 
 ### IO / System commands
 # All of the direct reading and writing is here so that we can make sure to handle
@@ -121,10 +129,22 @@ def sanitize_key(input_str):
     return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
 
 def delatex(str):
-    return convert_quotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
+    return delatex_quotes(str).replace("\\infty",u"\u221e").replace("\\infinity",u"\u221e").replace("\\","").replace("$","") # \u221e is infinity sign
 
-def convert_quotes(string):
+def delatex_quotes(string):
     return string.replace('``','"').replace("`","'").replace("''",'"')
+
+latex_open_double_quote_re = re.compile('(\s)"')
+latex_close_double_quote_re = re.compile('"(\s)')
+latex_open_single_quote_re = re.compile("(\s)'")
+
+def latex_quotes(string):
+    new_string = latex_open_double_quote_re.sub(lambda match: match.group(1) + "``", string)
+    new_string = latex_close_double_quote_re.sub(lambda match: "''" + match.group(1), new_string)
+    new_string = latex_open_single_quote_re.sub(lambda match: match.group(1) + "`", new_string)
+    #if(new_string != string):
+        #print new_string
+    return new_string
 
 # Turn unicode characters into closest nonunicode equivalent, delete characters that don't end up being alphanumeric, or ._-, turn spaces into dashes
 def sanitizeFileName(str):
@@ -349,3 +369,32 @@ def processJSON(fileName):
         else:
             raise ValueError(msg)
     return talkTable
+
+def localToUTC(date):
+    return timezone.localize(date).astimezone(pytz.utc)
+
+def getIcal(talks, series): # talks is a list of Talk objects. series is a name for the talk series to be used in the UUID (juvitop, topology-seminar)
+    cal = Calendar()
+    organizer = vCalAddress("MAILTO:" + config.organizer_email)
+    organizer.params['cn'] = vText(config.organizer_first_name + " " + config.organizer_last_name)
+    for talk in talks:
+        if talk.invalid:
+            continue
+
+        event = Event()
+        event['uid'] = talk.date.strftime("%Y%m%d%H%M%S") + "-" + series + "@math.mit.edu"
+        event.add('dtstart', localToUTC(talk.date))
+        event.add('dtend', localToUTC(talk.enddate))
+        event.add('dtstamp', datetime.utcnow())
+        event['organizer'] = organizer
+        if talk.title:
+            event.add('summary', talk.speaker.text + ": " + talk.title_email)
+        else:
+            event.add('summary', talk.speaker.text)
+
+        if talk.email_abstract_text:
+            event.add('description', talk.email_abstract_text)
+
+        event.add('location', 'MIT ' + talk.room)
+        cal.add_component(event)
+    return(cal.to_ical())

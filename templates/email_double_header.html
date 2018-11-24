@@ -5,18 +5,18 @@
     <br><br>
       On {{ talks[0].date.strftime("%A (%B %-d)") }}, we will have TWO speakers.
     <br><br><br>
-    At {{ talks[0].date.strftime("%-I:%M") }}, {{ talks[0].speaker.text }} will be speaking #nonewline
+    At {{ talks[0].date.strftime("%-I:%M") }}, {{ talks[0].speaker.text }} will be speaking
     {%  if talks[0].room != talks[1].room:  %}
-	in {{ talks[0].room }} #nonewline
+	in {{ talks[0].room }}
     {%  endif  %}
     on:
     <br><br>
       {{ talks[0].title_email }}
     <br><br><br>
 
-    At {{ talks[1].date.strftime("%-I:%M") }}, {{ talks[1].speaker.text }} will be speaking #nonewline
+    At {{ talks[1].date.strftime("%-I:%M") }}, {{ talks[1].speaker.text }} will be speaking
     {%  if talks[0].room != talks[1].room:  %}
-	in {{ talks[1].room }} #nonewline
+	in {{ talks[1].room }}
     {%  endif  %}
     on:
     <br><br>
@@ -45,4 +45,4 @@
     {{ talks[1].email_abstract_html }}
 {%  endif  %}
   </body>
-</html>
+</html> 

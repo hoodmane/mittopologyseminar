@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+SUMMARY:Nathaniel Stapleton: Classifying spectra of finite groups and chro
+ matic homotopy theory
+DTSTART;VALUE=DATE-TIME:20181126T213000Z
+DTEND;VALUE=DATE-TIME:20181126T223000Z
+DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
+UID:20181126163000-topology-seminar@math.mit.edu
+DESCRIPTION:\n\nWe will discuss a question about the functoriality of cert
+ ain evaluation maps for classifying spectra of finite groups that arose wh
+ en thinking about questions related to chromatic homotopy theory. I will d
+ escribe an algebraic solution to this problem found in joint work with Ree
+ h\, Schlank. If time permits\, I hope to describe a related question regar
+ ding idempotents of p-groups in the K(n)-local category.
+LOCATION:MIT 2-131
+ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Arnav Tripathy
+DTSTART;VALUE=DATE-TIME:20181203T213000Z
+DTEND;VALUE=DATE-TIME:20181203T223000Z
+DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
+UID:20181203163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Irina Bobkova
+DTSTART;VALUE=DATE-TIME:20181210T213000Z
+DTEND;VALUE=DATE-TIME:20181210T223000Z
+DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
+UID:20181210163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+END:VEVENT
+END:VCALENDAR

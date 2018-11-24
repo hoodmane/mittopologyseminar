@@ -4,7 +4,7 @@
         {% if isfile("posters/%s.pdf" % posterfilename): %}
            <li class="poster"><a href="posters/{{ posterfilename }}.pdf" title="Download Poster"></a></li>
         {% endif %}
-        {% if upcoming and speaker: %}
+        {% if upcoming and speaker and googleLink: %}
                 <li class="calendar"><a title="Add to Google Calendar" href="{{ googleLink }}"></a></li>
         {% endif %}
 </ul>

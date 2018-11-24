@@ -10,7 +10,7 @@ from common import *
 emailFileName = sys.argv[1]
 
 # Wait ten minutes
-time.sleep(600)
+#time.sleep(600)
 
 # Have to reoopen the smtp connection because it may die while we are sleeping.
 smtp = smtplib.SMTP("outgoing.mit.edu")
@@ -25,7 +25,7 @@ dataFileName = emailData['dataFileName']
 msg = MIMEMultipart('alternative')
 msg['From'] = "topology-seminar-events@math.mit.edu"
 msg['Reply-To'] = "hood@mit.edu"
-msg['To'] = "harmonjo@mit.edu" #"hood@mit.edu"#
+msg['To'] ="hood@mit.edu"# "harmonjo@mit.edu" #
 msg['cc'] = "hood@mit.edu" 
 msg['Subject'] = subject
 msg.attach(MIMEText(body,'plain', 'UTF-8'))
