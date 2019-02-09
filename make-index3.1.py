@@ -65,6 +65,7 @@ parser.add_argument('--make-old-talks'  , action = 'store_true')
 parser.add_argument('--send-email', nargs='?', const='most_recent', default=False)
 parser.add_argument('--test-email', nargs='?', const='most_recent', default=False)
 parser.add_argument('--wm-test-email', nargs='?', const='most_recent', default=False)
+parser.add_argument('--email-test-suite', nargs='?', const='most_recent', default=False)
 
 # If the user ran it with "python make-index3.1.py" instead of ./make-index3.1.py, the first argument will be make-index3.1.py
 if sys.argv[0].find("make-index") != -1:
@@ -82,12 +83,12 @@ class Talk:
     def __init__(self, jsondict,
         date,  alt_time = None, alt_weekday = None, alt_room = None,
         cancellation_reason = None, change_reason = None, notice = None, email_notice = None, macros = None,
-        title = None, abstract = None, email_abstract = None, no_email=False,
-        speaker = None,  institution = None, website = None, notes = None
+        title = None, abstract = None, email_abstract = None, no_email = False,
+        speaker = None,  institution = None, website = None, notes = None, test = None 
     ):
         self.jsondict = jsondict
-        if not (speaker or cancellation_reason):
-            self.invalid = True
+        if not speaker: # Used to have "not (speaker or cancellation_reason)" here but this seems like incorrect logic.
+            self.invalid = True # cancellation_reason hasn't been used in ages though...
             return
         try:        
             day = datetime.strptime(date, '%Y/%m/%d')
@@ -228,29 +229,30 @@ def makeposter(talk):
 
 class Email:
     # Usually talks is a single talk, but on a rare ocassion there is a double header.
-    # TODO: add handling for weird day of week. no_email flag.
-    # If there are ever two talks in the same week but on different days, will have to figure out what to do...
+    # If there are two talks in the same week but on different days, currently it will send separate emails for them.
+    # TODO: Clean init up.
     def __init__(self,talks):
-        self.talks = talks
-        if talks[0].cancellation_reason:
-            return
-        if not talks[0].speaker:
-            return
+        talks = filter(lambda talk : not talk.cancellation_reason and talk.speaker, talks)
         for talk in talks:
             if talk.no_email:
-                return
+                talks = [] # Ignore all talks in the double header if any of the talks has a no-email flag.
+        self.invalid = len(talks) == 0
+        if self.invalid:
+            return
+        self.talks = talks
     	talk = talks[0]
     	self.date = talk.date
+        self.message_no_abstract = None   
     	
         if not talk.title:
             msg = MIMEText(            
-                "Please add a title and hopefully an abstract for " + talk.speaker_name + "'s talk and run '%s --send-email'" % scriptname
+                "Please add a title and hopefully an abstract for %s's talk and run '%s --send-email'" % (talk.speaker_name, scriptname)
             )
             msg['To'] = organizer_email
             msg['From'] = organizer_email
-            msg['Subject'] = "No title for " + talk.date.strftime("%A") + "'s talk"
+            msg['Subject'] = "No title for %s's talk" % talk.date.strftime("%A")
             self.message = msg
-            self.list_email = None
+            self.list_message = None
             return
         
         msg = MIMEMultipart('alternative')
@@ -259,6 +261,7 @@ class Email:
         
     	if len(talks) == 1:
             self.subject = "MIT topology seminar: " + talk.speaker_name
+            # Accumulate changelist which is a list of unusual aspects of the upcoming talk.
             changelist = []
             if talk.date.timetz() != config.standard_time:
                changelist.append("TIME") 
@@ -267,20 +270,20 @@ class Email:
             if talk.room != config.standard_room:
                changelist.append("ROOM")     
             
+            # If there are changes, adjust the subject to indicate
             if len(changelist)>0:
-                self.subject += " (NOTE THE CHANGE OF "
                 if 1<=len(changelist)<=2:
-                     self.subject += " AND ".join(changelist)
+                     changes_text = " AND ".join(changelist)
                 elif len(changelist)>2:
-                    self.subject  += ", ".join(changelist[:-1]) + ", AND " + str(changelist[-1]) 
-                self.subject += ")"
+                    changes_text = ", ".join(changelist[:-1]) + ", AND " + str(changelist[-1]) 
+                self.subject += " (NOTE THE CHANGE OF %s)" % changes_text
             
     	elif len(talks) == 2:
     	    self.subject = "MIT topology seminar: " + \
     			talks[0].speaker_name + talks[0].date.strftime(" (%-I:%M)") + " and " + \
     			talks[1].speaker_name + talks[1].date.strftime(" (%-I:%M)")		
     	else:
-    	    error
+    	    raise NotImplementedError("We don't handle triple headers. Probably you should add the 'no_email' field to the JSON file and send an email manually.")
     	msg['Subject'] = self.subject
             
         email_dict = dict(  
@@ -306,10 +309,10 @@ class Email:
         msg.attach(MIMEText(self.textEmail,'plain', 'UTF-8'))
         msg.attach(MIMEText(self.htmlEmail,'html', 'UTF-8'))
         self.message = msg
-        self.list_message = msg
-        self.message_no_abstract = None        
+        self.list_message = msg     
         
-       # if not, make a '-noabs' email to the group and the main email to the organizer complaining
+        # if not, make a '-noabs' email to the group and the main email to the organizer complaining
+        # TODO: Do these email warnings actually work? Are they useful?
         if not talk.abstract:
           email_dict['abstract'] = ''
           self.message_no_abstract = msg
@@ -321,17 +324,14 @@ class Email:
           msg['To'] = organizer_email
           msg['Subject'] = "No abstract for %s's talk" % talk.date.strftime("%A")
           email_dict['extra_prefix'] = \
-            "Either add an abstract or don't, then run '%s --send-email' to send the email.\n\n " % (scriptname,scriptname)
+            "Either add an abstract or don't, then run '%s --send-email' to send the email.\n\n " % (scriptname)
           msg.attach(MIMEText(textEmailTemplate(email_dict), 'plain', 'UTF-8'))
           self.message = msg
-               
-        self.writeToFile()
            
         
 
-    def sendToOrganizer(self,target_email):
-        self.list_message.replace_header('To', target_email)
-        msg['To'] = organizer_email
+    def sendToOrganizer(self, target_email = False):
+        self.list_message.replace_header('To', target_email or organizer_email)
         sendEmail(self.list_message)
         print("Sent email to organizer")
         return
@@ -360,22 +360,6 @@ class Email:
     def markSent(self):
         writeFile('emails/markSent_' + self.date.strftime("%m-%d") + '.dat','sent')
         return
-
-def makeemail(talks,temp=[]):
-    email = Email(talks)
-    if not temp:
-        if args.test_email:
-            email.sendToOrganizer(organizer_email)
-        if args.wm_test_email:
-            email.sendToOrganizer(webmaster_email)
-            temp.append(1)
-            
-    return email
-
-        
-
-
-
 
 
 
@@ -455,19 +439,28 @@ if args.make_old_talks:
     makeoldpasttalks()
 
 
-
 # No special handling by semester here, we'll figure out the semester for each talk later using the date
 # Note that the semester files are not processed in order, but we don't care because we sort the individual talks by date.
 # In make-juvitop.py, the seminar_data files are sorted, we can copy the code from there if at some point we need to sort them here too.
 talks = []
-for semJSON in glob.glob('seminar_data/*.json'):
+data_file_names = filter(lambda fn : "email_tests" not in fn, glob.glob('seminar_data/*.json'))
+if args.email_test_suite: # With flag email_test_suite, only use email_tests. Otherwise, use everything else
+    data_file_names = ['seminar_data/email_tests.json']
+
+
+
+for semJSON in data_file_names:
     for talk in processJSON(semJSON):
         talks.append(Talk(talk,**talk))
         if talks[-1].invalid:
             talks.pop()
+    
 
 
 upcoming = [talk for talk in talks if talk.upcoming]
+if args.email_test_suite: # With flag email_test_suite, don't restrict talks to be in the future.
+     upcoming = talks
+
 upcoming.sort(key=dategetter)
 
 
@@ -482,24 +475,34 @@ for k, g in groupby(upcoming,dategetter):
    talkgroups.append(l)
 
 
-## Jon emails
+if args.email_test_suite:  # Now, make emails out of all future talks, send all of these to the organizer, and quit.
+    print "Running email test suite."
+    emails = map(Email, talkgroups)
+    for e in emails:
+        e.sendToOrganizer(webmaster_email)
+    print "Email test finished. Quitting."
+    sys.exit()
+
+
+## Event emails
+## This sends Jon Harmon emails updating him about the status of the seminar.
 ## So the idea here is that we want to send an initial email when the talk is two weeks away which has the basic details and a link to the poster.
 ## After this has been sent, we have to keep him updated on changes so we send him emails with a list of changes every time an update is made
 ## but we don't want to spam him with tons of emails if the organizer changes a few things in quick succession, so we wait ten minutes before sending an email
-## and then send a list of all changes that occurred in the ten minutes from the first one. We want this python program to quick gracefully even while waiting
-## for the email to be sent, so seems that the email has to be sent by a second program which is emails/sendEmailToJon.py
+## and then send a list of all changes that occurred in the ten minutes from the first one. We want this python program to quit gracefully even while waiting
+## for the email to be sent, so seems that the email has to be sent by a second program which is emails/sendEventNotice.py
 
 dataFileNamePattern = 'emails/dict-%m-%d-%H-%M.dat'
-def sendEmailToJon(date, subject, body,newJsonDicts):
+def sendEventEmail(date, subject, body,newJsonDicts):
    dataFileName = date.strftime(dataFileNamePattern) 
    emailFileName = date.strftime('emails/sending-%m-%d.dat')
    if(not os.path.isfile(emailFileName)):
-      subprocess.Popen(['nohup', './sendNoticeToJon.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('emails/testout', 'w'), stderr=open('emails/testerr', 'w')) 
+      subprocess.Popen(['nohup', './sendEventNotice.py',emailFileName, '>/dev/null', '2>&1'], stdout=open('emails/testout', 'w'), stderr=open('emails/testerr', 'w')) 
        # for testing, replace /dev/null with an actual file...
    writeFile(emailFileName, pickle.dumps(dict(subject = subject, body = body,newJsonDicts = newJsonDicts, dataFileName = dataFileName)))      
 
 
-if(config.sendJonEmails):
+if(config.sendEventEmails and not config.emergency_email_shutoff):
     for g in talkgroups:
        # dataFileName is the name of the file storing the record for the current talk if an email has been sent to Jon yet.
        dataFileName = g[0].date.strftime(dataFileNamePattern) 
@@ -508,7 +511,7 @@ if(config.sendJonEmails):
           oldJsonDicts = pickle.load(file(dataFileName))
        except: # dataFileName doesn't exist, so haven't sent Jon an email yet for this talk, check if it's soon enough that we should send it
           if 0 <= (g[0].date.date() - datetime.today().date()).days <= 14: # is the talk in the next two weeks?
-            sendEmailToJon(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talks=g)), newJsonDicts)
+            sendEventEmail(g[0].date, "Upcoming talk: " + g[0].day,  dispatchEmailTemplate(dict(talks=g)), newJsonDicts)
        else: # Have sent Jon an email
           if oldJsonDicts!=newJsonDicts: # check if there's been an update we need to tell him about
              changes=""
@@ -518,16 +521,27 @@ if(config.sendJonEmails):
         	        if(k not in oldJsonDicts[i] or v!=oldJsonDicts[i][k]):
         	           changes+= str(k) +  ": " + str(v) + '\n'
         	     changes += "\n" + "Updated poster: http://math.mit.edu/topology/posters/" + g[i].posterfilename + ".pdf"
-             sendEmailToJon(g[i].date, "Changes for " + g[i].day + " talk", changes[3:], newJsonDicts)
+             sendEventEmail(g[i].date, "Changes for " + g[i].day + " talk", changes[3:], newJsonDicts)
 
         
-
 print 'Generating posters'
 makeposters(upcoming)
 
 print 'Generating emails'
+emails = map(Email, talkgroups)
+emails =  filter(lambda e : not e.invalid, emails)
+
 os.system("rm emails/email* 2> /dev/null")
-emails = map(makeemail, talkgroups)
+for e in emails:
+    e.writeToFile()
+
+if args.test_email:
+    emails[0].sendToOrganizer()
+if args.wm_test_email:
+    print(emails[0].list_message)
+    emails[0].sendToOrganizer(webmaster_email)
+       
+
 if args.send_email:
     emails[0].sendToList()
    

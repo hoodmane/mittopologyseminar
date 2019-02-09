@@ -13,6 +13,10 @@ import os
 import subprocess
 import config
 
+if config.emergency_email_shutoff:
+   sys.exit()
+
+
 os.chdir(config.working_directory)
 # This makes sure all files are written with correct permissions?
 os.umask(0002)

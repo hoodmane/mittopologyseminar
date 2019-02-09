@@ -8,6 +8,7 @@ import subprocess
 import threading
 import argparse
 import config
+from distutils.version import LooseVersion # For version check
 
 from datetime import datetime, date, timedelta
 import time
@@ -51,10 +52,23 @@ latexJinjaEnv = jinja2.Environment(
 
 
 try:
-   import markdown
+   import markdown 
+   if LooseVersion(markdown.version) < LooseVersion("3.0.1"):
+       print "Version of markdown package out of date. Updating and quitting. Rerun."
+       os.system("pip install --user --upgrade markdown")
+       sys.exit()
 except ImportError:
    os.system("pip install --user markdown")
    import markdown
+
+#try:
+#    import bleach
+#    from bleach_whitelist import markdown_tags, markdown_attrs
+#except ImportError:
+#    os.system("pip install --user bleach")
+#    os.system("pip install --user bleach-whitelist")
+#    import bleach
+#    from bleach_whitelist import markdown_tags, markdown_attrs
 
 try:
     from icalendar import Calendar, Event, vCalAddress, vText
@@ -68,7 +82,6 @@ except ImportError:
     os.system("pip install --user pytz")    
     import pytz
 timezone = pytz.timezone(config.timezone)
-
 
 import markdown.extensions.fenced_code
 # Email things
@@ -205,7 +218,7 @@ link_rel              = re.compile("^((?:[^'\. \]]*\.?){1,2})$") # To be relativ
 link_full_http        = re.compile("^\w*://.*$") 
 
 
-class myLinkPattern(markdown.inlinepatterns.LinkPattern):
+class myLinkPattern(markdown.inlinepatterns.LinkInlineProcessor):
     def sanitize_url(self, url):
 	if link_file_only.match(url):
             return self.markdown.notes_path + url
@@ -250,7 +263,7 @@ class myFencedBlockPreprocessor(markdown.extensions.fenced_code.FencedBlockPrepr
                 if m.group('lang'):
                     lang = LANG_TAG % m.group('lang')
                 code = CODE_WRAP % (lang, self._escape(m.group('code')))
-                placeholder = self.markdown.htmlStash.store(code, safe=True)                
+                placeholder = self.markdown.htmlStash.store(code)  # bleach.clean(self.markdown.htmlStash.store(code), markdown_tags, markdown_attrs)                
                 text = '%s\n%s\n%s'% (text[:m.start()], placeholder, text[m.end():])
             else:
                 break

@@ -1,36 +1,120 @@
 BEGIN:VCALENDAR
 BEGIN:VEVENT
-SUMMARY:Nathaniel Stapleton: Classifying spectra of finite groups and chro
- matic homotopy theory
-DTSTART;VALUE=DATE-TIME:20181126T213000Z
-DTEND;VALUE=DATE-TIME:20181126T223000Z
-DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
-UID:20181126163000-topology-seminar@math.mit.edu
-DESCRIPTION:\n\nWe will discuss a question about the functoriality of cert
- ain evaluation maps for classifying spectra of finite groups that arose wh
- en thinking about questions related to chromatic homotopy theory. I will d
- escribe an algebraic solution to this problem found in joint work with Ree
- h\, Schlank. If time permits\, I hope to describe a related question regar
- ding idempotents of p-groups in the K(n)-local category.
+SUMMARY:Kathryn Lesh: Bredon homology of decomposition spaces
+DTSTART;VALUE=DATE-TIME:20190211T213000Z
+DTEND;VALUE=DATE-TIME:20190211T223000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190211163000-topology-seminar@math.mit.edu
+DESCRIPTION:\n\nI will discuss our current state of knowledge about the U(
+ n)-equivariant homotopy type of L_{n}\, the space of proper decompositions
+  of complex n-space. In particular\, I will describe a recent result (join
+ t with Arone and Dwyer) describing the Bredon homology and cohomology of L
+ _{n} with coefficients in a p-local Mackey functor. It turns out to be the
+  same as a point when n is not a power of p\, and is approximated by the s
+ ymplectic Tits building when n is a power of p. The method uses a general 
+ approximation theory for a space with an action of a compact Lie group\, b
+ y p-toral subgroups. The space L_{n} first arose in the Weiss tower for th
+ e functor taking a vector space V to BAut(V)\, but has made other appearan
+ ces\, and is an important ingredient in the bu Whitehead Conjecture.
 LOCATION:MIT 2-131
-ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Arnav Tripathy
-DTSTART;VALUE=DATE-TIME:20181203T213000Z
-DTEND;VALUE=DATE-TIME:20181203T223000Z
-DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
-UID:20181203163000-topology-seminar@math.mit.edu
+SUMMARY:Test: Title
+DTSTART;VALUE=DATE-TIME:20190214T213000Z
+DTEND;VALUE=DATE-TIME:20190214T223000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190214163000-topology-seminar@math.mit.edu
+DESCRIPTION:\n\nAbstract
 LOCATION:MIT 2-131
-ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Irina Bobkova
-DTSTART;VALUE=DATE-TIME:20181210T213000Z
-DTEND;VALUE=DATE-TIME:20181210T223000Z
-DTSTAMP;VALUE=DATE-TIME:20181124T184827Z
-UID:20181210163000-topology-seminar@math.mit.edu
+SUMMARY:Alexander Kupers: The cohomology of Torelli spaces
+DTSTART;VALUE=DATE-TIME:20190225T213000Z
+DTEND;VALUE=DATE-TIME:20190225T223000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190225163000-topology-seminar@math.mit.edu
+DESCRIPTION:\n\nI will discuss joint work with Oscar Randal-Williams\, in 
+ which we compute the rational cohomology of the Torelli spaces of highly-c
+ onnected high-dimensional manifolds in a stable range. These Torelli space
+ s are the classifying spaces of the subgroup of the topological group of d
+ iffeomorphisms consisting of those path components which act by the identi
+ ty on homology\, and bring us one step closer to understanding the rationa
+ l homotopy type of diffeomorphism groups.
 LOCATION:MIT 2-131
-ORGANIZER;CN="Zhulin Li":MAILTO:zhulin@mit.edu
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mona Merling
+DTSTART;VALUE=DATE-TIME:20190304T213000Z
+DTEND;VALUE=DATE-TIME:20190304T223000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190304163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Andrew Putman
+DTSTART;VALUE=DATE-TIME:20190311T203000Z
+DTEND;VALUE=DATE-TIME:20190311T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190311163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Manuel Krannich
+DTSTART;VALUE=DATE-TIME:20190318T203000Z
+DTEND;VALUE=DATE-TIME:20190318T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190318163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Donald Yau
+DTSTART;VALUE=DATE-TIME:20190408T203000Z
+DTEND;VALUE=DATE-TIME:20190408T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190408163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:John Berman
+DTSTART;VALUE=DATE-TIME:20190422T203000Z
+DTEND;VALUE=DATE-TIME:20190422T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190422163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lyuboslav Panchev
+DTSTART;VALUE=DATE-TIME:20190429T203000Z
+DTEND;VALUE=DATE-TIME:20190429T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190429163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Daniel Ruberman
+DTSTART;VALUE=DATE-TIME:20190506T203000Z
+DTEND;VALUE=DATE-TIME:20190506T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190506163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Jay Shah
+DTSTART;VALUE=DATE-TIME:20190513T203000Z
+DTEND;VALUE=DATE-TIME:20190513T213000Z
+DTSTAMP;VALUE=DATE-TIME:20190209T190007Z
+UID:20190513163000-topology-seminar@math.mit.edu
+LOCATION:MIT 2-131
+ORGANIZER;CN="Andrew Senger":MAILTO:senger@mit.edu
 END:VEVENT
 END:VCALENDAR

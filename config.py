@@ -1,7 +1,9 @@
-organizer_first_name = "Zhulin"
-organizer_last_name = "Li"
-organizer_email = "zhulin@mit.edu"  # This must be your @mit.edu email.
+emergency_email_shutoff = False # Change to True if the mailer goes haywire!
 
+
+organizer_first_name = "Andrew"
+organizer_last_name = "Senger"
+organizer_email = "senger@mit.edu"  # This must be your @mit.edu email.
 
 webmaster_email = "hood@mit.edu"
 target_email = "mit-topology@googlegroups.com" # "hood_test@googlegroups.com" #
@@ -13,7 +15,12 @@ standard_room = "2-131"
 standard_duration = "1:00" # Default duration, "hrs:minutes"
 
 working_directory = "/math/www/docs/topology" 
-sendJonEmails = True
+sendEventEmails = True
+eventNoticeEmailSource = "topology-seminar-events@math.mit.edu"
+eventNoticeEmailTarget = "harmonjo@mit.edu"
+
+
+
 
 testMode = False
 if(testMode):
